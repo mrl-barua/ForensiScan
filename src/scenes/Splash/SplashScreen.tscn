@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0w3ko8iwwppe"]
+
+[ext_resource type="Script" uid="uid://ds0oj1mit2464" path="res://src/scripts/Splash/SplashScreen.gd" id="1_q6wvw"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_pucxk"]
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource("1_q6wvw")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(966, 541)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("2_pucxk")
+metadata/_edit_lock_ = true
