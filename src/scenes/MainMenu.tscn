@@ -1,17 +1,69 @@
-[gd_scene format=3 uid="uid://dil8qcyfhtjau"]
+[gd_scene load_steps=4 format=3 uid="uid://dil8qcyfhtjau"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_1bg10"]
+[ext_resource type="Script" uid="uid://dxf0axbk48dcd" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
+[ext_resource type="PackedScene" uid="uid://baarscbqx0i40" path="res://src/scenes/Components/LicenseVerifier.tscn" id="3_oll1y"]
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 787.0
-offset_top = 508.0
-offset_right = 989.0
-offset_bottom = 539.0
-text = "This is the menu ehehe"
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_a00hu")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(966, 541)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("1_1bg10")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 578.0
+offset_top = 129.0
+offset_right = 1396.0
+offset_bottom = 975.0
+theme_override_constants/separation = 80
+
+[node name="Button" type="Button" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Module 1"
+
+[node name="Button2" type="Button" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Module 2"
+
+[node name="Button3" type="Button" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Module 3"
+
+[node name="Button4" type="Button" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Module 4"
+
+[node name="SideButtons" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 1677.0
+offset_top = 870.0
+offset_right = 1894.0
+offset_bottom = 1043.0
+theme_override_constants/separation = 80
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/SideButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Quit"
+
+[node name="LicenseVerifier" parent="CanvasLayer" instance=ExtResource("3_oll1y")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1677.0
+offset_top = 1095.0
+offset_right = 1894.0
+offset_bottom = 1095.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="CanvasLayer/SideButtons/QuitButton" to="." method="_on_quit_button_pressed"]

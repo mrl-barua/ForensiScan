@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://baarscbqx0i40"]
+
+[node name="LicenseVerifier" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1931.0
+offset_bottom = 1077.0
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 554.0
+offset_top = 371.0
+offset_right = 1427.0
+offset_bottom = 749.0
+theme_override_constants/separation = 50
+
+[node name="LicenseLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Enter License"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100

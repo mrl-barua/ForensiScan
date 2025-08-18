@@ -41,6 +41,7 @@ _data = {
 }
 
 [node name="EngineSplash" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_p0vxu")
 
 [node name="StarField" type="Sprite2D" parent="."]
