@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="CrimeScope"
-run/main_scene="uid://btalvqwn1vnd7"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="res://src/scenes/Splash/EngineSplash.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -30,3 +30,4 @@ window/handheld/orientation=4
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
