@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqtsm4w2peyjr"]
+
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_2uoaf"]
+[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="2_oq0u4"]
+
+[node name="Lesson1_1" type="Node2D"]
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("1_2uoaf")
+metadata/_edit_lock_ = true
+
+[node name="Pause" parent="." instance=ExtResource("2_oq0u4")]
