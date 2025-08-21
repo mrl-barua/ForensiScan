@@ -7,5 +7,10 @@ var typewriter: Typewriter
 func _ready():
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
+	
+	typewriter.connect("typing_finished", Callable(self, "_on_typing_done"))
 	typewriter.start_typing(label, lesson_1_text)
+	
+func _on_typing_done():
+	print("Typing finished!")
 

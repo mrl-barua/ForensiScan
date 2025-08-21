@@ -1,13 +1,15 @@
 extends Node
-class_name Typewriter   
+class_name Typewriter
 
-@export var delay: float = 0.05 
+@export var delay: float = 0.05
 
 var _full_text: String = ""
 var _current_index := 0
 var _typing := false
 var _skip := false
 var _label: RichTextLabel
+
+signal typing_finished
 
 func start_typing(label: RichTextLabel, text: String):
 	"""
@@ -25,8 +27,9 @@ func _show_next_letter():
 	if _skip:
 		_label.text = _full_text
 		_typing = false
+		emit_signal("typing_finished")
 		return
-	
+
 	if _current_index < _full_text.length():
 		_label.text += _full_text[_current_index]
 		_current_index += 1
@@ -34,6 +37,7 @@ func _show_next_letter():
 		_show_next_letter()
 	else:
 		_typing = false
+		emit_signal("typing_finished") 
 
 func skip_typing():
 	_skip = true
