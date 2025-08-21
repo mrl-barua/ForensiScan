@@ -8,24 +8,24 @@
 script = ExtResource("1_jm22h")
 
 [node name="StarField" type="Sprite2D" parent="."]
-position = Vector2(966, 541)
+position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("1_jx1wo")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="."]
-offset_left = 34.0
-offset_top = 36.0
-offset_right = 203.0
-offset_bottom = 300.0
+offset_left = 31.9987
+offset_top = 36.9981
+offset_right = 200.999
+offset_bottom = 300.998
 scale = Vector2(0.730667, 0.479373)
 icon = ExtResource("2_jgh26")
 
 [node name="Label" type="RichTextLabel" parent="."]
-offset_left = 259.0
-offset_top = 145.0
-offset_right = 1736.0
-offset_bottom = 263.0
+offset_left = 256.999
+offset_top = 145.998
+offset_right = 1734.0
+offset_bottom = 263.998
 theme_override_font_sizes/normal_font_size = 80
 text = "Rich Text"
 fit_content = true

@@ -45,14 +45,14 @@ use_parent_material = true
 script = ExtResource("1_p0vxu")
 
 [node name="StarField" type="Sprite2D" parent="."]
-position = Vector2(966, 541)
+position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("1_uvaeb")
 metadata/_edit_lock_ = true
 
 [node name="GodotLogo" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(974, 569)
+position = Vector2(971.999, 569.998)
 scale = Vector2(0.469727, 0.471605)
 texture = ExtResource("3_qd5cm")
 

@@ -7,6 +7,24 @@ const SECRET_KEY := "HCDC_PROJECT"
 
 const LICENSE_FILE := "user://license.cfg"
 
+@onready var line_edit: LineEdit = $CanvasLayer/VBoxContainer/LineEdit
+@onready var label: Label = $CanvasLayer/LicenseLabel
+
+func _ready():
+	if LicenseVerifier.is_activated():
+		label.text = "✅ App already activated!"
+	else:
+		label.text = "Enter your license token"
+
+func _on_activate_button_pressed():
+	var token := line_edit.text
+	var result := LicenseVerifier.verify_token(token)
+	if result.ok:
+		LicenseVerifier.save_activated_token(token, result.payload)
+		label.text = "✅ License activated successfully!"
+	else:
+		label.text = "❌ " + result.reason
+
 # --- HMAC / Base64 helpers ---
 static func _hmac_sha256(key: String, data: String) -> PackedByteArray:
 	var ctx := HMACContext.new()
@@ -75,10 +93,11 @@ static func verify_token(token: String, expected_name: String = "", expected_sem
 	return { "ok": true, "reason": "OK", "payload": payload }
 
 # --- Persist locally after first activation ---
-static func save_activated_token(token: String) -> void:
+static func save_activated_token(token: String, payload: Dictionary) -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("license", "token", token)
 	cfg.set_value("license", "activated", true)
+	cfg.set_value("license", "payload", payload)
 	cfg.save(LICENSE_FILE)
 
 static func load_activated_token() -> String:

@@ -29,7 +29,7 @@ _data = {
 script = ExtResource("1_q6wvw")
 
 [node name="StarField" type="Sprite2D" parent="."]
-position = Vector2(966, 541)
+position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_pucxk")
 metadata/_edit_lock_ = true
@@ -42,7 +42,7 @@ autoplay = "modulate"
 
 [node name="ApplicationTitle" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(994, 574)
+position = Vector2(991.999, 574.998)
 texture = ExtResource("3_xlxem")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
