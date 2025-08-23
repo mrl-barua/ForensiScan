@@ -9,10 +9,12 @@ const LICENSE_FILE := "user://license.cfg"
 
 @onready var line_edit: LineEdit = $CanvasLayer/VBoxContainer/LineEdit
 @onready var label: Label = $CanvasLayer/LicenseLabel
+@onready var license_verifier: Control = $CanvasLayer/Container
 
 func _ready():
 	if LicenseVerifier.is_activated():
-		label.text = "✅ App already activated!"
+		#label.text = "✅ App already activated!"
+		license_verifier.hide()
 	else:
 		label.text = "Enter your license token"
 
@@ -115,3 +117,11 @@ static func is_activated() -> bool:
 	if cfg.load(LICENSE_FILE) != OK:
 		return false
 	return bool(cfg.get_value("license", "activated", false))
+	
+static func get_license_details() -> Dictionary:
+	if not FileAccess.file_exists(LICENSE_FILE):
+		return {}
+	var cfg := ConfigFile.new()
+	if cfg.load(LICENSE_FILE) != OK:
+		return {}
+	return cfg.get_value("license", "payload", {})

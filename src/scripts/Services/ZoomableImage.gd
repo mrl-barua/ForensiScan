@@ -11,9 +11,11 @@ var zoom: float = 1.0
 var dragging: bool = false
 var last_mouse_pos: Vector2
 
+# Track touch points for pinch zoom
+var touches := {}
+
 func _ready():
 	image_rect.texture = image_texture
-	# Center the TextureRect
 	image_rect.anchor_left = 0.5
 	image_rect.anchor_top = 0.5
 	image_rect.anchor_right = 0.5
@@ -21,13 +23,13 @@ func _ready():
 	image_rect.position = Vector2.ZERO
 
 func _unhandled_input(event):
-	# Desktop zoom via mouse wheel
+	# Mouse zoom
 	if event is InputEventMouseButton:
 		if event.pressed:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				_apply_zoom(zoom_speed)
+				_apply_zoom(zoom_speed, event.position)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				_apply_zoom(-zoom_speed)
+				_apply_zoom(-zoom_speed, event.position)
 			elif event.button_index == MOUSE_BUTTON_LEFT:
 				dragging = true
 				last_mouse_pos = event.position
@@ -41,14 +43,44 @@ func _unhandled_input(event):
 		image_rect.position += delta
 		last_mouse_pos = event.position
 
-	# Touch pinch zoom (Android)
-	if event is InputEventMagnifyGesture:
-		_apply_zoom(event.factor - 1)
+	# Touch input
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touches[event.index] = event.position
+		else:
+			touches.erase(event.index)
 
-	# Touch drag (Android)
 	if event is InputEventScreenDrag:
-		image_rect.position += event.relative
+		if len(touches) == 1:
+			# Single finger drag
+			image_rect.position += event.relative
+			touches[event.index] = event.position
+		elif len(touches) == 2:
+			# Pinch zoom
+			var keys = touches.keys()
+			var p1_old = touches[keys[0]]
+			var p2_old = touches[keys[1]]
+			var p1_new = p1_old
+			var p2_new = p2_old
+			if keys[0] == event.index:
+				p1_new = event.position
+			elif keys[1] == event.index:
+				p2_new = event.position
 
-func _apply_zoom(delta_zoom: float):
+			var old_dist = p1_old.distance_to(p2_old)
+			var new_dist = p1_new.distance_to(p2_new)
+			if old_dist != 0:
+				var factor = new_dist / old_dist
+				_apply_zoom(factor - 1, (p1_new + p2_new) * 0.5)
+
+			touches[keys[0]] = p1_new
+			touches[keys[1]] = p2_new
+
+func _apply_zoom(delta_zoom: float, zoom_center: Variant = null) -> void:
+	var old_zoom = zoom
 	zoom = clamp(zoom + delta_zoom, min_zoom, max_zoom)
 	image_rect.scale = Vector2.ONE * zoom
+
+	if zoom_center != null:
+		# Convert global zoom_center to parent local coordinates
+		var parent = image_rect.get_parent() as Control

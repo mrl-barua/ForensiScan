@@ -13,16 +13,17 @@ grow_vertical = 2
 script = ExtResource("1_4o7uo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.109804, 0.113725, 0.027451, 0.298039)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 596.0
-offset_top = 299.0
-offset_right = 1394.0
-offset_bottom = 795.0
+offset_left = 591.0
+offset_top = 317.0
+offset_right = 1355.0
+offset_bottom = 830.0
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer"]
 layout_mode = 2

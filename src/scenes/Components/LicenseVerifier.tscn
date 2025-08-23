@@ -11,16 +11,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_onbjg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1931.0
+offset_bottom = 1077.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container"]
+layout_mode = 2
 offset_right = 1931.0
 offset_bottom = 1077.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LicenseLabel" type="Label" parent="CanvasLayer"]
+[node name="LicenseLabel" type="Label" parent="CanvasLayer/Container"]
+layout_mode = 2
 offset_left = -1.0
 offset_top = 299.0
 offset_right = 1922.0
@@ -29,20 +36,21 @@ theme_override_font_sizes/font_size = 100
 text = "Enter License"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Container"]
+layout_mode = 2
 offset_left = 554.0
 offset_top = 500.0
 offset_right = 1427.0
 offset_bottom = 786.0
 theme_override_constants/separation = 50
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Container/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 
-[node name="ActivateButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ActivateButton" type="Button" parent="CanvasLayer/Container/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Button"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/ActivateButton" to="." method="_on_activate_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/VBoxContainer/ActivateButton" to="." method="_on_activate_button_pressed"]

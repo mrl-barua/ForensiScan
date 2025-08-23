@@ -18,4 +18,6 @@ metadata/_edit_lock_ = true
 visible = false
 
 [node name="ZoomableImage" parent="." instance=ExtResource("3_66obh")]
+offset_left = -5.0
+offset_right = -5.0
 image_texture = ExtResource("4_sji75")

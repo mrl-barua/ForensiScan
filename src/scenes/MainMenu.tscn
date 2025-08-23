@@ -9,10 +9,16 @@
 script = ExtResource("1_a00hu")
 
 [node name="StarField" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(964, 542)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("1_1bg10")
 metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -69,5 +75,22 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasLayer" parent="LicenseVerifier" index="0"]
+visible = false
+
+[node name="Container" parent="LicenseVerifier/CanvasLayer" index="0"]
+visible = false
+
+[node name="ColorRect" parent="LicenseVerifier/CanvasLayer/Container" index="0"]
+visible = false
+
+[node name="LicenseLabel" parent="LicenseVerifier/CanvasLayer/Container" index="1"]
+visible = false
+
+[node name="VBoxContainer" parent="LicenseVerifier/CanvasLayer/Container" index="2"]
+visible = false
+
 [connection signal="pressed" from="CanvasLayer/MainButtons/StartLessonButton" to="." method="_on_start_lesson_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SideButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+
+[editable path="LicenseVerifier"]

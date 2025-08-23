@@ -3,7 +3,6 @@ extends Node2D
 @export var quit_button: Button
 @onready var license_verifier: LicenseVerifier = $LicenseVerifier
 
-
 func _ready() -> void:
 	if license_verifier.is_activated():
 		license_verifier.get_node("CanvasLayer").hide()
