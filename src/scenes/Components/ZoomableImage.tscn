@@ -17,6 +17,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.109804, 0.113725, 0.027451, 0.298039)
+metadata/_edit_lock_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
@@ -24,6 +25,7 @@ offset_left = 591.0
 offset_top = 317.0
 offset_right = 1355.0
 offset_bottom = 830.0
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer"]
 layout_mode = 2
