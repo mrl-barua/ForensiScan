@@ -9,13 +9,13 @@
 script = ExtResource("1_a00hu")
 
 [node name="StarField" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(964, 542)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("1_1bg10")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.0705882, 0.0705882, 0.0705882, 1)
@@ -23,10 +23,10 @@ color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 576.0
-offset_top = 387.0
-offset_right = 1394.0
-offset_bottom = 989.0
+offset_left = 989.0
+offset_top = 234.0
+offset_right = 1807.0
+offset_bottom = 836.0
 theme_override_constants/separation = 50
 
 [node name="StartLessonButton" type="Button" parent="CanvasLayer/MainButtons"]
@@ -53,20 +53,14 @@ theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = ExtResource("3_kxrrv")
 text = "Activity 3"
 
-[node name="SideButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 1662.0
-offset_top = 918.0
-offset_right = 1879.0
-offset_bottom = 1091.0
-theme_override_constants/separation = 80
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/SideButtons"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = ExtResource("3_kxrrv")
 text = "Quit"
 
 [node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -91,6 +85,6 @@ visible = false
 visible = false
 
 [connection signal="pressed" from="CanvasLayer/MainButtons/StartLessonButton" to="." method="_on_start_lesson_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/SideButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
 
 [editable path="LicenseVerifier"]

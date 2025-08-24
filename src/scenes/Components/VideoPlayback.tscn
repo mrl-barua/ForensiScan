@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://blu02krbkpr8j"]
+
+[ext_resource type="Script" path="res://src/scripts/Services/VideoPlayback.gd" id="1_mnbrq"]
+[ext_resource type="VideoStream" path="res://assets/video/sample_1280x720_surfing_with_audio.ogv" id="2_puuub"]
+
+[node name="VideoPlayback" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mnbrq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.113725, 0.027451, 0.298039)
+metadata/_edit_lock_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 2
+offset_left = 537.0
+offset_top = 200.0
+offset_right = 1817.0
+offset_bottom = 920.0
+scale = Vector2(0.683636, 0.71779)
+stream = ExtResource("2_puuub")
+autoplay = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 880.0
+offset_right = 1098.0
+offset_bottom = 998.0
+theme_override_constants/separation = 54
+
+[node name="SkipBackButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "<<"
+
+[node name="SkipForwardButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = ">>"
+
+[connection signal="pressed" from="HBoxContainer/SkipBackButton" to="." method="_on_skip_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SkipForwardButton" to="." method="_on_skip_forward_button_pressed"]
