@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://5tp5n57e3ewq"]
+
+[ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.0.gd" id="1_yuos4"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_o0hnk"]
+[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_owlaq"]
+[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_7t25q"]
+
+[node name="Prelim_1_0" type="Node2D"]
+script = ExtResource("1_yuos4")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("2_o0hnk")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 256.999
+offset_top = 145.998
+offset_right = 1734.0
+offset_bottom = 263.998
+theme_override_font_sizes/normal_font_size = 80
+text = "Rich Text"
+fit_content = true
+
+[node name="Pause" parent="." instance=ExtResource("3_owlaq")]
+
+[node name="NextButton" type="Button" parent="."]
+visible = false
+offset_left = 1697.0
+offset_top = 930.0
+offset_right = 1889.0
+offset_bottom = 1048.0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("4_7t25q")
+text = "Next
+"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

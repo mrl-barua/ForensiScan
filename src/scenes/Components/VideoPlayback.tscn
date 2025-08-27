@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://blu02krbkpr8j"]
+[gd_scene load_steps=2 format=3 uid="uid://blu02krbkpr8j"]
 
 [ext_resource type="Script" path="res://src/scripts/Services/VideoPlayback.gd" id="1_mnbrq"]
-[ext_resource type="VideoStream" path="res://assets/video/sample_1280x720_surfing_with_audio.ogv" id="2_puuub"]
 
 [node name="VideoPlayback" type="Control"]
 layout_mode = 3
@@ -26,7 +25,6 @@ offset_top = 200.0
 offset_right = 1817.0
 offset_bottom = 920.0
 scale = Vector2(0.683636, 0.71779)
-stream = ExtResource("2_puuub")
 autoplay = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

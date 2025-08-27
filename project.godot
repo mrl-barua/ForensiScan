@@ -26,6 +26,13 @@ window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/handheld/orientation=4
 
+[file_customization]
+
+folder_colors={
+"res://src/scenes/": "green",
+"res://src/scripts/": "red"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
