@@ -1,12 +1,10 @@
 extends Node2D
 
-@export var header_text: String = "What happened before fingerprints?"
-@export var detail_one_text: String = "- Ancient China, thumb prints were found on clay seals."
-@export var detail_two_text: String = "- Ancient Babylon, fingerprints were used on clay tablets for business transactions"
+@export var header_text: String = "How did we discover fingerprints?"
+@export var detail_one_text: String = "- In 1903, when a man named Will West was sentenced to the U.S. Penitentiary at Leavenworth, Kansas. There was already a prisoner at the penitentiary at the time, whose Bertillon measurements were nearly exact, and his name was William West. "
 
 @onready var header_label: RichTextLabel = $Header
 @onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -14,7 +12,6 @@ var typewriter: Typewriter
 func _ready():
 	header_label.text = ''
 	detail_one_label.text = ''
-	detail_two_label.text = ''
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
@@ -29,13 +26,7 @@ func _on_header_typing_done():
 
 func _on_detail_one_typing_done():
 	print("Detail one typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_one_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_two_typing_done"))
-	typewriter.start_typing(detail_two_label, detail_two_text)
-
-func _on_detail_two_typing_done():
-	print("Detail two typing finished!")
 	next_button.show()
-
+	
 func _on_next_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.3.tscn")
+	pass

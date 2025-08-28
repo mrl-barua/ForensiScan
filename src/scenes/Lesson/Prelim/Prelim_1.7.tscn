@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cumq1et7pfugb"]
+
+[ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.7.gd" id="1_rk7h6"]
+
+[node name="Prelim1_7" type="Node2D"]
+script = ExtResource("1_rk7h6")
