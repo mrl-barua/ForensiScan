@@ -5,10 +5,10 @@ extends Node2D
 @export var detail_two_text: String = "- Around 1870 a French anthropologist devised a system to measure and record the dimensions of certain bony parts of the body."
 @export var detail_three_text: String = "- These measurements were reduced to a formula which, theoretically, would apply only to one person and would not change during his/her adult life."
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
-@onready var detail_three_label: RichTextLabel = $DetailThree
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
+@onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -47,4 +47,4 @@ func _on_detail_three_typing_done():
 	next_button.show()	
 
 func _on_next_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.5.tscn")

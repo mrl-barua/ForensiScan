@@ -3,8 +3,8 @@ extends Node2D
 @export var detail_one_text: String = "- Upon an investigation, there were indeed two men! They looked exactly alike, but were allegedly not related. Their names were Will and William West respectively. Their Bertillon measurements were close enough to identify them as the same person."
 @export var detail_two_text: String = "- A fingerprint comparison quickly and correctly identified them as two different people. The West men were apparently identical twin brothers per indications in later discovered prison records citing correspondence from the same immediate family relatives."
 
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -29,4 +29,4 @@ func _on_detail_two_typing_done():
 	next_button.show()
 
 func _on_next_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.8.tscn")

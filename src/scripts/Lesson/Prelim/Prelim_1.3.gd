@@ -5,9 +5,9 @@ extends Node2D
 @export var detail_two_text: String = "- More recently, law enforcement officers with extraordinary visual memories, so-called 'camera eyes,' identified old offenders by sight. Photography lessened the burden on memory but was not the answer to the criminal identification problem. Personal appearances change.
 "
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -39,4 +39,4 @@ func _on_detail_two_typing_done():
 	next_button.show()
 
 func _on_next_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.4.tscn")

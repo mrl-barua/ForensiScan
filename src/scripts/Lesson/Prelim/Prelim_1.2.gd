@@ -4,9 +4,9 @@ extends Node2D
 @export var detail_one_text: String = "- Ancient China, thumb prints were found on clay seals."
 @export var detail_two_text: String = "- Ancient Babylon, fingerprints were used on clay tablets for business transactions"
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton

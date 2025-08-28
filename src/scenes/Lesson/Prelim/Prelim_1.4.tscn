@@ -16,39 +16,33 @@ metadata/_edit_lock_ = true
 
 [node name="Pause" parent="." instance=ExtResource("3_ppcj2")]
 
-[node name="Header" type="RichTextLabel" parent="."]
-offset_left = 256.999
-offset_top = 145.998
-offset_right = 1734.0
-offset_bottom = 263.998
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 68.0
+offset_top = 162.0
+offset_right = 1868.0
+offset_bottom = 1019.0
+theme_override_constants/separation = 30
+
+[node name="Header" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 80
 text = "Rich Text"
 fit_content = true
 
-[node name="DetailOne" type="RichTextLabel" parent="."]
-offset_left = 80.0
-offset_top = 325.0
-offset_right = 1836.0
-offset_bottom = 443.0
-scale = Vector2(1.00597, 0.98811)
+[node name="DetailOne" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="DetailTwo" type="RichTextLabel" parent="."]
-offset_left = 83.0
-offset_top = 529.0
-offset_right = 1840.0
-offset_bottom = 647.0
+[node name="DetailTwo" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="DetailThree" type="RichTextLabel" parent="."]
-offset_left = 91.0
-offset_top = 741.0
-offset_right = 1851.0
-offset_bottom = 859.0
+[node name="DetailThree" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true

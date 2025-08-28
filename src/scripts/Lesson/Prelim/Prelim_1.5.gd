@@ -3,8 +3,8 @@ extends Node2D
 @export var header_text: String = "How did we discover fingerprints?"
 @export var detail_one_text: String = "- In 1903, when a man named Will West was sentenced to the U.S. Penitentiary at Leavenworth, Kansas. There was already a prisoner at the penitentiary at the time, whose Bertillon measurements were nearly exact, and his name was William West. "
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -29,4 +29,4 @@ func _on_detail_one_typing_done():
 	next_button.show()
 	
 func _on_next_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.6.tscn")

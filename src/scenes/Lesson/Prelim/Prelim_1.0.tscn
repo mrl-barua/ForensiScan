@@ -24,6 +24,7 @@ text = "Rich Text"
 fit_content = true
 
 [node name="Pause" parent="." instance=ExtResource("3_owlaq")]
+scale = Vector2(1.02114, 0.994476)
 
 [node name="NextButton" type="Button" parent="."]
 visible = false

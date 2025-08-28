@@ -4,9 +4,9 @@ extends Node2D
 @export var detail_one_text: String = "- Sir William Hershel"
 @export var detail_two_text: String = "- credited with being the first European to note the value of fingerprints for identification. He recognized that fingerprints were unique and permanent. Herschel documented his own fingerprints over his lifetime to prove permanence. He was also credited with being the first person to use fingerprints in a practical manner. As early as the 1850s, working as a British officer for the Indian Civil Service in the Bengal region of India, he started putting fingerprints on contracts."
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton

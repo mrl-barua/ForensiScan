@@ -5,10 +5,10 @@ extends Node2D
 @export var detail_two_text: String = "- known as the Father of Dactyloscopy."
 @export var detail_three_text: String = "- In 1890 he became a secretary to the Lieutenant Governor of Bengal and later appointed Inspector General of Police, where around that time he started working on his fingerprint identification system."
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
-@onready var detail_three_label: RichTextLabel = $DetailThree
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
+@onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -47,4 +47,4 @@ func _on_detail_three_typing_done():
 	next_button.show()	
 
 func _on_next_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.11.tscn")
