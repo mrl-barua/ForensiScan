@@ -15,6 +15,7 @@ texture = ExtResource("2_cfsxd")
 metadata/_edit_lock_ = true
 
 [node name="Pause" parent="." instance=ExtResource("3_wybdl")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="RichTextLabel" parent="."]
 offset_left = 256.999
@@ -24,6 +25,7 @@ offset_bottom = 263.998
 theme_override_font_sizes/normal_font_size = 80
 text = "Rich Text"
 fit_content = true
+metadata/_edit_use_anchors_ = true
 
 [node name="DetailOne" type="RichTextLabel" parent="."]
 offset_left = 263.0
@@ -33,6 +35,7 @@ offset_bottom = 443.0
 theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
+metadata/_edit_use_anchors_ = true
 
 [node name="NextButton" type="Button" parent="."]
 visible = false
