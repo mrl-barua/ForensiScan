@@ -1,14 +1,12 @@
 extends Node2D
 
-@export var header_text: String = "Sir Edward Richard Henry"
-@export var detail_one_text: String = "- Known as the Father of Fingerprints"
-@export var detail_two_text: String = "- The first man who successfully applied fingerprints in Identification."
-@export var detail_three_text: String = "- In 1890 he became a secretary to the Lieutenant Governor of Bengal and later appointed Inspector General of Police, where around that time he started working on his fingerprint identification system."
+@export var header_text: String = "Important People in Fingerprinting History!"
+@export var detail_one_text: String = "- Marcello Malpighi"
+@export var detail_two_text: String = "- In 1686, Marcello Malpighi, a professor of anatomy at the University of Bologna, noted ridges, spirals and loops in fingerprints. He made no mention of their value as a tool for individual identification. A layer of skin was named after him; 'Malpighi' layer, which is approximately 1.8mm thick."
 
 @onready var header_label: RichTextLabel = $Header
 @onready var detail_one_label: RichTextLabel = $DetailOne 
 @onready var detail_two_label: RichTextLabel = $DetailTwo 
-@onready var detail_three_label: RichTextLabel = $DetailThree
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -17,7 +15,6 @@ func _ready():
 	header_label.text = ''
 	detail_one_label.text = ''
 	detail_two_label.text = ''
-	detail_three_label.text = ''
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
@@ -38,13 +35,7 @@ func _on_detail_one_typing_done():
 
 func _on_detail_two_typing_done():
 	print("Detail two typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_two_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_three_typing_done"))
-	typewriter.start_typing(detail_three_label, detail_three_text)	
-	
-func _on_detail_three_typing_done():
-	print("Detail three typing finished!")
-	next_button.show()	
+	next_button.show()
 
 func _on_next_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.3.tscn")

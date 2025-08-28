@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var header_text: String = "Sir Edward Richard Henry"
-@export var detail_one_text: String = "- Known as the Father of Fingerprints"
-@export var detail_two_text: String = "- The first man who successfully applied fingerprints in Identification."
+@export var header_text: String = "Important People in Fingerprinting History!"
+@export var detail_one_text: String = "- John Evangelist Purkinji "
+@export var detail_two_text: String = "- known as the Father of Dactyloscopy."
 @export var detail_three_text: String = "- In 1890 he became a secretary to the Lieutenant Governor of Bengal and later appointed Inspector General of Police, where around that time he started working on his fingerprint identification system."
 
 @onready var header_label: RichTextLabel = $Header

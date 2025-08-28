@@ -1,14 +1,16 @@
 extends Node2D
 
-@export var header_text: String = "Sir Edward Richard Henry"
-@export var detail_one_text: String = "- Known as the Father of Fingerprints"
-@export var detail_two_text: String = "- The first man who successfully applied fingerprints in Identification."
-@export var detail_three_text: String = "- In 1890 he became a secretary to the Lieutenant Governor of Bengal and later appointed Inspector General of Police, where around that time he started working on his fingerprint identification system."
+@export var header_text: String = "Important People in Fingerprinting History!"
+@export var detail_one_text: String = "- Dr. Henry Faulds "
+@export var detail_two_text: String = "- the British Surgeon-Superintendent of Tsukiji Hospital in Tokyo, Japan, took up the study of 'skin-furrows' after noticing finger marks on specimens of 'prehistoric' pottery. "
+@export var detail_three_text: String = "- 1880, Faulds forwarded an explanation of his classification system and a sample of the forms he had designed for recording inked impressions, to Sir Charles Darwin."
+@export var detail_four_text: String = "He discussed fingerprints as a means of personal identification, and the use of printers ink as a method for obtaining such fingerprints."
 
-@onready var header_label: RichTextLabel = $Header
-@onready var detail_one_label: RichTextLabel = $DetailOne 
-@onready var detail_two_label: RichTextLabel = $DetailTwo 
-@onready var detail_three_label: RichTextLabel = $DetailThree
+@onready var header_label: RichTextLabel = $VBoxContainer/Header
+@onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
+@onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
+@onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
+@onready var detail_four_label: RichTextLabel = $VBoxContainer/DetailFour
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -18,6 +20,7 @@ func _ready():
 	detail_one_label.text = ''
 	detail_two_label.text = ''
 	detail_three_label.text = ''
+	detail_four_label.text = ''
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
@@ -44,6 +47,12 @@ func _on_detail_two_typing_done():
 	
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
+	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_three_typing_done"))
+	typewriter.connect("typing_finished", Callable(self, "_on_detail_four_typing_done"))
+	typewriter.start_typing(detail_four_label, detail_four_text)		
+	
+func _on_detail_four_typing_done():
+	print('Detail four typing finished!')
 	next_button.show()	
 
 func _on_next_button_pressed():
