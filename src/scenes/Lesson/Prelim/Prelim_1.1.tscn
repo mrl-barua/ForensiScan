@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://5tp5n57e3ewq"]
+[gd_scene load_steps=5 format=3 uid="uid://bccecwaljrgqk"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.1.gd" id="1_vfybb"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_q0f44"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_pkx0x"]
 [ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_t82tx"]
 
-[node name="Prelim_1_1" type="Node2D"]
-scale = Vector2(1.02364, 1)
+[node name="Prelim1_1" type="Node2D"]
 script = ExtResource("1_vfybb")
 
 [node name="StarField" type="Sprite2D" parent="."]
@@ -15,20 +14,22 @@ scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_q0f44")
 metadata/_edit_lock_ = true
 
-[node name="Label" type="RichTextLabel" parent="."]
-offset_left = 256.999
-offset_top = 145.998
-offset_right = 1734.0
-offset_bottom = 263.998
+[node name="Pause" parent="." instance=ExtResource("3_pkx0x")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 68.0
+offset_top = 162.0
+offset_right = 1868.0
+offset_bottom = 1019.0
+theme_override_constants/separation = 30
+
+[node name="Header" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 80
 text = "Rich Text"
 fit_content = true
 
-[node name="Pause" parent="." instance=ExtResource("3_pkx0x")]
-scale = Vector2(1.02114, 0.994476)
-
 [node name="NextButton" type="Button" parent="."]
-visible = false
 offset_left = 1697.0
 offset_top = 930.0
 offset_right = 1889.0

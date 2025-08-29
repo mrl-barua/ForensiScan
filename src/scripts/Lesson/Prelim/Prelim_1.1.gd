@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var lesson_1_text: String = "THE HISTORY & DEVELOPMENT OF FINGERPRINT"
-@onready var label: RichTextLabel = $Label
+@export var header_text: String = "THE HISTORY & DEVELOPMENT OF FINGERPRINT"
+@onready var header: RichTextLabel = $VBoxContainer/Header
 @onready var next_button: Button = $NextButton
 var typewriter: Typewriter
 
@@ -10,7 +10,7 @@ func _ready():
 	add_child(typewriter)  
 	
 	typewriter.connect("typing_finished", Callable(self, "_on_typing_done"))
-	typewriter.start_typing(label, lesson_1_text)
+	typewriter.start_typing(header, header_text)
 	
 func _on_typing_done():
 	print("Typing finished!")
