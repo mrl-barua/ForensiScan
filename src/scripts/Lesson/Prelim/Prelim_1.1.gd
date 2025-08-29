@@ -2,7 +2,7 @@ extends Node2D
 
 @export var header_text: String = "THE HISTORY & DEVELOPMENT OF FINGERPRINT"
 @onready var header: RichTextLabel = $VBoxContainer/Header
-@onready var next_button: Control = $NavigationControls
+@onready var navigation_buttons: Control = $NavigationControls
 var typewriter: Typewriter
 
 func _ready():
@@ -14,7 +14,4 @@ func _ready():
 	
 func _on_typing_done():
 	print("Typing finished!")
-	next_button.show();
-	
-func _on_next_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn")
+	navigation_buttons.show();

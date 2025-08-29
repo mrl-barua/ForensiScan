@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bca75c716owa4"]
+[gd_scene load_steps=7 format=3 uid="uid://bca75c716owa4"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.5.gd" id="1_y6737"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_t6puf"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_ppcj2"]
-[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_7vt7f"]
+[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_uy7y8"]
+[ext_resource type="PackedScene" uid="uid://3os62r8v6fu0" path="res://src/scenes/Lesson/Prelim/Prelim_1.4.tscn" id="5_uv3v2"]
+[ext_resource type="PackedScene" uid="uid://dgvwas43ti40l" path="res://src/scenes/Lesson/Prelim/Prelim_1.6.tscn" id="6_e3b8x"]
 
 [node name="Prelim1_5" type="Node2D"]
 script = ExtResource("1_y6737")
@@ -47,15 +49,9 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="NextButton" type="Button" parent="."]
+[node name="NavigationControls" parent="." instance=ExtResource("4_uy7y8")]
 visible = false
-offset_left = 1697.0
-offset_top = 930.0
-offset_right = 1889.0
-offset_bottom = 1048.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = ExtResource("4_7vt7f")
-text = "Next
-"
-
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+previous_scene = ExtResource("5_uv3v2")
+next_scene = ExtResource("6_e3b8x")
+previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.4.tscn"
+next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.6.tscn"

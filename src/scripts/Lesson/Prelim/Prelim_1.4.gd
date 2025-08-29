@@ -38,5 +38,3 @@ func _on_detail_two_typing_done():
 	print("Detail two typing finished!")
 	next_button.show()
 
-func _on_next_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.5.tscn")
