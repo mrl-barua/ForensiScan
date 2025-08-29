@@ -1,12 +1,14 @@
 extends Node2D
 
-@export var header_text: String = "What happened before fingerprints?"
-@export var detail_one_text: String = "- Ancient China, thumb prints were found on clay seals."
-@export var detail_two_text: String = "- Ancient Babylon, fingerprints were used on clay tablets for business transactions"
+@export var header_text: String = "Forensic & Legal Importance"
+@export var detail_one_text: String = "- Fingerprints are strong evidence in courts due to their uniqueness."
+@export var detail_two_text: String = "- Used in crime investigations, border security, and identity verification."
+@export var detail_three_text: String = "- Accepted globally as reliable proof of identity."
 
 @onready var header_label: RichTextLabel = $VBoxContainer/Header
 @onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
 @onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
+@onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -15,6 +17,7 @@ func _ready():
 	header_label.text = ''
 	detail_one_label.text = ''
 	detail_two_label.text = ''
+	detail_three_label.text = ''
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
@@ -35,7 +38,11 @@ func _on_detail_one_typing_done():
 
 func _on_detail_two_typing_done():
 	print("Detail two typing finished!")
-	next_button.show()
-
-func _on_next_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.4.tscn")
+	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_two_typing_done"))
+	typewriter.connect("typing_finished", Callable(self, "_on_detail_three_typing_done"))
+	typewriter.start_typing(detail_three_label, detail_three_text)	
+	
+func _on_detail_three_typing_done():
+	print("Detail three typing finished!")
+	next_button.show()		
+ 

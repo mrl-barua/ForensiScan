@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var header_text: String = "What happened before fingerprints?"
-@export var detail_one_text: String = "- Ancient China, thumb prints were found on clay seals."
+@export var detail_one_text: String = "- Picture writing of a hand with ridge patterns was discovered in Nova Scotia."
 @export var detail_two_text: String = "- Ancient Babylon, fingerprints were used on clay tablets for business transactions"
 
 @onready var header_label: RichTextLabel = $VBoxContainer/Header
@@ -36,6 +36,8 @@ func _on_detail_one_typing_done():
 func _on_detail_two_typing_done():
 	print("Detail two typing finished!")
 	next_button.show()
+
+
 
 func _on_next_button_pressed():
 	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.3.tscn")

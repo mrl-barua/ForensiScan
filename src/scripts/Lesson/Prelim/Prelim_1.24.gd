@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var header_text: String = "Forensic & Legal Importance"
-@export var detail_one_text: String = "- Fingerprints are strong evidence in courts due to their uniqueness."
-@export var detail_two_text: String = "- Used in crime investigations, border security, and identity verification."
-@export var detail_three_text: String = "- Accepted globally as reliable proof of identity."
+@export var header_text: String = "Analysis & Technology"
+@export var detail_one_text: String = "- Henry Classification System – Early system of organizing fingerprints."
+@export var detail_two_text: String = "- AFIS – Automated Fingerprint Identification System for computer-based matching."
+@export var detail_three_text: String = "- ACE-V Method – Analysis, Comparison, Evaluation, and Verification process."
 
 @onready var header_label: RichTextLabel = $VBoxContainer/Header
 @onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
@@ -45,4 +45,7 @@ func _on_detail_two_typing_done():
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
 	next_button.show()		
- 
+
+
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.25.tscn")

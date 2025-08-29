@@ -1,14 +1,16 @@
 extends Node2D
 
-@export var header_text: String = "Types of Fingerprint Patterns"
-@export var detail_one_text: String = "- Arches – Plain arch, Tented arch."
-@export var detail_two_text: String = "- Loops – Radial loop, Ulnar loop."
-@export var detail_three_text: String = "- Whorls – Plain whorl, Central pocket loop, Double loop, Accidental whorl."
+@export var header_text: String = "Principles of Fingerprints"
+@export var detail_one_text: String = "- Uniqueness – No two fingerprints are the same."
+@export var detail_two_text: String = "- Permanence – Fingerprints do not change during a person’s lifetime."
+@export var detail_three_text: String = "- Universality – All humans have fingerprints."
+@export var detail_four_text: String = "- Classifiability – Prints can be grouped into patterns for easy identification."
 
 @onready var header_label: RichTextLabel = $VBoxContainer/Header
 @onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
 @onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 @onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
+@onready var detail_four_label: RichTextLabel = $VBoxContainer/DetailFour
 var typewriter: Typewriter
 
 @onready var next_button: Button = $NextButton
@@ -18,6 +20,7 @@ func _ready():
 	detail_one_label.text = ''
 	detail_two_label.text = ''
 	detail_three_label.text = ''
+	detail_four_label.text = ''
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
@@ -44,4 +47,14 @@ func _on_detail_two_typing_done():
 	
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
+	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_three_typing_done"))
+	typewriter.connect("typing_finished", Callable(self, "_on_detail_four_typing_done"))
+	typewriter.start_typing(detail_four_label, detail_four_text)	
+	
+func _on_detail_four_typing_done():
+	print("Detail four typing finished!")
 	next_button.show()		
+
+
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.21.tscn")

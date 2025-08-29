@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnkf7wk3x0yt0"]
+[gd_scene load_steps=5 format=3 uid="uid://bn3diesc1d2em"]
 
-[ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.19.gd" id="1_kvk8s"]
+[ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.19.gd" id="1_muxgs"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_m4neq"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_rfbgm"]
 [ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_udfod"]
 
 [node name="Prelim1_19" type="Node2D"]
-script = ExtResource("1_kvk8s")
+script = ExtResource("1_muxgs")
 
 [node name="StarField" type="Sprite2D" parent="."]
 position = Vector2(963.999, 541.998)
@@ -47,12 +47,6 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="DetailFour" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
-text = "Rich Text"
-fit_content = true
-
 [node name="NextButton" type="Button" parent="."]
 visible = false
 offset_left = 1697.0
@@ -63,3 +57,5 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = ExtResource("4_udfod")
 text = "Next
 "
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

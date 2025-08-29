@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj0wtjpqot0am"]
+[gd_scene load_steps=5 format=3 uid="uid://beh7jh5aj8kqr"]
 
-[ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.23.gd" id="1_vyv5t"]
+[ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.23.gd" id="1_3gbpn"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_eoixp"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_0vrxd"]
 [ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_34hil"]
 
 [node name="Prelim1_23" type="Node2D"]
-script = ExtResource("1_vyv5t")
+script = ExtResource("1_3gbpn")
 
 [node name="StarField" type="Sprite2D" parent="."]
 position = Vector2(963.999, 541.998)
@@ -57,3 +57,5 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = ExtResource("4_34hil")
 text = "Next
 "
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

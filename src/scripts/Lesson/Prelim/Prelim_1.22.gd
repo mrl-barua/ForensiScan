@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var header_text: String = "Fingerprint Classification (Henry System)"
-@export var detail_one_text: String = "- Primary Classification – Based on presence of whorls, recorded as a fraction."
-@export var detail_two_text: String = "- Secondary Classification – Based on the patterns of both index fingers."
-@export var detail_three_text: String = "- Sub-secondary Classification – Based on the patterns of the index, middle, and ring fingers."
+@export var header_text: String = "Methods of Fingerprint Collection"
+@export var detail_one_text: String = "- Visible Prints – Made by substances like ink, dirt, or blood."
+@export var detail_two_text: String = "- Latent Prints – Invisible prints developed by powder or chemical methods."
+@export var detail_three_text: String = "- Plastic Prints – Impressions left on soft surfaces such as clay or wax."
 
 @onready var header_label: RichTextLabel = $VBoxContainer/Header
 @onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
@@ -45,3 +45,7 @@ func _on_detail_two_typing_done():
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
 	next_button.show()		
+
+
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.23.tscn")
