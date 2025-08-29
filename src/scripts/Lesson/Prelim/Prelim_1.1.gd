@@ -2,7 +2,7 @@ extends Node2D
 
 @export var header_text: String = "THE HISTORY & DEVELOPMENT OF FINGERPRINT"
 @onready var header: RichTextLabel = $VBoxContainer/Header
-@onready var next_button: Button = $NextButton
+@onready var next_button: Control = $NavigationControls
 var typewriter: Typewriter
 
 func _ready():

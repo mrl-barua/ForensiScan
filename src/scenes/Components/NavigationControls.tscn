@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8lo8combalxg"]
+
+[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="1_8725s"]
+[ext_resource type="Script" path="res://src/scripts/Services/NavigationControls.gd" id="1_n472s"]
+
+[node name="NavigationControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n472s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.184314, 0.752941, 0, 0.52549)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 881.0
+offset_right = 1925.0
+offset_bottom = 991.0
+scale = Vector2(1, 1.0047)
+theme_override_constants/separation = 1000
+alignment = 1
+
+[node name="PreviousButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("1_8725s")
+text = "Previous"
+
+[node name="NextButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("1_8725s")
+text = "Next
+"
+
+[connection signal="pressed" from="HBoxContainer/PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

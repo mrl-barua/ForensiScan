@@ -1,25 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqtsm4w2peyjr"]
+[gd_scene load_steps=7 format=3 uid="uid://dqtsm4w2peyjr"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.2.gd" id="1_pq7yu"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_q0f44"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_pkx0x"]
-[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_t82tx"]
+[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_in5ny"]
+[ext_resource type="PackedScene" uid="uid://bccecwaljrgqk" path="res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn" id="5_qnebp"]
+[ext_resource type="PackedScene" uid="uid://dmt15t1g05h6e" path="res://src/scenes/Lesson/Prelim/Prelim_1.3.tscn" id="6_u624x"]
 
 [node name="Prelim_1_2" type="Node2D"]
 script = ExtResource("1_pq7yu")
 
 [node name="StarField" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_q0f44")
 metadata/_edit_lock_ = true
 
 [node name="Pause" parent="." instance=ExtResource("3_pkx0x")]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 offset_left = 68.0
 offset_top = 162.0
 offset_right = 1868.0
@@ -44,15 +43,9 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="NextButton" type="Button" parent="."]
+[node name="NavigationControls" parent="." instance=ExtResource("4_in5ny")]
 visible = false
-offset_left = 1697.0
-offset_top = 930.0
-offset_right = 1889.0
-offset_bottom = 1048.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = ExtResource("4_t82tx")
-text = "Next
-"
-
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+previous_scene = ExtResource("5_qnebp")
+next_scene = ExtResource("6_u624x")
+previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn"
+next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.3.tscn"

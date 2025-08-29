@@ -9,7 +9,7 @@ extends Node2D
 @onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 var typewriter: Typewriter
 
-@onready var next_button: Button = $NextButton
+@onready var next_button: Control = $NavigationControls
 
 func _ready():
 	header_label.text = ''
