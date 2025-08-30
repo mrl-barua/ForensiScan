@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bca75c716owa4"]
+[gd_scene load_steps=6 format=3 uid="uid://bca75c716owa4"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.5.gd" id="1_y6737"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_t6puf"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_ppcj2"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_uy7y8"]
+[ext_resource type="Texture2D" uid="uid://br1hu38q65cqu" path="res://assets/images/Lesson/Prelim/prelim_1.5.png" id="5_nmmqb"]
 
 [node name="Prelim1_5" type="Node2D"]
 script = ExtResource("1_y6737")
@@ -19,31 +20,31 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 68.0
 offset_top = 162.0
-offset_right = 1868.0
+offset_right = 1334.0
 offset_bottom = 1019.0
 theme_override_constants/separation = 30
 
 [node name="Header" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/normal_font_size = 60
 text = "Rich Text"
 fit_content = true
 
 [node name="DetailOne" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
 [node name="DetailTwo" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
 [node name="DetailThree" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
@@ -51,3 +52,8 @@ fit_content = true
 visible = false
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.4.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.6.tscn"
+
+[node name="Prelim1_5" type="Sprite2D" parent="."]
+position = Vector2(1610, 489.875)
+scale = Vector2(1.43114, 1.35451)
+texture = ExtResource("5_nmmqb")

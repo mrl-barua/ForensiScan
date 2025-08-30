@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/scripts/Splash/SplashScreen.gd" id="1_q6wvw"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_pucxk"]
-[ext_resource type="Texture2D" uid="uid://cftic4pll8svy" path="res://assets/images/Splash/Application_Title.png" id="3_xlxem"]
+[ext_resource type="Texture2D" uid="uid://yje1ph1bsm4n" path="res://assets/images/Splash/game_logo.png" id="3_qlgi0"]
 
 [sub_resource type="Animation" id="Animation_ir7op"]
 resource_name = "modulate"
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 0.4, 0.7, 1, 1.3, 2.6, 3, 3.3, 3.6, 3.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0.0705882, 0.0705882, 0.0705882, 1), Color(0.25098, 0.25098, 0.25098, 1), Color(0.392157, 0.392157, 0.392157, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.392157, 0.392157, 0.392157, 1), Color(0.180392, 0.180392, 0.180392, 1), Color(0.0705882, 0.0705882, 0.0705882, 1), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0), Color(0.0705882, 0.0705882, 0.0705882, 1), Color(0.25098, 0.25098, 0.25098, 1), Color(0.392157, 0.392157, 0.392157, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.392157, 0.392157, 0.392157, 1), Color(0.180392, 0.180392, 0.180392, 1), Color(0.0705882, 0.0705882, 0.0705882, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yo0ea"]
@@ -48,7 +48,8 @@ autoplay = "modulate"
 
 [node name="ApplicationTitle" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(991.999, 574.998)
-texture = ExtResource("3_xlxem")
+position = Vector2(992, 579)
+scale = Vector2(1.456, 1.342)
+texture = ExtResource("3_qlgi0")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

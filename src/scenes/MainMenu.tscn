@@ -1,18 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://dil8qcyfhtjau"]
 
-[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_1bg10"]
 [ext_resource type="Script" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
-[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="3_kxrrv"]
+[ext_resource type="Texture2D" uid="uid://dj7cnwqb5kuho" path="res://assets/images/Background/fingerprint.png" id="2_x4670"]
+[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="3_rkgjm"]
 [ext_resource type="PackedScene" uid="uid://baarscbqx0i40" path="res://src/scenes/Components/LicenseVerifier.tscn" id="4_cwid3"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_a00hu")
 
-[node name="StarField" type="Sprite2D" parent="."]
-position = Vector2(964, 542)
-scale = Vector2(1.88281, 1.05859)
-texture = ExtResource("1_1bg10")
-metadata/_edit_lock_ = true
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(959.5, 535)
+scale = Vector2(1.04189, 1.10408)
+texture = ExtResource("2_x4670")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -23,40 +22,45 @@ color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 989.0
-offset_top = 234.0
-offset_right = 1807.0
-offset_bottom = 836.0
-theme_override_constants/separation = 50
+offset_left = 1010.0
+offset_top = 188.0
+offset_right = 1818.0
+offset_bottom = 908.0
+theme_override_constants/separation = 30
 
 [node name="StartLessonButton" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(100, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = ExtResource("3_kxrrv")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_rkgjm")
 text = "Lesson Template"
 
 [node name="Button2" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = ExtResource("3_kxrrv")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_rkgjm")
 text = "Activity 1"
 
 [node name="Button3" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = ExtResource("3_kxrrv")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_rkgjm")
 text = "Activity 2"
 
 [node name="Button4" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = ExtResource("3_kxrrv")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_rkgjm")
 text = "Activity 3"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = ExtResource("3_kxrrv")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_rkgjm")
 text = "Quit"
 
 [node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]

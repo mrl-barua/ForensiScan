@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpkulwqmj3kec"]
+[gd_scene load_steps=6 format=3 uid="uid://bpkulwqmj3kec"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.12.gd" id="1_368au"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_qn0r3"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_blowf"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_k5nux"]
+[ext_resource type="Texture2D" uid="uid://cev5sk22ovfpv" path="res://assets/images/Lesson/Prelim/prelim_1.12.png" id="5_p8kd5"]
 
 [node name="Prelim1_12" type="Node2D"]
 script = ExtResource("1_368au")
@@ -19,7 +20,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 68.0
 offset_top = 162.0
-offset_right = 1868.0
+offset_right = 1425.0
 offset_bottom = 1019.0
 theme_override_constants/separation = 30
 
@@ -31,13 +32,13 @@ fit_content = true
 
 [node name="DetailOne" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
 [node name="DetailTwo" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
@@ -46,3 +47,7 @@ visible = false
 scale = Vector2(0.993989, 1)
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.11.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.13.tscn"
+
+[node name="Prelim1_12" type="Sprite2D" parent="."]
+position = Vector2(1679, 540)
+texture = ExtResource("5_p8kd5")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgvwas43ti40l"]
+[gd_scene load_steps=6 format=3 uid="uid://dgvwas43ti40l"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.6.gd" id="1_evrgy"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_cfsxd"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_wybdl"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_rxx4c"]
+[ext_resource type="Texture2D" uid="uid://b6iakga8tc1b6" path="res://assets/images/Lesson/Prelim/prelim_1.6.png" id="5_ebe6e"]
 
 [node name="Prelim1_6" type="Node2D"]
 script = ExtResource("1_evrgy")
@@ -42,3 +43,8 @@ metadata/_edit_use_anchors_ = true
 visible = false
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.5.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.7.tscn"
+
+[node name="Prelim1_6" type="Sprite2D" parent="."]
+position = Vector2(972, 769)
+scale = Vector2(1.36905, 0.940433)
+texture = ExtResource("5_ebe6e")

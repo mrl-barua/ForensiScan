@@ -6,13 +6,16 @@ extends Control
 @export_file("*.tscn") var previous_scene_path: String
 @export_file("*.tscn") var next_scene_path: String
 
-@onready var previous_button: Button = $HBoxContainer/PreviousButton
-@onready var next_button: Button = $HBoxContainer/NextButton
+@onready var previous_button: TextureButton = $HBoxContainer/PreviousButton
+@onready var next_button: TextureButton = $HBoxContainer/NextButton
 
 
 func _ready():
-	previous_button.visible = not hide_previous_button
-	next_button.visible = not hide_next_button
+	previous_button.disabled = hide_previous_button
+	previous_button.modulate.a = 0.0 if hide_previous_button else 1.0
+
+	next_button.disabled = hide_next_button
+	next_button.modulate.a = 0.0 if hide_next_button else 1.0
 
 	if not previous_button.pressed.is_connected(_on_previous_button_pressed):
 		previous_button.pressed.connect(_on_previous_button_pressed)
