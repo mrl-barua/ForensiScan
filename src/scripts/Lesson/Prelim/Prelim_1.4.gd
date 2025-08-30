@@ -10,7 +10,7 @@ extends Node2D
 @onready var detail_two_label: RichTextLabel = $VBoxContainer/DetailTwo 
 var typewriter: Typewriter
 
-@onready var next_button: Button = $NextButton
+@onready var navigation_buttons: Control = $NavigationControls
 
 func _ready():
 	header_label.text = ''
@@ -36,5 +36,5 @@ func _on_detail_one_typing_done():
 
 func _on_detail_two_typing_done():
 	print("Detail two typing finished!")
-	next_button.show()
+	navigation_buttons.show()
 

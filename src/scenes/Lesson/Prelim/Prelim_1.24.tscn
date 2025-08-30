@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.24.gd" id="1_3urwd"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_3bde7"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_th3n2"]
-[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="4_wl12i"]
+[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_7crfv"]
 
 [node name="Prelim1_24" type="Node2D"]
 script = ExtResource("1_3urwd")
@@ -47,15 +47,7 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="NextButton" type="Button" parent="."]
+[node name="NavigationControls" parent="." instance=ExtResource("4_7crfv")]
 visible = false
-offset_left = 1697.0
-offset_top = 930.0
-offset_right = 1889.0
-offset_bottom = 1048.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = ExtResource("4_wl12i")
-text = "Next
-"
-
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.23.tscn"
+next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.25.tscn"

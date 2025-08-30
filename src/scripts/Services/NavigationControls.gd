@@ -3,9 +3,6 @@ extends Control
 @export var hide_previous_button: bool = false
 @export var hide_next_button: bool = false
 
-@export var previous_scene: PackedScene
-@export var next_scene: PackedScene
-
 @export_file("*.tscn") var previous_scene_path: String
 @export_file("*.tscn") var next_scene_path: String
 
@@ -25,23 +22,15 @@ func _ready():
 
 
 func _on_previous_button_pressed():
-	var target_scene = _get_scene(previous_scene, previous_scene_path)
-	if target_scene:
-		get_tree().change_scene_to_packed(target_scene)
+	_change_scene(previous_scene_path)
 
 
 func _on_next_button_pressed():
-	var target_scene = _get_scene(next_scene, next_scene_path)
-	if target_scene:
-		get_tree().change_scene_to_packed(target_scene)
+	_change_scene(next_scene_path)
 
 
-# Helper to pick between PackedScene or path string
-func _get_scene(scene: PackedScene, path: String) -> PackedScene:
-	if scene:
-		return scene
-	elif path != "":
-		var loaded_scene = load(path)
-		if loaded_scene is PackedScene:
-			return loaded_scene
-	return null
+func _change_scene(path: String) -> void:
+	if path != "":
+		var packed_scene: PackedScene = load(path)
+		if packed_scene:
+			get_tree().change_scene_to_packed(packed_scene)

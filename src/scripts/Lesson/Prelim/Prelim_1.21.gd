@@ -11,7 +11,7 @@ extends Node2D
 @onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
 var typewriter: Typewriter
 
-@onready var next_button: Button = $NextButton
+@onready var navigation_buttons: Control = $NavigationControls
 
 func _ready():
 	header_label.text = ''
@@ -44,8 +44,4 @@ func _on_detail_two_typing_done():
 	
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
-	next_button.show()		
-
-
-func _on_next_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.22.tscn")
+	navigation_buttons.show()		

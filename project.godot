@@ -29,6 +29,7 @@ window/handheld/orientation=4
 [file_customization]
 
 folder_colors={
+"res://assets/": "yellow",
 "res://src/scenes/": "green",
 "res://src/scripts/": "red"
 }

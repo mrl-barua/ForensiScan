@@ -15,8 +15,8 @@ func _ready():
 	if LicenseVerifier.is_activated():
 		#label.text = "✅ App already activated!"
 		license_verifier.hide()
-	else:
-		label.text = "Enter your license token"
+	#else:
+		#label.text = "Enter your license token"
 
 func _on_activate_button_pressed():
 	var token := line_edit.text

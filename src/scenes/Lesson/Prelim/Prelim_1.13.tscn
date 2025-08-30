@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhqtgucesugtn"]
+[gd_scene load_steps=5 format=3 uid="uid://dhqtgucesugtn"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.13.gd" id="1_5rbw7"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_nmbt2"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="2_acwx1"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_iwv35"]
-[ext_resource type="PackedScene" uid="uid://bpkulwqmj3kec" path="res://src/scenes/Lesson/Prelim/Prelim_1.12.tscn" id="5_lyof0"]
-[ext_resource type="PackedScene" uid="uid://d72sny5xqm2l" path="res://src/scenes/Lesson/Prelim/Prelim_1.14.tscn" id="6_reaxk"]
 
 [node name="Prelim1_13" type="Node2D"]
 script = ExtResource("1_5rbw7")
@@ -56,7 +54,5 @@ text = "Rich Text"
 fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_iwv35")]
-previous_scene = ExtResource("5_lyof0")
-next_scene = ExtResource("6_reaxk")
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.12.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.14.tscn"
