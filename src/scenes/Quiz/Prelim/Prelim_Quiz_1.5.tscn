@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45k3hxo2rvl4"]
+
+[ext_resource type="Script" path="res://src/scripts/Quiz/Prelim/Prelim_Quiz_1.5.gd" id="1_5s5ea"]
+[ext_resource type="PackedScene" uid="uid://b3xgatcvmki5r" path="res://src/scenes/Components/MultipleChoice.tscn" id="1_785uv"]
+
+[node name="5" type="Node2D"]
+script = ExtResource("1_5s5ea")
+
+[node name="MultipleChoice" parent="." instance=ExtResource("1_785uv")]

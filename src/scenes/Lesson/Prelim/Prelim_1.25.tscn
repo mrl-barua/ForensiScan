@@ -47,7 +47,8 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Rich Text"
 fit_content = true
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="ProceedToQuizButton" type="Button" parent="."]
+visible = false
 offset_left = 53.0
 offset_top = 917.0
 offset_right = 837.0
@@ -57,7 +58,8 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("5_d7bf5")
 text = "Proceed to Quiz"
 
-[node name="QuitButton2" type="Button" parent="."]
+[node name="GoBackToMenuButton" type="Button" parent="."]
+visible = false
 offset_left = 1155.0
 offset_top = 917.0
 offset_right = 1967.0
@@ -66,3 +68,6 @@ scale = Vector2(0.879999, 1)
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("5_d7bf5")
 text = "Go back to menu"
+
+[connection signal="pressed" from="ProceedToQuizButton" to="." method="_on_proceed_to_quiz_button_pressed"]
+[connection signal="pressed" from="GoBackToMenuButton" to="." method="_on_go_back_to_menu_button_pressed"]
