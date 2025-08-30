@@ -33,14 +33,14 @@ custom_minimum_size = Vector2(100, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
-text = "Lesson Template"
+text = "Prelim Lesson"
 
 [node name="Button2" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
-text = "Activity 1"
+text = "Prelim Exam"
 
 [node name="Button3" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(0, 120)

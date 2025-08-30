@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xgatcvmki5r"]
+
+[ext_resource type="Script" path="res://src/scripts/Services/MultipleChoice.gd" id="1_dq7sl"]
+[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="1_wmcjn"]
+
+[node name="MultipleChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dq7sl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 148.0
+offset_right = 383.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 50
+text = "Question"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 429.0
+offset_right = 1820.0
+offset_bottom = 1007.0
+theme_override_constants/separation = 30
+
+[node name="OptionA" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_wmcjn")
+text = "A. "
+alignment = 0
+
+[node name="OptionB" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_wmcjn")
+text = "B. "
+alignment = 0
+
+[node name="OptionC" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_wmcjn")
+text = "C."
+alignment = 0
+
+[node name="OptionD" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_wmcjn")
+text = "D. "
+alignment = 0
+
+[connection signal="pressed" from="VBoxContainer/OptionA" to="." method="_on_option_a_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionB" to="." method="_on_option_b_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionC" to="." method="_on_option_c_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionD" to="." method="_on_option_d_pressed"]
