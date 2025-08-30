@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://chot4pmsxyvot"]
+
+[ext_resource type="Script" path="res://src/scripts/Quiz/Prelim/Prelim_Quiz_Result.gd" id="1_cs7un"]
+
+[node name="PrelimQuizResult" type="Node2D"]
+script = ExtResource("1_cs7un")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 103.0
+offset_top = 231.0
+offset_right = 1796.0
+offset_bottom = 289.0
+theme_override_font_sizes/font_size = 30
+text = "test"
+
+[node name="HistoryText" type="RichTextLabel" parent="."]
+offset_left = 93.0
+offset_top = 296.0
+offset_right = 1847.0
+offset_bottom = 1024.0
+theme_override_font_sizes/normal_font_size = 30
+text = "test"

@@ -29,16 +29,16 @@ func update_display():
 	questionD.text = option_d
 
 func _on_option_a_pressed():
-	emit_signal("answer_selected", "A") 
+	emit_signal("answer_selected", option_a) 
 
 
 func _on_option_b_pressed():
-	emit_signal("answer_selected", "B")
+	emit_signal("answer_selected", option_b)
 
 
 func _on_option_c_pressed():
-	emit_signal("answer_selected", "C")
+	emit_signal("answer_selected", option_c)
 
 
 func _on_option_d_pressed():
-	emit_signal("answer_selected", "D") 
+	emit_signal("answer_selected", option_d) 

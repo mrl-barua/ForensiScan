@@ -17,7 +17,7 @@ func show_question():
 	multiple_choice.update_display()
 
 func _on_MultipleChoice_answer_selected(option):
+	print("Answer selected Question 1:", option)
+	QuizManager.submit_answer(option)
 	if QuizManager.next_question():
-		show_question()
-	else:
-		get_tree().change_scene("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.2.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.2.tscn")

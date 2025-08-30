@@ -49,7 +49,7 @@ func _on_detail_three_typing_done():
 	go_back_to_menu_button.show()
 
 func _on_proceed_to_quiz_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn")
+	get_tree().change_scene_to_file_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn")
 
 func _on_go_back_to_menu_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file_to_file("res://src/scenes/MainMenu.tscn")

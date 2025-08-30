@@ -3,6 +3,7 @@ extends Node2D
 @onready var multiple_choice = $MultipleChoice
 
 func _ready():
+	multiple_choice.connect("answer_selected", Callable(self, "_on_MultipleChoice_answer_selected"))
 	show_question()
 
 func show_question():
@@ -15,7 +16,8 @@ func show_question():
 	multiple_choice.update_display()
 
 func _on_MultipleChoice_answer_selected(option):
+	print("Answer selected Question 4:", option)
+	QuizManager.submit_answer(option)
 	if QuizManager.next_question():
-		show_question()
-	else:
-		get_tree().change_scene("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.5.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.5.tscn")
+		

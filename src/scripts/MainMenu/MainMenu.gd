@@ -14,7 +14,11 @@ func _ready() -> void:
 
 func _on_start_lesson_button_pressed():
 	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn")
+
+func _on_start_prelim_exam_button_pressed():
+	get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn")
 	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
 
