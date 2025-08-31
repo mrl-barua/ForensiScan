@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dil8qcyfhtjau"]
+[gd_scene load_steps=7 format=3 uid="uid://dil8qcyfhtjau"]
 
 [ext_resource type="Script" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
 [ext_resource type="Texture2D" uid="uid://dj7cnwqb5kuho" path="res://assets/images/Background/fingerprint.png" id="2_x4670"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_4j4m6"]
 [ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="3_rkgjm"]
 [ext_resource type="PackedScene" uid="uid://baarscbqx0i40" path="res://src/scenes/Components/LicenseVerifier.tscn" id="4_cwid3"]
+[ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="4_gc3lr"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_a00hu")
@@ -14,56 +16,76 @@ scale = Vector2(1.04189, 1.10408)
 texture = ExtResource("2_x4670")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.764706)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 1010.0
-offset_top = 188.0
-offset_right = 1818.0
-offset_bottom = 908.0
+offset_left = 867.0
+offset_top = 213.0
+offset_right = 1857.0
+offset_bottom = 933.0
 theme_override_constants/separation = 30
 
 [node name="StartLessonButton" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(100, 120)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "Prelim Lesson"
 
 [node name="StartPrelimExamButton" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "Prelim Exam"
 
 [node name="Button3" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "Activity 2"
 
 [node name="Button4" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "Activity 3"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainButtons"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "Quit"
 
 [node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -72,6 +94,11 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasLayer" parent="LicenseVerifier" index="0"]
+visible = false
+
 [connection signal="pressed" from="CanvasLayer/MainButtons/StartLessonButton" to="." method="_on_start_lesson_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/StartPrelimExamButton" to="." method="_on_start_prelim_exam_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+
+[editable path="LicenseVerifier"]

@@ -11,11 +11,11 @@ extends Control
 signal answer_selected(option)
 
 # References to UI elements
-@onready var question =  $Question
-@onready var questionA = $VBoxContainer/OptionA
-@onready var questionB = $VBoxContainer/OptionB
-@onready var questionC = $VBoxContainer/OptionC
-@onready var questionD = $VBoxContainer/OptionD
+@onready var question: RichTextLabel =  $Question
+@onready var questionA: Button = $VBoxContainer/OptionA
+@onready var questionB: Button = $VBoxContainer/OptionB
+@onready var questionC: Button = $VBoxContainer/OptionC
+@onready var questionD: Button = $VBoxContainer/OptionD
 
 func _ready():
 	# Setup initial display
