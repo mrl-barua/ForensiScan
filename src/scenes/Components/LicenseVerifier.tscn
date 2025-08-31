@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://baarscbqx0i40"]
+[gd_scene load_steps=5 format=3 uid="uid://baarscbqx0i40"]
 
 [ext_resource type="Script" path="res://src/scripts/Services/LicenseVerifier.gd" id="1_onbjg"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="2_01k7v"]
+[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="3_78bgc"]
+[ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="4_hmlou"]
 
 [node name="LicenseVerifier" type="Control"]
 layout_mode = 3
@@ -32,6 +35,7 @@ offset_left = -1.0
 offset_top = 409.0
 offset_right = 1922.0
 offset_bottom = 478.0
+theme_override_fonts/font = ExtResource("2_01k7v")
 theme_override_font_sizes/font_size = 50
 text = "Enter License"
 horizontal_alignment = 1
@@ -49,8 +53,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 
 [node name="ActivateButton" type="Button" parent="CanvasLayer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("2_01k7v")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_78bgc")
+theme_override_styles/hover = ExtResource("4_hmlou")
+theme_override_styles/pressed = ExtResource("4_hmlou")
+theme_override_styles/focus = ExtResource("4_hmlou")
 text = "Validate"
 
 [connection signal="pressed" from="CanvasLayer/Container/VBoxContainer/ActivateButton" to="." method="_on_activate_button_pressed"]
