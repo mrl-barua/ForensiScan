@@ -33,11 +33,11 @@ theme_override_constants/separation = 2200
 alignment = 1
 
 [node name="PreviousButton" type="TextureButton" parent="HBoxContainer"]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.172549)
 layout_mode = 2
 texture_normal = ExtResource("2_rqvo4")
 
 [node name="NextButton" type="TextureButton" parent="HBoxContainer"]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.172549)
 layout_mode = 2
 texture_normal = ExtResource("3_0bbnj")

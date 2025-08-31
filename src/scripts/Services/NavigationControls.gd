@@ -36,4 +36,4 @@ func _change_scene_to_file(path: String) -> void:
 	if path != "":
 		var packed_scene: PackedScene = load(path)
 		if packed_scene:
-			get_tree().change_scene_to_file_to_packed(packed_scene)
+			get_tree().change_scene_to_packed(packed_scene)

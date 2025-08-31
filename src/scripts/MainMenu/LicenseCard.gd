@@ -5,7 +5,7 @@ extends Node2D
 @onready var license_registered_device: Label = $CanvasLayer/RegisteredDevice
 
 func _ready():
-	var details = LicenseVerifier.get_license_details()
+	var details = LicenseProcessor.get_license_details()
 	
 	if details.size() > 0:
 		license_name.text = "Name: " + str(details.get("name", "Unknown"))

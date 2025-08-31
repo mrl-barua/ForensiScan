@@ -1,30 +1,13 @@
 # LicenseVerifier.gd
 extends Node
-class_name LicenseVerifier
 
 # ⚠️ This must match the generator's key. 
 const SECRET_KEY := "HCDC_PROJECT"
 
 const LICENSE_FILE := "user://license.cfg"
 
-@onready var line_edit: LineEdit = $CanvasLayer/VBoxContainer/LineEdit
-@onready var label: Label = $CanvasLayer/LicenseLabel
-@onready var license_verifier: Control = $CanvasLayer/Container
-
 func _ready():
-	if is_activated():
-		get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn.tscn")
-	else:
-		label.text = "Enter your license token"
-
-func _on_activate_button_pressed():
-	var token := line_edit.text
-	var result := LicenseVerifier.verify_token(token)
-	if result.ok:
-		LicenseVerifier.save_activated_token(token, result.payload)
-		label.text = "✅ License activated successfully!"
-	else:
-		label.text = "❌ " + result.reason
+	pass
 
 # --- HMAC / Base64 helpers ---
 static func _hmac_sha256(key: String, data: String) -> PackedByteArray:

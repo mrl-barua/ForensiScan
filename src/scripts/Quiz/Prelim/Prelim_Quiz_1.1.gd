@@ -21,3 +21,8 @@ func _on_MultipleChoice_answer_selected(option):
 	QuizManager.submit_answer(option)
 	if QuizManager.next_question():
 		get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.2.tscn")
+		
+func has_taken_prelim() -> bool:
+	return FileAccess.file_exists("user://prelim_performance.cfg")
+	if has_taken_prelim():
+		get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn")

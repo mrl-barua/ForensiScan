@@ -15,3 +15,4 @@ func _ready():
 func _on_typing_done():
 	print("Typing finished!")
 	navigation_buttons.show();
+	

@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bksvxq0modvar"]
+[gd_scene load_steps=4 format=3 uid="uid://bksvxq0modvar"]
 
 [ext_resource type="Script" path="res://src/scripts/Quiz/Prelim/Prelim_Quiz_1.8.gd" id="1_0pyiy"]
 [ext_resource type="PackedScene" uid="uid://b3xgatcvmki5r" path="res://src/scenes/Components/MultipleChoice.tscn" id="1_r2p0k"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_1jmwm"]
 
 [node name="PrelimQuiz1_8" type="Node2D"]
 script = ExtResource("1_0pyiy")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("2_1jmwm")
+metadata/_edit_lock_ = true
 
 [node name="MultipleChoice" parent="." instance=ExtResource("1_r2p0k")]

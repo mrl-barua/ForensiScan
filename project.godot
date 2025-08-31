@@ -21,6 +21,7 @@ config/icon="res://assets/images/Splash/game_logo.png"
 [autoload]
 
 QuizManager="*res://src/autoload/QuizManager.gd"
+LicenseProcessor="*res://src/autoload/LicenseProcessor.gd"
 
 [display]
 

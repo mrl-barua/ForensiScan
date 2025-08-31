@@ -1,22 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://chot4pmsxyvot"]
+[gd_scene load_steps=3 format=3 uid="uid://chot4pmsxyvot"]
 
 [ext_resource type="Script" path="res://src/scripts/Quiz/Prelim/Prelim_Quiz_Result.gd" id="1_cs7un"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_7xrf7"]
 
 [node name="PrelimQuizResult" type="Node2D"]
 script = ExtResource("1_cs7un")
 
-[node name="ScoreLabel" type="Label" parent="."]
-offset_left = 103.0
-offset_top = 231.0
-offset_right = 1796.0
-offset_bottom = 289.0
-theme_override_font_sizes/font_size = 30
-text = "test"
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("2_7xrf7")
+metadata/_edit_lock_ = true
 
 [node name="HistoryText" type="RichTextLabel" parent="."]
-offset_left = 93.0
-offset_top = 296.0
-offset_right = 1847.0
-offset_bottom = 1024.0
+offset_left = 139.0
+offset_top = 414.0
+offset_right = 1822.0
+offset_bottom = 1041.0
 theme_override_font_sizes/normal_font_size = 30
-text = "test"
+text = "History Text"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 139.0
+offset_top = 166.0
+offset_right = 1822.0
+offset_bottom = 409.0
+theme_override_constants/separation = 20
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Name: Test"
+
+[node name="Semester" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Semester: Test"
+
+[node name="DeviceId" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Device: Test"
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "ScoreLabel
+"
