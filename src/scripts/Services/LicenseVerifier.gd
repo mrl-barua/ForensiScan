@@ -7,15 +7,13 @@ const SECRET_KEY := "HCDC_PROJECT"
 
 const LICENSE_FILE := "user://license.cfg"
 
-@onready var line_edit: LineEdit = $CanvasLayer/VBoxContainer/LineEdit
-@onready var label: Label = $CanvasLayer/LicenseLabel
+@onready var line_edit: LineEdit = $CanvasLayer/Container/VBoxContainer/LineEdit
+@onready var label: Label = $CanvasLayer/Container/LicenseLabel
 @onready var license_verifier: Control = $CanvasLayer/Container
 
 func _ready():
 	if is_activated():
 		get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn.tscn")
-	else:
-		label.text = "Enter your license token"
 
 func _on_activate_button_pressed():
 	var token := line_edit.text

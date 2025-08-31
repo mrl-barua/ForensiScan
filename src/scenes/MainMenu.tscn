@@ -64,7 +64,6 @@ theme_override_styles/normal = ExtResource("3_rkgjm")
 text = "Quit"
 
 [node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]
-visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -73,23 +72,6 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CanvasLayer" parent="LicenseVerifier" index="0"]
-visible = false
-
-[node name="Container" parent="LicenseVerifier/CanvasLayer" index="0"]
-visible = false
-
-[node name="ColorRect" parent="LicenseVerifier/CanvasLayer/Container" index="0"]
-visible = false
-
-[node name="LicenseLabel" parent="LicenseVerifier/CanvasLayer/Container" index="1"]
-visible = false
-
-[node name="VBoxContainer" parent="LicenseVerifier/CanvasLayer/Container" index="2"]
-visible = false
-
 [connection signal="pressed" from="CanvasLayer/MainButtons/StartLessonButton" to="." method="_on_start_lesson_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/StartPrelimExamButton" to="." method="_on_start_prelim_exam_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
-
-[editable path="LicenseVerifier"]

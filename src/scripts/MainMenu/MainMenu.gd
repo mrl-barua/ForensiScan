@@ -2,15 +2,23 @@ extends Node2D
 
 @export var quit_button: Button
 @onready var license_verifier: Control = $LicenseVerifier
+@onready var menu_screen: VBoxContainer = $CanvasLayer/MainButtons
 
 func _ready() -> void:
 	if license_verifier.is_activated():
 		license_verifier.get_node("CanvasLayer").hide()
+		menu_screen.show()
 	else:
 		license_verifier.get_node("CanvasLayer").show()
+		menu_screen.hide();
 
 	if quit_button:
 		quit_button.pressed.connect(_on_quit_button_pressed)
+		
+func _process(delta):
+	if license_verifier.is_activated():
+		license_verifier.get_node("CanvasLayer").hide()	
+		menu_screen.show()
 
 func _on_start_lesson_button_pressed():
 	get_tree().change_scene_to_file("res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn")
