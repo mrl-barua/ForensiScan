@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var header_text: String = "What happened before fingerprints?"
-@export var detail_one_text: String = "- Picture writing of a hand with ridge patterns was discovered in Nova Scotia."
-@export var detail_two_text: String = "- Ancient Babylon, fingerprints were used on clay tablets for business transactions"
+@export var detail_one_text: String = "[color=yellow]- Picture writing of a hand with ridge patterns was discovered in Nova Scotia.[/color]"
+@export var detail_two_text: String = "[color=blue]- Ancient Babylon [/color][color=red], fingerprints were used on clay tablets for business transactions[/color]"
 
 @onready var header_label: RichTextLabel = $VBoxContainer/Header
 @onready var detail_one_label: RichTextLabel = $VBoxContainer/DetailOne 
