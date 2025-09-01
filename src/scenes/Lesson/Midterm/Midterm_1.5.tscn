@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjejc2472d3li"]
+
+[ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.5.gd" id="1_wfa67"]
+
+[node name="Midterm1_5" type="Node2D"]
+script = ExtResource("1_wfa67")
