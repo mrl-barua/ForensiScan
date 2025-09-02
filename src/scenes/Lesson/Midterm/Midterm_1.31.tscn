@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://jmen6mt64igr"]
+[gd_scene load_steps=2 format=3 uid="uid://jmen6mt64igr"]
+
+[ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.31.gd" id="1_nbfh3"]
 
 [node name="Midterm1_31" type="Node2D"]
+script = ExtResource("1_nbfh3")
