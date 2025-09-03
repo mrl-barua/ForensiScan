@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var header_text: String = ""
-@export var detail_one_text: String = ""
+@export var detail_one_text: String = "9. Latent Fingerprint Transfer Cards- used for preserving developed, lifted latent fingerprints."
 @export var detail_two_text: String = ""
 @export var detail_three_text: String = ""
 @export var detail_four_text: String = ""

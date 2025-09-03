@@ -1,6 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjg5okkb7666n"]
+[gd_scene load_steps=5 format=3 uid="uid://cjg5okkb7666n"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.49.gd" id="1_so2do"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_48qrd"]
+[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_bp646"]
+[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_j1fm1"]
 
 [node name="Midterm1_49" type="Node2D"]
 script = ExtResource("1_so2do")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("2_48qrd")
+metadata/_edit_lock_ = true
+
+[node name="Pause" parent="." instance=ExtResource("3_bp646")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 68.0
+offset_top = 162.0
+offset_right = 1868.0
+offset_bottom = 1019.0
+theme_override_constants/separation = 30
+
+[node name="Header" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 80
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailOne" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailTwo" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailThree" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailFour" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailFive" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailSix" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="DetailSeven" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Rich Text"
+fit_content = true
+
+[node name="NavigationControls" parent="." instance=ExtResource("4_j1fm1")]
+visible = false
+hide_previous_button = true
+next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn"
