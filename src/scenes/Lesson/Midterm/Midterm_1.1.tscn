@@ -32,4 +32,4 @@ fit_content = true
 [node name="NavigationControls" parent="." instance=ExtResource("3_1q36g")]
 visible = false
 hide_previous_button = true
-next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn"
+next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.2.tscn"

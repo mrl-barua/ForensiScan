@@ -73,5 +73,5 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_heydp")]
 visible = false
-hide_previous_button = true
-next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn"
+previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.53.tscn"
+next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.55.tscn"
