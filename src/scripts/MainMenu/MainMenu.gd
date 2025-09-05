@@ -55,15 +55,15 @@ func _process(delta):
 	if license_verifier.is_activated():
 		license_verifier.get_node("CanvasLayer").hide()	
 		menu_screen.show()
-
-func _on_start_lesson_button_pressed():
+		
+func _on_start_prelim_lesson_pressed():
 	smooth_transition("res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn")
-
+	
 func _on_start_prelim_exam_button_pressed():
 	smooth_transition("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn")
-
-func _on_button_3_pressed():
-	smooth_transition("res://src/scenes/Lesson/Midterm/Midterm_Lesson_1.tscn")
+	
+func _on_start_midterm_button_pressed():
+	smooth_transition("res://src/scenes/Lesson/Midterm/Midterm_1.1.tscn")
 
 func _on_button_4_pressed():
 	smooth_transition("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn")
@@ -93,5 +93,3 @@ func animate_exit():
 	tween.set_parallel(true)
 	tween.tween_property(menu_screen, "modulate:a", 0.0, 0.5)
 	tween.tween_property(menu_screen, "scale", Vector2(0.8, 0.8), 0.5).set_trans(Tween.TRANS_BACK)
-
-
