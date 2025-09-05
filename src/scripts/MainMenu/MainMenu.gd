@@ -9,8 +9,9 @@ func _ready() -> void:
 		license_verifier.get_node("CanvasLayer").hide()
 		menu_screen.show()
 	else:
-		license_verifier.get_node("CanvasLayer").show()
-		menu_screen.hide();
+		pass
+		#license_verifier.get_node("CanvasLayer").show()
+		#menu_screen.hide();
 
 	if quit_button:
 		quit_button.pressed.connect(_on_quit_button_pressed)

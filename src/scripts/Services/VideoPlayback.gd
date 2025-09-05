@@ -10,8 +10,12 @@ const SKIP_TIME: float = 10.0
 
 var duration: float = 0.0
 var is_playing: bool = false
+var was_playing_before_pause: bool = false
 
 func _ready() -> void:
+	# Add to video_players group for pause system integration
+	add_to_group("video_players")
+	
 	if video_stream_player:
 		video_stream_player.finished.connect(_on_video_finished)
 		# Avoid scaling overhead – match the video resolution
@@ -34,16 +38,23 @@ func play() -> void:
 		is_playing = true
 
 func pause() -> void:
-	video_stream_player.paused = true
-	is_playing = false
+	if is_playing:
+		was_playing_before_pause = true
+		video_stream_player.paused = true
+		is_playing = false
+	else:
+		was_playing_before_pause = false
 
 func resume() -> void:
-	video_stream_player.paused = false
-	is_playing = true
+	if was_playing_before_pause:
+		video_stream_player.paused = false
+		is_playing = true
+		was_playing_before_pause = false
 
 func stop() -> void:
 	video_stream_player.stop()
 	is_playing = false
+	was_playing_before_pause = false
 
 # Skip & Seek
 func skip_forward() -> void:
