@@ -14,8 +14,6 @@ scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_y3ntv")
 metadata/_edit_lock_ = true
 
-[node name="Pause" parent="." instance=ExtResource("3_ymmah")]
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 68.0
 offset_top = 162.0
@@ -75,3 +73,5 @@ fit_content = true
 visible = false
 hide_previous_button = true
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn"
+
+[node name="Pause" parent="." instance=ExtResource("3_ymmah")]

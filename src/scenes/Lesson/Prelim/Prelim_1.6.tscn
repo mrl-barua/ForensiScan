@@ -14,8 +14,6 @@ position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_cfsxd")
 metadata/_edit_lock_ = true
-
-[node name="Pause" parent="." instance=ExtResource("3_wybdl")]
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -48,3 +46,5 @@ next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.7.tscn"
 position = Vector2(972, 769)
 scale = Vector2(1.36905, 0.940433)
 texture = ExtResource("5_ebe6e")
+
+[node name="Pause" parent="." instance=ExtResource("3_wybdl")]
