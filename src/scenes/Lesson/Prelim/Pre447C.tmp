@@ -30,7 +30,7 @@ offset_left = 263.0
 offset_top = 325.0
 offset_right = 1740.0
 offset_bottom = 443.0
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
@@ -39,7 +39,7 @@ offset_left = 267.0
 offset_top = 609.0
 offset_right = 1744.0
 offset_bottom = 727.0
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 

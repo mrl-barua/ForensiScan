@@ -25,10 +25,10 @@ color = Color(0, 0, 0, 0.7)
 
 [node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 45.0
-offset_right = 255.0
-offset_bottom = 255.0
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 192.0
+offset_bottom = 192.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(105, 105)
 texture_normal = ExtResource("2_h8hu0")

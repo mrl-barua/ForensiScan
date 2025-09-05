@@ -25,10 +25,11 @@ color = Color(0.184314, 0.752941, 0, 0.52549)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 56.0
-offset_top = 849.0
-offset_right = 1876.0
-offset_bottom = 1059.0
+offset_left = 35.0
+offset_top = 949.0
+offset_right = 4217.0
+offset_bottom = 1159.0
+scale = Vector2(0.444336, 0.427061)
 theme_override_constants/separation = 50
 alignment = 1
 
