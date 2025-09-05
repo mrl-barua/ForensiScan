@@ -14,8 +14,8 @@ extends Node2D
 
 # Animation tweens
 var entrance_tween: Tween
-var button_tween: Tween
 var transition_tween: Tween
+var button_tweens: Dictionary = {}  # Store individual tweens for each button
 
 # Animation states
 var is_animating: bool = false
@@ -85,10 +85,22 @@ func setup_initial_state():
 	left_panel.position.x = 0
 	right_panel.position.x = 0
 	
-	# Set buttons to normal state
+	# Set buttons to normal state and clean up any existing tweens
+	reset_all_buttons()
+
+func reset_all_buttons():
+	"""Reset all buttons to their default state"""
+	# Clear any existing button tweens
+	for tween in button_tweens.values():
+		if tween.is_valid():
+			tween.kill()
+	button_tweens.clear()
+	
+	# Reset button states
 	for button in buttons_array:
 		button.scale = Vector2(1.0, 1.0)
-		button.modulate.a = 1.0
+		button.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		button.rotation = 0.0
 
 func update_status_display():
 	"""Update status information"""
@@ -104,10 +116,8 @@ func show_main_menu():
 	left_panel.position.x = 0
 	right_panel.position.x = 0
 	
-	# Make sure all buttons are visible and properly scaled
-	for button in buttons_array:
-		button.scale = Vector2(1.0, 1.0)
-		button.modulate.a = 1.0
+	# Make sure all buttons are visible and properly reset
+	reset_all_buttons()
 	
 	# Optional: Play entrance animation if desired
 	if not is_animating:
@@ -148,31 +158,43 @@ func _on_button_hover(button: Button):
 	"""Enhanced button hover effect"""
 	if is_animating:
 		return
-		
-	if button_tween:
-		button_tween.kill()
 	
-	button_tween = create_tween()
-	button_tween.set_parallel(true)
-	button_tween.tween_property(button, "scale", Vector2(1.08, 1.08), 0.2).set_trans(Tween.TRANS_BACK)
-	button_tween.tween_property(button, "modulate", Color(1.1, 1.1, 1.1, 1.0), 0.2)
+	# Get or create a unique tween for this button
+	var button_id = button.get_instance_id()
+	if button_tweens.has(button_id):
+		button_tweens[button_id].kill()
+	
+	button_tweens[button_id] = create_tween()
+	var tween = button_tweens[button_id]
+	tween.set_parallel(true)
+	tween.tween_property(button, "scale", Vector2(1.08, 1.08), 0.2).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(button, "modulate", Color(1.1, 1.1, 1.1, 1.0), 0.2)
 	
 	# Add subtle rotation for extra flair
-	button_tween.tween_property(button, "rotation", deg_to_rad(1), 0.2).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(button, "rotation", deg_to_rad(1), 0.2).set_trans(Tween.TRANS_SINE)
 
 func _on_button_unhover(button: Button):
 	"""Enhanced button unhover effect"""
 	if is_animating:
 		return
-		
-	if button_tween:
-		button_tween.kill()
 	
-	button_tween = create_tween()
-	button_tween.set_parallel(true)
-	button_tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BACK)
-	button_tween.tween_property(button, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
-	button_tween.tween_property(button, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
+	# Get or create a unique tween for this button
+	var button_id = button.get_instance_id()
+	if button_tweens.has(button_id):
+		button_tweens[button_id].kill()
+	
+	button_tweens[button_id] = create_tween()
+	var tween = button_tweens[button_id]
+	tween.set_parallel(true)
+	tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(button, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
+	tween.tween_property(button, "rotation", 0.0, 0.2).set_trans(Tween.TRANS_SINE)
+	
+	# Clean up the tween when done
+	tween.finished.connect(func(): 
+		if button_tweens.has(button_id):
+			button_tweens.erase(button_id)
+	)
 
 func _process(delta):
 	"""Continuous license status checking"""
