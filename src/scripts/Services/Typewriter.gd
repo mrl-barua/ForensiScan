@@ -35,6 +35,7 @@ func _show_next_segment():
 	if _skip:
 		_label.text = " ".join(_segments)
 		_typing = false
+		print("Typewriter: Skipped - emitting typing_finished signal")
 		emit_signal("typing_finished")
 		return
 
@@ -50,6 +51,7 @@ func _show_next_segment():
 			_show_next_segment()
 	else:
 		_typing = false
+		print("Typewriter: Normal completion - emitting typing_finished signal")
 		emit_signal("typing_finished") 
 
 func skip_typing():

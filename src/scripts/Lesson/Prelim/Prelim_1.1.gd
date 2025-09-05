@@ -6,13 +6,17 @@ extends Node2D
 var typewriter: Typewriter
 
 func _ready():
+	print("Lesson _ready: NavigationControls visible = ", navigation_buttons.visible)
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
-	typewriter.connect("typing_finished", Callable(self, "_on_typing_done"))
+	print("Lesson: Connecting typing_finished signal")
+	typewriter.typing_finished.connect(_on_typing_done)
 	typewriter.start_typing(header, header_text)
 	
 func _on_typing_done():
-	print("Typing finished!")
-	navigation_buttons.show();
+	print("Lesson: Typing finished! Showing navigation buttons...")
+	print("Lesson: NavigationControls before show() = ", navigation_buttons.visible)
+	navigation_buttons.show()
+	print("Lesson: NavigationControls after show() = ", navigation_buttons.visible)
 	

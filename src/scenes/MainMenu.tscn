@@ -23,66 +23,84 @@ color = Color(0.0705882, 0.0705882, 0.0705882, 0.764706)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 867.0
-offset_top = 213.0
-offset_right = 1857.0
-offset_bottom = 933.0
+offset_left = 660.0
+offset_top = 180.0
+offset_right = 1260.0
+offset_bottom = 900.0
+theme_override_constants/separation = 25
+
+[node name="Title" type="Label" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 64
+text = "ForensiScan"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/MainButtons"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Digital Forensics Learning Platform"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
 theme_override_constants/separation = 30
 
 [node name="StartLessonButton" type="Button" parent="CanvasLayer/MainButtons"]
-custom_minimum_size = Vector2(100, 120)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j4m6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_rkgjm")
 theme_override_styles/hover = ExtResource("4_gc3lr")
 theme_override_styles/pressed = ExtResource("4_gc3lr")
 theme_override_styles/focus = ExtResource("4_gc3lr")
-text = "Prelim Lesson"
+text = "📚 Prelim Lesson"
 
 [node name="StartPrelimExamButton" type="Button" parent="CanvasLayer/MainButtons"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j4m6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_rkgjm")
 theme_override_styles/hover = ExtResource("4_gc3lr")
 theme_override_styles/pressed = ExtResource("4_gc3lr")
 theme_override_styles/focus = ExtResource("4_gc3lr")
-text = "Prelim Exam"
+text = "📝 Prelim Exam"
 
 [node name="Button3" type="Button" parent="CanvasLayer/MainButtons"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j4m6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_rkgjm")
 theme_override_styles/hover = ExtResource("4_gc3lr")
 theme_override_styles/pressed = ExtResource("4_gc3lr")
 theme_override_styles/focus = ExtResource("4_gc3lr")
-text = "Activity 2"
+text = "🔬 Midterm Lesson"
 
 [node name="Button4" type="Button" parent="CanvasLayer/MainButtons"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j4m6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_rkgjm")
 theme_override_styles/hover = ExtResource("4_gc3lr")
 theme_override_styles/pressed = ExtResource("4_gc3lr")
 theme_override_styles/focus = ExtResource("4_gc3lr")
-text = "Activity 3"
+text = "🎯 Practice Quiz"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainButtons"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j4m6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_rkgjm")
 theme_override_styles/hover = ExtResource("4_gc3lr")
 theme_override_styles/pressed = ExtResource("4_gc3lr")
 theme_override_styles/focus = ExtResource("4_gc3lr")
-text = "Quit"
+text = "❌ Quit"
 
 [node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]
 visible = false
