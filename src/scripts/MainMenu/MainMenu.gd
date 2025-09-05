@@ -9,14 +9,16 @@ func _ready() -> void:
 	ApplicationManager.resume()
 	setup_ui()
 	
-	if license_verifier.is_activated():
+	# Check static activation status from LicenseVerifier class
+	var license_verifier_script = preload("res://src/scripts/Services/LicenseVerifier.gd")
+	if license_verifier_script.is_activated():
 		license_verifier.get_node("CanvasLayer").hide()
 		menu_screen.show()
 		animate_menu_entrance()
 	else:
 		pass
 		#license_verifier.get_node("CanvasLayer").show()
-		#menu_screen.hide();
+		#menu_screen.hide()
 
 	if quit_button:
 		quit_button.pressed.connect(_on_quit_button_pressed)
@@ -52,7 +54,9 @@ func _on_button_unhover(button: Button):
 	tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BACK)
 		
 func _process(delta):
-	if license_verifier.is_activated():
+	# Check static activation status from LicenseVerifier class
+	var license_verifier_script = preload("res://src/scripts/Services/LicenseVerifier.gd")
+	if license_verifier_script.is_activated():
 		license_verifier.get_node("CanvasLayer").hide()	
 		menu_screen.show()
 		

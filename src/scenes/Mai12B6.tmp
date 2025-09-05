@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://dil8qcyfhtjau"]
+
+[ext_resource type="Script" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
+[ext_resource type="Texture2D" uid="uid://dj7cnwqb5kuho" path="res://assets/images/Background/fingerprint.png" id="2_x4670"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_4j4m6"]
+[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="3_rkgjm"]
+[ext_resource type="PackedScene" uid="uid://baarscbqx0i40" path="res://src/scenes/Components/LicenseVerifier.tscn" id="4_cwid3"]
+[ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="4_gc3lr"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_a00hu")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(959.5, 535)
+scale = Vector2(1.04189, 1.10408)
+texture = ExtResource("2_x4670")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.764706)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 660.0
+offset_top = 180.0
+offset_right = 1260.0
+offset_bottom = 900.0
+theme_override_constants/separation = 25
+
+[node name="Title" type="Label" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 64
+text = "ForensiScan"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/MainButtons"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Digital Forensics Learning Platform"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="StartPrelimLesson" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "📚 Prelim Lesson"
+
+[node name="StartPrelimExamButton" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "📝 Prelim Exam"
+
+[node name="StartMidtermButton" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "🔬 Midterm Lesson"
+
+[node name="Button4" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "🎯 Practice Quiz"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainButtons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "❌ Quit"
+
+[node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 818.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" parent="LicenseVerifier" index="0"]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/MainButtons/StartPrelimLesson" to="." method="_on_start_prelim_lesson_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainButtons/StartPrelimExamButton" to="." method="_on_start_prelim_exam_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainButtons/StartMidtermButton" to="." method="_on_start_midterm_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+
+[editable path="LicenseVerifier"]
