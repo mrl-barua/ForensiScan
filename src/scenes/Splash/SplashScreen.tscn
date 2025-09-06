@@ -1,8 +1,71 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0w3ko8iwwppe"]
+[gd_scene load_steps=15 format=3 uid="uid://c0w3ko8iwwppe"]
 
 [ext_resource type="Script" path="res://src/scripts/Splash/SplashScreen.gd" id="1_q6wvw"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_pucxk"]
 [ext_resource type="Texture2D" uid="uid://yje1ph1bsm4n" path="res://assets/images/Splash/game_logo.png" id="3_qlgi0"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="4_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main_panel"]
+bg_color = Color(0.05, 0.1, 0.2, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.6, 1, 0.7)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.1, 0.15, 0.25, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.5, 0.8, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0.42, 0.65, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Gradient" id="Gradient_particles"]
+colors = PackedColorArray(0.42, 0.65, 1, 1, 0.5, 0.35, 0.76, 0.5, 0.4, 0.7, 1, 0.2)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_particles"]
+gradient = SubResource("Gradient_particles")
+
+[sub_resource type="Curve" id="Curve_particles"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_particles"]
+curve = SubResource("Curve_particles")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sparkle"]
+lifetime_randomness = 0.8
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 600.0
+emission_ring_inner_radius = 300.0
+inherit_velocity_ratio = 0.0
+initial_velocity_min = 15.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, -15, 0)
+scale_min = 0.3
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_particles")
+color_ramp = SubResource("GradientTexture1D_particles")
 
 [sub_resource type="Animation" id="Animation_ir7op"]
 resource_name = "modulate"
@@ -10,14 +73,38 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ApplicationTitle:self_modulate")
+tracks/0/path = NodePath("CanvasLayer/CenterContainer/MainPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.7, 1, 1.3, 2.6, 3, 3.3, 3.6, 3.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.1, 0.6, 3.4, 4),
+"transitions": PackedFloat32Array(0.5, 1, 1, 2),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0.0705882, 0.0705882, 0.0705882, 1), Color(0.25098, 0.25098, 0.25098, 1), Color(0.392157, 0.392157, 0.392157, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.392157, 0.392157, 0.392157, 1), Color(0.180392, 0.180392, 0.180392, 1), Color(0.0705882, 0.0705882, 0.0705882, 1), Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/MainPanel:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ParticleContainer/BackgroundParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yo0ea"]
@@ -28,59 +115,158 @@ _data = {
 [node name="SplashScreen" type="Node2D"]
 script = ExtResource("1_q6wvw")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StarField" type="Sprite2D" parent="."]
-position = Vector2(963.999, 541.998)
-scale = Vector2(1.88281, 1.05859)
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_pucxk")
-modulate = Color(0.3, 0.3, 0.3, 0.5)
-metadata/_edit_lock_ = true
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BackgroundOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.12, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="Panel" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_main_panel")
+
+[node name="ContentContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="HeaderContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="AppIcon" type="Label" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/HeaderContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.65, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 64
+text = "🔍"
+horizontal_alignment = 1
+
+[node name="AppTitle" type="Label" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/HeaderContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 42
+text = "ForensiScan"
+horizontal_alignment = 1
+
+[node name="AppSubtitle" type="Label" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/HeaderContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "Digital Forensics Learning Platform"
+horizontal_alignment = 1
+
+[node name="LogoContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ApplicationLogo" type="TextureRect" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/LogoContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 200)
+texture = ExtResource("3_qlgi0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LoadingContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LoadingLabel" type="Label" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/LoadingContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+text = "Initializing ForensiScan..."
+horizontal_alignment = 1
+
+[node name="ProgressContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/LoadingContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/LoadingContainer/ProgressContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(500, 12)
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+max_value = 100.0
+step = 1.0
+value = 0.0
+show_percentage = false
+
+[node name="PercentageLabel" type="Label" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/LoadingContainer/ProgressContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 0.8)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "0%"
+horizontal_alignment = 1
+
+[node name="BottomContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+
+[node name="LeftSpacer" type="Control" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer/CenterContainer/MainPanel/ContentContainer/BottomContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.7, 0.9, 0.7)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+text = "Version 1.0.0"
+horizontal_alignment = 2
+
+[node name="ParticleContainer" type="Control" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackgroundParticles" type="GPUParticles2D" parent="CanvasLayer/ParticleContainer"]
+position = Vector2(960, 540)
+emitting = false
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_sparkle")
+lifetime = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_yo0ea")
 }
 autoplay = "modulate"
-
-[node name="ApplicationTitle" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0)
-position = Vector2(960, 540)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("3_qlgi0")
-
-[node name="LoadingContainer" type="VBoxContainer" parent="."]
-offset_left = 760.0
-offset_top = 800.0
-offset_right = 1160.0
-offset_bottom = 900.0
-alignment = 1
-
-[node name="LoadingLabel" type="Label" parent="LoadingContainer"]
-layout_mode = 2
-text = "Loading..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="LoadingContainer"]
-layout_mode = 2
-custom_minimum_size = Vector2(400, 8)
-max_value = 100.0
-step = 1.0
-value = 0.0
-show_percentage = false
-
-[node name="VersionLabel" type="Label" parent="."]
-offset_left = 1720.0
-offset_top = 1020.0
-offset_right = 1920.0
-offset_bottom = 1060.0
-text = "v1.0.0"
-horizontal_alignment = 2
-vertical_alignment = 1
-modulate = Color(0.6, 0.6, 0.6, 1)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

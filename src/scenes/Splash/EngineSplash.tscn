@@ -1,22 +1,89 @@
-[gd_scene load_steps=7 format=3 uid="uid://btalvqwn1vnd7"]
+[gd_scene load_steps=14 format=3 uid="uid://btalvqwn1vnd7"]
 
 [ext_resource type="Script" path="res://src/scripts/Splash/EngineScreen.gd" id="1_p0vxu"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_uvaeb"]
-[ext_resource type="Texture2D" uid="uid://dlafrcyxse7qo" path="res://assets/images/Splash/developer_logo.png" id="3_y7fxc"]
+[ext_resource type="Texture2D" uid="uid://cmweo6ow4sdh2" path="res://assets/images/Splash/Godot_Logo.png" id="3_ohy6r"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="4_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_splash_panel"]
+bg_color = Color(0.05, 0.1, 0.2, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.6, 1, 0.6)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 25
+
+[sub_resource type="Gradient" id="Gradient_particles"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0.42, 0.65, 1, 1, 0.4, 0.7, 1, 0.2, 0.5, 0.35, 0.76, 0.5)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_particles"]
+gradient = SubResource("Gradient_particles")
+
+[sub_resource type="Curve" id="Curve_particles"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_particles"]
+curve = SubResource("Curve_particles")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sparkle"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 400.0
+emission_ring_inner_radius = 200.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.2
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_particles")
+color_ramp = SubResource("GradientTexture1D_particles")
 
 [sub_resource type="Animation" id="Animation_frcqg"]
-length = 4.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GodotLogo:self_modulate")
+tracks/0/path = NodePath("CenterContainer/SplashPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.133333, 0.4, 0.666667, 0.933333, 1.53333, 2.33333, 3.1, 3.36667, 3.6, 3.86667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 3, 3.5),
+"transitions": PackedFloat32Array(0.5, 1, 1, 2),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0.152941, 0.152941, 0.152941, 1), Color(0.243137, 0.243137, 0.243137, 1), Color(0.556863, 0.556863, 0.556863, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.556863, 0.556863, 0.556863, 1), Color(0.243137, 0.243137, 0.243137, 1), Color(0.152941, 0.152941, 0.152941, 1), Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/SplashPanel:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParticleContainer/Particles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_d76yt"]
@@ -24,14 +91,14 @@ resource_name = "modulate"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GodotLogo:position")
+tracks/0/path = NodePath("CenterContainer/SplashPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.133333, 0.333333, 0.566667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(974, 569), Vector2(974, 569), Vector2(974, 569)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_huvny"]
@@ -44,24 +111,96 @@ _data = {
 use_parent_material = true
 script = ExtResource("1_p0vxu")
 
-[node name="StarField" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(963.999, 541.998)
-scale = Vector2(1.88281, 1.05859)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_uvaeb")
-metadata/_edit_lock_ = true
+expand_mode = 1
+stretch_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0196078, 0.0196078, 0.0196078, 1)
-metadata/_edit_lock_ = true
+[node name="BackgroundOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.1, 0.8)
 
-[node name="GodotLogo" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 0)
-position = Vector2(989, 573)
-scale = Vector2(1.54712, 1.4009)
-texture = ExtResource("3_y7fxc")
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplashPanel" type="Panel" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_splash_panel")
+
+[node name="ContentContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/SplashPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="LogoContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/SplashPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GodotLogo" type="Sprite2D" parent="CanvasLayer/CenterContainer/SplashPanel/ContentContainer/LogoContainer"]
+position = Vector2(261, 166)
+scale = Vector2(0.291016, 0.260034)
+texture = ExtResource("3_ohy6r")
+
+[node name="PoweredByContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/SplashPanel/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PoweredByLabel" type="Label" parent="CanvasLayer/CenterContainer/SplashPanel/ContentContainer/PoweredByContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "Powered by"
+horizontal_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer/CenterContainer/SplashPanel/ContentContainer/PoweredByContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.7, 0.9, 0.8)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "Version 4.2"
+horizontal_alignment = 1
+
+[node name="ParticleContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Particles2D" type="GPUParticles2D" parent="CanvasLayer/ParticleContainer"]
+position = Vector2(960, 540)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_sparkle")
+lifetime = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
