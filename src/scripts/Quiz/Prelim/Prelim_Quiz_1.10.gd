@@ -3,7 +3,8 @@ extends Node2D
 @onready var multiple_choice = $MultipleChoice
 
 func _ready():
-	multiple_choice.connect("answer_selected", Callable(self, "_on_MultipleChoice_answer_selected"))
+	multiple_choice.answer_selected.connect(_on_MultipleChoice_answer_selected)
+	multiple_choice.time_expired.connect(_on_MultipleChoice_time_expired)
 	show_question()
 
 func show_question():
@@ -13,11 +14,27 @@ func show_question():
 	multiple_choice.option_b = q["options"][1]
 	multiple_choice.option_c = q["options"][2]
 	multiple_choice.option_d = q["options"][3]
+	
+	# Set question number info
+	var current_q_num = str(QuizManager.current_index + 1)
+	var total_q_num = str(QuizManager.current_set.size())
+	multiple_choice.question_number = current_q_num
+	multiple_choice.total_questions = total_q_num
+	
 	multiple_choice.update_display()
 
-func _on_MultipleChoice_answer_selected(option):
-	print("Answer selected Question 10:", option)
+func _on_MultipleChoice_answer_selected(option: String, letter: String):
+	print("Answer selected Question 10 - Letter: ", letter, " Option: ", option)
 	QuizManager.submit_answer(option)
+	if QuizManager.next_question():
+		show_question()
+	else:
+		print("Changing to result scene")
+		get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_Result.tscn")
+
+func _on_MultipleChoice_time_expired():
+	print("Quiz: Time expired for question 10 - proceeding to result")
+	QuizManager.submit_answer("")
 	if QuizManager.next_question():
 		show_question()
 	else:

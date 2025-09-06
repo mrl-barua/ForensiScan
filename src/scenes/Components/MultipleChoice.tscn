@@ -1,9 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3xgatcvmki5r"]
+[gd_scene load_steps=8 format=3 uid="uid://b3xgatcvmki5r"]
 
 [ext_resource type="Script" path="res://src/scripts/Services/MultipleChoice.gd" id="1_dq7sl"]
-[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="1_wmcjn"]
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="2_dshd0"]
-[ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="3_potgf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_question_panel"]
+bg_color = Color(0.1, 0.15, 0.25, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.6, 1, 0.8)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_options_panel"]
+bg_color = Color(0.08, 0.12, 0.2, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.5, 0.8, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_option_normal"]
+bg_color = Color(0.15, 0.25, 0.4, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_option_hover"]
+bg_color = Color(0.2, 0.35, 0.55, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.7, 1, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.2, 0.4, 0.8, 0.4)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_selected"]
+bg_color = Color(0.2, 0.6, 0.3, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.8, 0.4, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.1, 0.4, 0.2, 0.6)
+shadow_size = 12
 
 [node name="MultipleChoice" type="Control"]
 layout_mode = 3
@@ -14,71 +80,205 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dq7sl")
 
-[node name="Question" type="RichTextLabel" parent="."]
+[node name="MainContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 1870.0
-offset_bottom = 400.0
+offset_left = 60.0
+offset_top = 40.0
+offset_right = 1860.0
+offset_bottom = 1040.0
+theme_override_constants/separation = 30
+
+[node name="QuestionSection" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_constants/separation = 20
+
+[node name="QuestionHeader" type="HBoxContainer" parent="MainContainer/QuestionSection"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="QuestionIcon" type="Label" parent="MainContainer/QuestionSection/QuestionHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.7, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 48
+text = "❓"
+vertical_alignment = 1
+
+[node name="QuestionTitle" type="Label" parent="MainContainer/QuestionSection/QuestionHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 32
+text = "Question"
+vertical_alignment = 1
+
+[node name="QuestionNumber" type="Label" parent="MainContainer/QuestionSection/QuestionHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 24
+text = "1/10"
+vertical_alignment = 1
+
+[node name="QuestionPanel" type="Panel" parent="MainContainer/QuestionSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_question_panel")
+
+[node name="QuestionContent" type="MarginContainer" parent="MainContainer/QuestionSection/QuestionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="Question" type="RichTextLabel" parent="MainContainer/QuestionSection/QuestionPanel/QuestionContent"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_dshd0")
-theme_override_font_sizes/normal_font_size = 48
-text = "This is for the question"
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]This is for the question[/center]"
 fit_content = true
 scroll_active = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 413.0
-offset_top = 504.0
-offset_right = 1613.0
-offset_bottom = 964.0
+[node name="OptionsSection" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
 theme_override_constants/separation = 20
 
-[node name="OptionA" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="OptionsHeader" type="HBoxContainer" parent="MainContainer/OptionsSection"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("1_wmcjn")
-theme_override_styles/hover = ExtResource("3_potgf")
-theme_override_styles/pressed = ExtResource("3_potgf")
-theme_override_styles/focus = ExtResource("3_potgf")
-text = "A. "
-alignment = 0
+theme_override_constants/separation = 15
 
-[node name="OptionB" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="OptionsIcon" type="Label" parent="MainContainer/OptionsSection/OptionsHeader"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("1_wmcjn")
-theme_override_styles/hover = ExtResource("3_potgf")
-theme_override_styles/pressed = ExtResource("3_potgf")
-theme_override_styles/focus = ExtResource("3_potgf")
-text = "B. "
-alignment = 0
+theme_override_colors/font_color = Color(0.4, 0.7, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 32
+text = "📝"
+vertical_alignment = 1
 
-[node name="OptionC" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="OptionsTitle" type="Label" parent="MainContainer/OptionsSection/OptionsHeader"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("1_wmcjn")
-theme_override_styles/hover = ExtResource("3_potgf")
-theme_override_styles/pressed = ExtResource("3_potgf")
-theme_override_styles/focus = ExtResource("3_potgf")
-text = "C."
-alignment = 0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 24
+text = "Choose your answer:"
+vertical_alignment = 1
 
-[node name="OptionD" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+[node name="Timer" type="Label" parent="MainContainer/OptionsSection/OptionsHeader"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("1_wmcjn")
-theme_override_styles/hover = ExtResource("3_potgf")
-theme_override_styles/pressed = ExtResource("3_potgf")
-theme_override_styles/focus = ExtResource("3_potgf")
-text = "D. "
-alignment = 0
+theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 20
+text = "⏱️ 00:30"
+vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/OptionA" to="." method="_on_option_a_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionB" to="." method="_on_option_b_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionC" to="." method="_on_option_c_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionD" to="." method="_on_option_d_pressed"]
+[node name="OptionsPanel" type="Panel" parent="MainContainer/OptionsSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_options_panel")
+
+[node name="OptionsContent" type="MarginContainer" parent="MainContainer/OptionsSection/OptionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 25
+
+[node name="OptionsGrid" type="VBoxContainer" parent="MainContainer/OptionsSection/OptionsPanel/OptionsContent"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="OptionA" type="Button" parent="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_option_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_option_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_selected")
+theme_override_styles/focus = SubResource("StyleBoxFlat_option_hover")
+text = "A. Option text here"
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="OptionB" type="Button" parent="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_option_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_option_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_selected")
+theme_override_styles/focus = SubResource("StyleBoxFlat_option_hover")
+text = "B. Option text here"
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="OptionC" type="Button" parent="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_option_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_option_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_selected")
+theme_override_styles/focus = SubResource("StyleBoxFlat_option_hover")
+text = "C. Option text here"
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="OptionD" type="Button" parent="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_option_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_option_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_selected")
+theme_override_styles/focus = SubResource("StyleBoxFlat_option_hover")
+text = "D. Option text here"
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="StatusSection" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/StatusSection"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_option_normal")
+
+[node name="StatusLabel" type="Label" parent="MainContainer/StatusSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_dshd0")
+theme_override_font_sizes/font_size = 16
+text = "💡 Select the best answer from the options above"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid/OptionA" to="." method="_on_option_a_pressed"]
+[connection signal="pressed" from="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid/OptionB" to="." method="_on_option_b_pressed"]
+[connection signal="pressed" from="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid/OptionC" to="." method="_on_option_c_pressed"]
+[connection signal="pressed" from="MainContainer/OptionsSection/OptionsPanel/OptionsContent/OptionsGrid/OptionD" to="." method="_on_option_d_pressed"]

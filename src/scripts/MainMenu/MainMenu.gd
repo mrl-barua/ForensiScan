@@ -33,8 +33,9 @@ func check_license_status():
 		license_verifier.get_node("CanvasLayer").hide()
 		show_main_menu()
 	else:
-		license_verifier.get_node("CanvasLayer").show()
-		hide_main_menu()
+		pass
+		#license_verifier.get_node("CanvasLayer").show()
+		#hide_main_menu()
 
 func setup_ui():
 	"""Initialize UI components and collect button references"""
