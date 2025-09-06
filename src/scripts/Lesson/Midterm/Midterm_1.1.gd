@@ -6,6 +6,9 @@ extends Node2D
 var typewriter: Typewriter
 
 func _ready():
+	# Track progress for this lesson
+	ProgressManager.update_lesson_progress("midterm", 1)
+	
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	

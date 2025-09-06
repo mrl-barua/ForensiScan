@@ -12,6 +12,9 @@ var typewriter: Typewriter
 @onready var navigation_buttons: Control = $NavigationControls
 
 func _ready():
+	# Track progress for this lesson
+	ProgressManager.update_lesson_progress("prelim", 2)
+	
 	header_label.text = ''
 	detail_one_label.text = ''
 	detail_two_label.text = ''

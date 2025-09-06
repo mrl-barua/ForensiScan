@@ -7,6 +7,10 @@ var typewriter: Typewriter
 
 func _ready():
 	print("Lesson _ready: NavigationControls visible = ", navigation_buttons.visible)
+	
+	# Track progress for this lesson
+	ProgressManager.update_lesson_progress("prelim", 1)
+	
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	

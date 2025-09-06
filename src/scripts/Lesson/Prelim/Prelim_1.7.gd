@@ -4,7 +4,5 @@ extends Node2D
 @onready var navigation_buttons: Control = $NavigationControls
 
 func _ready():
-	pass
-
-
-	
+	# Track progress for this lesson
+	ProgressManager.update_lesson_progress("prelim", 7)

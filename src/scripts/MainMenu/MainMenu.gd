@@ -11,6 +11,7 @@ extends Node2D
 @onready var right_panel: VBoxContainer = $CanvasLayer/MainContainer/RightPanel
 @onready var menu_buttons: VBoxContainer = $CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons
 @onready var status_label: Label = $CanvasLayer/MainContainer/LeftPanel/InfoPanel/InfoContent/StatusLabel
+@onready var resume_dialog: Control = $DialogCanvasLayer/ResumeProgressDialog
 
 # Animation tweens
 var entrance_tween: Tween
@@ -20,11 +21,18 @@ var button_tweens: Dictionary = {}  # Store individual tweens for each button
 # Animation states
 var is_animating: bool = false
 var buttons_array: Array[Button] = []
+var resume_dialog_open: bool = false  # Prevent multiple dialog openings
 
 func _ready() -> void:
 	ApplicationManager.resume()
 	setup_ui()
 	check_license_status()
+	var license_verifier_script = preload("res://src/scripts/Services/LicenseVerifier.gd")
+	if license_verifier_script.is_activated():
+		if license_verifier.get_node("CanvasLayer").visible:
+			license_verifier.get_node("CanvasLayer").hide()
+		if not main_container.visible or main_container.modulate.a < 1.0:
+			show_main_menu()
 
 func check_license_status():
 	"""Check license activation and show appropriate screen"""
@@ -43,6 +51,17 @@ func setup_ui():
 	setup_button_connections()
 	setup_initial_state()  # Now safe - keeps UI visible
 	update_status_display()
+
+func setup_button_connections():
+	"""Connect hover effects and interactions for all buttons"""
+	for button in buttons_array:
+		if button.mouse_entered.is_connected(_on_button_hover):
+			button.mouse_entered.disconnect(_on_button_hover)
+		if button.mouse_exited.is_connected(_on_button_unhover):
+			button.mouse_exited.disconnect(_on_button_unhover)
+			
+		button.mouse_entered.connect(_on_button_hover.bind(button))
+		button.mouse_exited.connect(_on_button_unhover.bind(button))
 
 func collect_buttons():
 	"""Collect all interactive buttons for animation"""
@@ -64,17 +83,6 @@ func collect_buttons():
 	for child in quit_section.get_children():
 		if child is Button:
 			buttons_array.append(child)
-
-func setup_button_connections():
-	"""Connect hover effects and interactions for all buttons"""
-	for button in buttons_array:
-		if button.mouse_entered.is_connected(_on_button_hover):
-			button.mouse_entered.disconnect(_on_button_hover)
-		if button.mouse_exited.is_connected(_on_button_unhover):
-			button.mouse_exited.disconnect(_on_button_unhover)
-			
-		button.mouse_entered.connect(_on_button_hover.bind(button))
-		button.mouse_exited.connect(_on_button_unhover.bind(button))
 
 func setup_initial_state():
 	"""Set initial visual state - keep UI visible by default"""
@@ -102,6 +110,7 @@ func reset_all_buttons():
 		button.scale = Vector2(1.0, 1.0)
 		button.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		button.rotation = 0.0
+		button.disabled = false  # Ensure buttons are always enabled
 
 func update_status_display():
 	"""Update status information"""
@@ -198,30 +207,104 @@ func _on_button_unhover(button: Button):
 	)
 
 func _process(delta):
-	"""Continuous license status checking"""
-	var license_verifier_script = preload("res://src/scripts/Services/LicenseVerifier.gd")
-	if license_verifier_script.is_activated():
-		if license_verifier.get_node("CanvasLayer").visible:
-			license_verifier.get_node("CanvasLayer").hide()
-		if not main_container.visible or main_container.modulate.a < 1.0:
-			show_main_menu()
+	pass
+	
 # === NAVIGATION FUNCTIONS ===
 
 func _on_start_prelim_lesson_pressed():
-	"""Navigate to Prelim Lesson with enhanced transition"""
-	smooth_transition("res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn", "📖 Loading Prelim Lesson...")
+	"""Navigate to Prelim Lesson with resume option"""
+	print("Prelim lesson button clicked!")
+	
+	# TEMPORARY DEBUG: Test progress system
+	print("=== DEBUG PROGRESS TEST ===")
+	if ProgressManager:
+		print("ProgressManager exists")
+		print("Current progress data: ", ProgressManager.progress_data)
+		var has_progress = ProgressManager.has_progress()
+		print("has_progress(): ", has_progress)
+		if has_progress:
+			var resume_info = ProgressManager.get_resume_info()
+			print("get_resume_info(): ", resume_info)
+	else:
+		print("ProgressManager is null!")
+	print("=== END DEBUG ===")
+	
+	show_lesson_with_resume("prelim")
 	
 func _on_start_prelim_exam_button_pressed():
 	"""Navigate to Prelim Exam with enhanced transition"""
 	smooth_transition("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn", "📋 Loading Prelim Exam...")
 	
 func _on_start_midterm_button_pressed():
-	"""Navigate to Midterm Lesson with enhanced transition"""
-	smooth_transition("res://src/scenes/Lesson/Midterm/Midterm_1.1.tscn", "🔬 Loading Midterm Lesson...")
+	"""Navigate to Midterm Lesson with resume option"""
+	print("Midterm lesson button clicked!")
+	show_lesson_with_resume("midterm")
 
 func _on_button_4_pressed():
 	"""Navigate to Practice Quiz with enhanced transition"""
 	smooth_transition("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn", "🎯 Loading Practice Quiz...")
+
+func show_lesson_with_resume(lesson_type: String):
+	"""Show resume dialog or navigate directly to lessons"""
+	print("=== show_lesson_with_resume called ===")
+	print("Lesson type: ", lesson_type)
+	print("Resume dialog open: ", resume_dialog_open)
+	print("Has progress: ", ProgressManager.has_progress())
+	
+	if ProgressManager.has_progress():
+		var resume_info = ProgressManager.get_resume_info()
+		print("Resume info: ", resume_info)
+		if resume_info.has("lesson_type") and resume_info.lesson_type == lesson_type and resume_info.lesson_number > 1:
+			print("Showing resume dialog for lesson ", resume_info.lesson_number)
+			resume_dialog_open = true
+			# Show resume dialog
+			resume_dialog.show_resume_dialog(lesson_type)
+			return
+		else:
+			print("No matching progress or lesson <= 1")
+	else:
+		print("No progress found")
+	
+	# No relevant progress, start fresh
+	print("Starting fresh from lesson 1")
+	_on_start_fresh_selected(lesson_type)
+
+# === RESUME DIALOG HANDLERS ===
+
+func _on_resume_selected(lesson_type: String, lesson_number: int):
+	"""Handle resume from specific lesson"""
+	print("Resume selected: ", lesson_type, " lesson ", lesson_number)
+	resume_dialog_open = false
+	var scene_path = ProgressManager.get_lesson_scene_path(lesson_type, lesson_number)
+	var display_name = "%s Lesson %d" % [lesson_type.capitalize(), lesson_number]
+	smooth_transition(scene_path, "📖 Resuming %s..." % display_name)
+
+func _on_start_fresh_selected(lesson_type: String):
+	"""Handle start fresh from lesson 1"""
+	print("Start fresh selected: ", lesson_type)
+	resume_dialog_open = false
+	# Clear progress for this lesson type and start from 1
+	ProgressManager.reset_to_lesson(lesson_type, 1)
+	
+	var scene_path = ProgressManager.get_lesson_scene_path(lesson_type, 1)
+	var display_name = "%s Lesson" % lesson_type.capitalize()
+	
+	# Check if scene file exists
+	if not FileAccess.file_exists(scene_path):
+		# Fallback to a known working scene
+		if lesson_type == "prelim":
+			scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.1.tscn"
+		else:
+			scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.1.tscn"
+	
+	smooth_transition(scene_path, "🔄 Starting Fresh %s..." % display_name)
+
+func _on_resume_dialog_closed():
+	"""Handle resume dialog being closed without selection"""
+	print("Resume dialog closed")
+	resume_dialog_open = false
+	# Dialog was cancelled, do nothing
+	pass
 	
 func _on_quit_button_pressed() -> void:
 	"""Enhanced quit sequence with confirmation"""
