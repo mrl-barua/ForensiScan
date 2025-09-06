@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbii0fo34deuk"]
+
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="1_zoomable_image"]
+[ext_resource type="Script" path="res://src/scripts/Lesson/ZoomableImageMobileDemo.gd" id="2_mobile_demo_script"]
+[ext_resource type="Texture2D" uid="uid://5sx54bp338g5" path="res://assets/images/Lesson/Fingerpint_Sample_1.jpg" id="3_fingerprint"]
+
+[node name="ZoomableImageMobileDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mobile_demo_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.1, 0.15, 1)
+
+[node name="SafeAreaContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SafeAreaContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SafeAreaContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "🔍 Mobile Image Viewer"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="SafeAreaContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Tap images to open in full-screen modal
+• Pinch to zoom • Double-tap to toggle zoom
+• Drag to pan • Haptic feedback"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="SafeAreaContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ImageGrid" type="GridContainer" parent="SafeAreaContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="ForensicImage1" parent="SafeAreaContainer/VBoxContainer/ImageGrid" instance=ExtResource("1_zoomable_image")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+image_texture = ExtResource("3_fingerprint")
+image_size = Vector2(300, 250)
+label_text = "🔍 Fingerprint Evidence"
+
+[node name="ForensicImage2" parent="SafeAreaContainer/VBoxContainer/ImageGrid" instance=ExtResource("1_zoomable_image")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+image_texture = ExtResource("3_fingerprint")
+image_size = Vector2(300, 250)
+label_text = "📱 Crime Scene Photo"
+
+[node name="ForensicImage3" parent="SafeAreaContainer/VBoxContainer/ImageGrid" instance=ExtResource("1_zoomable_image")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+image_texture = ExtResource("3_fingerprint")
+image_size = Vector2(300, 250)
+label_text = "🧬 DNA Analysis"
+
+[node name="ForensicImage4" parent="SafeAreaContainer/VBoxContainer/ImageGrid" instance=ExtResource("1_zoomable_image")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+image_texture = ExtResource("3_fingerprint")
+image_size = Vector2(300, 250)
+label_text = "📋 Lab Report"
+
+[node name="BottomControls" type="HBoxContainer" parent="SafeAreaContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TestButton" type="Button" parent="SafeAreaContainer/VBoxContainer/BottomControls"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Test Modal"
+
+[node name="BackButton" type="Button" parent="SafeAreaContainer/VBoxContainer/BottomControls"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "← Back"
+
+[connection signal="pressed" from="SafeAreaContainer/VBoxContainer/BottomControls/TestButton" to="." method="_on_test_button_pressed"]
+[connection signal="pressed" from="SafeAreaContainer/VBoxContainer/BottomControls/BackButton" to="." method="_on_back_button_pressed"]

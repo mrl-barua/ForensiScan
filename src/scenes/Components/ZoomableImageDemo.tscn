@@ -36,53 +36,40 @@ text = "Zoomable Image Component Demo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ZoomableImage1" parent="." instance=ExtResource("1_zoomable_image")]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="ZoomableImage1" parent="GridContainer" instance=ExtResource("1_zoomable_image")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 494.0
-offset_top = 319.0
-offset_right = 494.0
-offset_bottom = 319.0
 image_texture = ExtResource("3_fingerprint")
 label_text = "Fingerprint Sample 1"
 
-[node name="ZoomableImage2" parent="." instance=ExtResource("1_zoomable_image")]
+[node name="ZoomableImage2" parent="GridContainer" instance=ExtResource("1_zoomable_image")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1243.0
-offset_top = 318.0
-offset_right = 1243.0
-offset_bottom = 318.0
 image_texture = ExtResource("3_fingerprint")
 image_size = Vector2(300, 200)
 label_text = "Fingerprint Sample 2"
 
-[node name="ZoomableImage3" parent="." instance=ExtResource("1_zoomable_image")]
+[node name="ZoomableImage3" parent="GridContainer" instance=ExtResource("1_zoomable_image")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 518.0
-offset_top = 781.0
-offset_right = 518.0
-offset_bottom = 781.0
 image_texture = ExtResource("3_fingerprint")
 image_size = Vector2(350, 250)
 label_text = "Evidence Photo 1"
 
-[node name="ZoomableImage4" parent="." instance=ExtResource("1_zoomable_image")]
+[node name="ZoomableImage4" parent="GridContainer" instance=ExtResource("1_zoomable_image")]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1253.0
-offset_top = 788.0
-offset_right = 1253.0
-offset_bottom = 788.0
 image_texture = ExtResource("3_fingerprint")
 image_size = Vector2(250, 180)
 label_text = "Analysis Reference"

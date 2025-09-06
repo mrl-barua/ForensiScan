@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_minimum_size = Vector2(400, 350)
 script = ExtResource("1_4o7uo")
 
 [node name="ImageContainer" type="Control" parent="."]
@@ -53,85 +54,136 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 0
+mouse_filter = 2
+z_index = 1000
 
-[node name="Background" type="ColorRect" parent="FullScreenOverlay"]
+[node name="ModalBackground" type="ColorRect" parent="FullScreenOverlay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.9)
+color = Color(0, 0, 0, 0.95)
+mouse_filter = 2
 
-[node name="CloseButton" type="Button" parent="FullScreenOverlay"]
+[node name="SafeArea" type="Control" parent="FullScreenOverlay"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopBar" type="Panel" parent="FullScreenOverlay/SafeArea"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="FullScreenOverlay/SafeArea/TopBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = 25.0
+theme_override_styles/normal = ExtResource("3_button_style")
+theme_override_font_sizes/font_size = 24
+text = "✕"
+
+[node name="Title" type="Label" parent="FullScreenOverlay/SafeArea/TopBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -15.0
+offset_right = 200.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 20
+text = "Image Viewer"
+vertical_alignment = 1
+
+[node name="BottomBar" type="Panel" parent="FullScreenOverlay/SafeArea"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+mouse_filter = 2
+
+[node name="ZoomControls" type="HBoxContainer" parent="FullScreenOverlay/SafeArea/BottomBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+offset_bottom = 30.0
+alignment = 1
+
+[node name="ZoomOutButton" type="Button" parent="FullScreenOverlay/SafeArea/BottomBar/ZoomControls"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 60)
+theme_override_styles/normal = ExtResource("3_button_style")
+theme_override_font_sizes/font_size = 20
+text = "−"
+
+[node name="ZoomInfo" type="Label" parent="FullScreenOverlay/SafeArea/BottomBar/ZoomControls"]
+layout_mode = 2
+custom_minimum_size = Vector2(120, 60)
+theme_override_font_sizes/font_size = 18
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoomInButton" type="Button" parent="FullScreenOverlay/SafeArea/BottomBar/ZoomControls"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 60)
+theme_override_styles/normal = ExtResource("3_button_style")
+theme_override_font_sizes/font_size = 20
+text = "+"
+
+[node name="ResetZoomButton" type="Button" parent="FullScreenOverlay/SafeArea/BottomBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = 20.0
+offset_top = -25.0
 offset_right = -20.0
-offset_bottom = 60.0
+offset_bottom = 25.0
 theme_override_styles/normal = ExtResource("3_button_style")
-text = "✕ Close"
+theme_override_font_sizes/font_size = 16
+text = "Reset"
 
-[node name="ZoomControls" type="HBoxContainer" parent="FullScreenOverlay"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -80.0
-offset_right = 400.0
-offset_bottom = -20.0
-
-[node name="ZoomOutButton" type="Button" parent="FullScreenOverlay/ZoomControls"]
-layout_mode = 2
-theme_override_styles/normal = ExtResource("3_button_style")
-text = "🔍- Zoom Out"
-
-[node name="ZoomInButton" type="Button" parent="FullScreenOverlay/ZoomControls"]
-layout_mode = 2
-theme_override_styles/normal = ExtResource("3_button_style")
-text = "🔍+ Zoom In"
-
-[node name="ResetZoomButton" type="Button" parent="FullScreenOverlay/ZoomControls"]
-layout_mode = 2
-theme_override_styles/normal = ExtResource("3_button_style")
-text = "↻ Reset"
-
-[node name="ZoomInfo" type="Label" parent="FullScreenOverlay"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -80.0
-offset_right = -20.0
-offset_bottom = -20.0
-text = "Zoom: 100%"
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="FullScreenOverlay"]
+[node name="ScrollContainer" type="ScrollContainer" parent="FullScreenOverlay/SafeArea"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
 offset_top = 80.0
-offset_right = -20.0
-offset_bottom = -100.0
+offset_bottom = -120.0
+mouse_filter = 1
 
-[node name="FullScreenImage" type="TextureRect" parent="FullScreenOverlay/ScrollContainer"]
+[node name="FullScreenImage" type="TextureRect" parent="FullScreenOverlay/SafeArea/ScrollContainer"]
 layout_mode = 2
 texture = ExtResource("2_2csgq")
 expand_mode = 1
 stretch_mode = 5
+mouse_filter = 1
 
 [connection signal="pressed" from="ImageContainer/ImageButton" to="." method="_on_image_clicked"]
-[connection signal="pressed" from="FullScreenOverlay/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="FullScreenOverlay/ZoomControls/ZoomOutButton" to="." method="_on_zoom_out_pressed"]
-[connection signal="pressed" from="FullScreenOverlay/ZoomControls/ZoomInButton" to="." method="_on_zoom_in_pressed"]
-[connection signal="pressed" from="FullScreenOverlay/ZoomControls/ResetZoomButton" to="." method="_on_reset_zoom_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/SafeArea/TopBar/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomOutButton" to="." method="_on_zoom_out_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomInButton" to="." method="_on_zoom_in_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/SafeArea/BottomBar/ResetZoomButton" to="." method="_on_reset_zoom_pressed"]

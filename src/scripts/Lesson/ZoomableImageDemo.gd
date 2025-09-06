@@ -2,10 +2,10 @@ extends Control
 
 # Demo script showing how to use the ZoomableImage component
 
-@onready var zoomable_image_1: Control = $ZoomableImage1
-@onready var zoomable_image_2: Control = $ZoomableImage2
-@onready var zoomable_image_3: Control = $ZoomableImage3
-@onready var zoomable_image_4: Control = $ZoomableImage4
+@onready var zoomable_image_1: Control = $GridContainer/ZoomableImage1
+@onready var zoomable_image_2: Control = $GridContainer/ZoomableImage2
+@onready var zoomable_image_3: Control = $GridContainer/ZoomableImage3
+@onready var zoomable_image_4: Control = $GridContainer/ZoomableImage4
 @onready var back_button: Button = $BackButton
 
 func _ready():
