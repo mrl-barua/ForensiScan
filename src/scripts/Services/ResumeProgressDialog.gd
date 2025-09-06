@@ -36,18 +36,22 @@ func show_resume_dialog(lesson_type: String):
 	print("Lesson type: ", lesson_type)
 	
 	current_lesson_type = lesson_type
-	resume_info = ProgressManager.get_resume_info()
+	resume_info = ProgressManager.get_resume_info_for_lesson_type(lesson_type)
 	
-	print("Resume info in dialog: ", resume_info)
+	print("Resume info in dialog for %s: " % lesson_type, resume_info)
 	
 	# Only show if there's actually progress to resume
-	if not resume_info.has("lesson_type") or resume_info.lesson_type != lesson_type:
-		print("No relevant progress, emitting start_fresh_selected")
+	if resume_info.is_empty():
+		print("No relevant progress for %s, emitting start_fresh_selected" % lesson_type)
 		# No relevant progress, just start fresh
 		start_fresh_selected.emit(lesson_type)
 		return
 	
 	# Don't show dialog if user is at lesson 1 (no progress to resume)
+	if resume_info.lesson_number <= 1:
+		print("Lesson number <= 1 for %s, emitting start_fresh_selected" % lesson_type)
+		start_fresh_selected.emit(lesson_type)
+		return
 	if resume_info.lesson_number <= 1:
 		print("Lesson number <= 1, emitting start_fresh_selected")
 		start_fresh_selected.emit(lesson_type)

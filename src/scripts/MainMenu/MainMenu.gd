@@ -251,19 +251,18 @@ func show_lesson_with_resume(lesson_type: String):
 	print("Resume dialog open: ", resume_dialog_open)
 	print("Has progress: ", ProgressManager.has_progress())
 	
-	if ProgressManager.has_progress():
-		var resume_info = ProgressManager.get_resume_info()
-		print("Resume info: ", resume_info)
-		if resume_info.has("lesson_type") and resume_info.lesson_type == lesson_type and resume_info.lesson_number > 1:
-			print("Showing resume dialog for lesson ", resume_info.lesson_number)
-			resume_dialog_open = true
-			# Show resume dialog
-			resume_dialog.show_resume_dialog(lesson_type)
-			return
-		else:
-			print("No matching progress or lesson <= 1")
+	# Get lesson-type specific resume info instead of global most recent
+	var resume_info = ProgressManager.get_resume_info_for_lesson_type(lesson_type)
+	print("Resume info for %s: " % lesson_type, resume_info)
+	
+	if not resume_info.is_empty() and resume_info.lesson_number > 1:
+		print("Showing resume dialog for %s lesson %d" % [lesson_type, resume_info.lesson_number])
+		resume_dialog_open = true
+		# Show resume dialog
+		resume_dialog.show_resume_dialog(lesson_type)
+		return
 	else:
-		print("No progress found")
+		print("No relevant progress for %s or lesson <= 1" % lesson_type)
 	
 	# No relevant progress, start fresh
 	print("Starting fresh from lesson 1")

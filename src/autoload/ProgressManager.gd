@@ -96,6 +96,25 @@ func get_resume_info() -> Dictionary:
 		"completed_lessons": progress_data[most_recent_type].completed_lessons.duplicate()
 	}
 
+func get_resume_info_for_lesson_type(lesson_type: String) -> Dictionary:
+	"""Get resume information for a specific lesson type"""
+	if not progress_data.has(lesson_type):
+		return {}
+	
+	var lesson_data = progress_data[lesson_type]
+	
+	# Only return resume info if there's meaningful progress (lesson > 1)
+	if lesson_data.current_lesson <= 1:
+		return {}
+	
+	return {
+		"lesson_type": lesson_type,
+		"lesson_number": lesson_data.current_lesson,
+		"total_lessons": lesson_data.max_lesson,
+		"timestamp": lesson_data.last_accessed,
+		"completed_lessons": lesson_data.completed_lessons.duplicate()
+	}
+
 func get_lesson_scene_path(lesson_type: String, lesson_number: int) -> String:
 	"""Generate the scene path for a specific lesson"""
 	var lesson_type_cap = lesson_type.capitalize()
