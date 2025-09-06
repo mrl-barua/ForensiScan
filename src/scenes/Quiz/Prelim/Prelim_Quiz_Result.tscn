@@ -346,6 +346,18 @@ fit_content = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
+[node name="PDFButton" type="Button" parent="MainContainer/MainPanel/ContentContainer/BottomSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "📄 GENERATE PDF REPORT"
+
 [node name="RetryButton" type="Button" parent="MainContainer/MainPanel/ContentContainer/BottomSection"]
 layout_mode = 2
 size_flags_horizontal = 3

@@ -10,6 +10,7 @@ extends Node2D
 @onready var license_name: Label = $MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent/StudentInfo/Name
 @onready var license_semester: Label = $MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent/StudentInfo/Semester
 @onready var license_registered_device: Label = $MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent/StudentInfo/DeviceId
+@onready var pdf_button: Button = $MainContainer/MainPanel/ContentContainer/BottomSection/PDFButton
 @onready var retry_button: Button = $MainContainer/MainPanel/ContentContainer/BottomSection/RetryButton
 @onready var main_menu_button: Button = $MainContainer/MainPanel/ContentContainer/BottomSection/MainMenuButton
 @onready var main_container: Control = $MainContainer
@@ -31,12 +32,18 @@ func setup_animations():
 
 func setup_button_connections():
 	"""Connect button signals and hover effects"""
+	pdf_button.pressed.connect(_on_pdf_button_pressed)
 	retry_button.pressed.connect(_on_retry_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	
 	# Setup button hover effects
+	setup_button_hover_effects(pdf_button)
 	setup_button_hover_effects(retry_button)
 	setup_button_hover_effects(main_menu_button)
+	
+	# Connect PDF generation signals
+	PDFGenerator.pdf_generated.connect(_on_pdf_generated)
+	PDFGenerator.pdf_generation_failed.connect(_on_pdf_generation_failed)
 
 func setup_button_hover_effects(button: Button):
 	"""Setup modern hover effects for buttons"""
@@ -222,3 +229,97 @@ func _on_main_menu_button_pressed():
 	"""Handle main menu button"""
 	print("Returning to main menu...")
 	get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn")
+
+func _on_pdf_button_pressed():
+	"""Handle PDF generation button"""
+	print("Generating PDF report...")
+	
+	# First run test to see what data we have
+	print("=== RUNNING PDF GENERATION TEST ===")
+	PDFGenerator.test_pdf_generation()
+	
+	# Disable button and show loading state
+	pdf_button.disabled = true
+	pdf_button.text = "📄 GENERATING..."
+	
+	# Start PDF generation
+	PDFGenerator.generate_prelim_results_pdf()
+
+func _on_pdf_generated(file_path: String):
+	"""Handle successful PDF generation"""
+	print("PDF generated successfully: ", file_path)
+	
+	# Re-enable button and show success state
+	pdf_button.disabled = false
+	
+	if OS.get_name() == "Android":
+		pdf_button.text = "📄 REPORT SAVED"
+		show_notification("✅ Report saved as text file!", Color.GREEN)
+		
+		# Show Android-specific instructions
+		await get_tree().create_timer(2.0).timeout
+		show_notification("📱 Check app data folder for the report file", Color.BLUE)
+	else:
+		pdf_button.text = "📄 OPEN REPORT FOLDER"
+		show_notification("✅ HTML Report Generated Successfully!", Color.GREEN)
+		
+		# Change button functionality to open report location
+		if pdf_button.pressed.is_connected(_on_pdf_button_pressed):
+			pdf_button.pressed.disconnect(_on_pdf_button_pressed)
+		pdf_button.pressed.connect(_on_open_report_folder)
+
+func _on_pdf_generation_failed(error_message: String):
+	"""Handle PDF generation failure"""
+	print("PDF generation failed: ", error_message)
+	
+	# Re-enable button and show error state
+	pdf_button.disabled = false
+	pdf_button.text = "❌ GENERATION FAILED"
+	
+	# Show error notification
+	show_notification("❌ PDF Generation Failed: " + error_message, Color.RED)
+	
+	# Reset button after a delay
+	await get_tree().create_timer(3.0).timeout
+	pdf_button.text = "📄 RETRY PDF GENERATION"
+
+func _on_open_report_folder():
+	"""Open the reports folder"""
+	if OS.get_name() == "Android":
+		show_notification("📱 Report saved in app data directory", Color.BLUE)
+		print("Android - Report location: ", OS.get_user_data_dir() + "/reports/")
+	else:
+		PDFGenerator.open_report_location()
+		show_notification("📁 Opening reports folder...", Color.BLUE)
+
+func show_notification(message: String, color: Color):
+	"""Show a temporary notification to the user"""
+	# Create a temporary notification label
+	var notification = Label.new()
+	notification.text = message
+	notification.modulate = color
+	notification.add_theme_font_override("font", load("res://src/styles/official_font.tres"))
+	notification.add_theme_font_size_override("font_size", 16)
+	notification.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	
+	# Position the notification
+	notification.anchors_preset = Control.PRESET_TOP_WIDE
+	notification.offset_top = 20
+	notification.offset_bottom = 50
+	
+	# Add to scene
+	main_container.add_child(notification)
+	
+	# Animate in
+	notification.modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(notification, "modulate:a", 1.0, 0.3)
+	
+	# Remove after delay
+	await get_tree().create_timer(3.0).timeout
+	
+	if notification and is_instance_valid(notification):
+		var fade_tween = create_tween()
+		fade_tween.tween_property(notification, "modulate:a", 0.0, 0.3)
+		await fade_tween.finished
+		notification.queue_free()

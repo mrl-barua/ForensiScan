@@ -107,3 +107,25 @@ static func get_license_details() -> Dictionary:
 	if cfg.load(LICENSE_FILE) != OK:
 		return {}
 	return cfg.get_value("license", "payload", {})
+
+static func create_test_license_data():
+	"""Create test license data for debugging"""
+	print("LicenseProcessor: Creating test license data...")
+	
+	var test_payload = {
+		"name": "John Doe",
+		"student_id": "HCDC-2024-001",
+		"semester": "Fall 2024",
+		"course": "Forensic Science",
+		"institution": "HCDC",
+		"expiry": "2024-12-31",
+		"device_id": OS.get_unique_id().substr(0, 8)
+	}
+	
+	var cfg := ConfigFile.new()
+	cfg.set_value("license", "token", "test_token")
+	cfg.set_value("license", "activated", true)
+	cfg.set_value("license", "payload", test_payload)
+	cfg.save(LICENSE_FILE)
+	
+	print("LicenseProcessor: Test license data created: ", test_payload)

@@ -24,6 +24,7 @@ QuizManager="*res://src/autoload/QuizManager.gd"
 LicenseProcessor="*res://src/autoload/LicenseProcessor.gd"
 ApplicationManager="*res://src/autoload/ApplicationManager.gd"
 ProgressManager="*res://src/autoload/ProgressManager.gd"
+PDFGenerator="*res://src/scripts/Services/PDFGenerator.gd"
 
 [display]
 

@@ -63,3 +63,26 @@ func get_score():
 
 func get_answer_history():
 	return user_answers
+
+func create_test_data():
+	"""Create sample quiz data for testing"""
+	print("QuizManager: Creating test data...")
+	
+	# Create sample questions and answers
+	current_set = [
+		{"text": "What is a fingerprint?", "answer": "A unique pattern"},
+		{"text": "How many ridge patterns exist?", "answer": "Three main types"},
+		{"text": "What is forensic science?", "answer": "Science applied to law"}
+	]
+	
+	# Create sample user answers  
+	user_answers = [
+		{"question": "What is a fingerprint?", "selected": "A unique pattern", "correct": "A unique pattern"},
+		{"question": "How many ridge patterns exist?", "selected": "Five types", "correct": "Three main types"},
+		{"question": "What is forensic science?", "selected": "Science applied to law", "correct": "Science applied to law"}
+	]
+	
+	score = 2  # 2 out of 3 correct
+	current_index = 3  # Quiz completed
+	
+	print("QuizManager: Test data created - Score: ", score, "/", current_set.size())
