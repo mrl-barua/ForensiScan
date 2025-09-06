@@ -9,10 +9,12 @@ func _ready():
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
-	typewriter.connect("typing_finished", Callable(self, "_on_typing_done"))
+	typewriter.typing_finished.connect(_on_typing_done)
 	typewriter.start_typing(header, header_text)
 	
 func _on_typing_done():
-	print("Typing finished!")
-	navigation_buttons.show();
+	print("Midterm 1.1: Typing finished! Showing navigation buttons...")
+	print("Midterm 1.1: NavigationControls before show() = ", navigation_buttons.visible)
+	navigation_buttons.show()
+	print("Midterm 1.1: NavigationControls after show() = ", navigation_buttons.visible)
 	

@@ -71,6 +71,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_tklxt")]
 visible = false
+manual_page_number = 4
 hide_previous_button = true
 previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.3.tscn"
 next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.5.tscn"

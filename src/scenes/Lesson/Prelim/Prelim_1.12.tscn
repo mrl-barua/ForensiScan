@@ -42,6 +42,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_k5nux")]
 visible = false
+manual_page_number = 12
 scale = Vector2(0.993989, 1)
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.11.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.13.tscn"

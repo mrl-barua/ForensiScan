@@ -47,6 +47,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_31uum")]
 visible = false
+manual_page_number = 23
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.22.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.24.tscn"
 

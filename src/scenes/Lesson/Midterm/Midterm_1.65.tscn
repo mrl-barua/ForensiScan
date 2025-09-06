@@ -71,6 +71,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_cnvki")]
 visible = false
+manual_page_number = 65
 hide_previous_button = true
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn"
 

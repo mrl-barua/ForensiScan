@@ -71,6 +71,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_ogef4")]
 visible = false
+manual_page_number = 37
 previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.36.tscn"
 next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.38.tscn"
 

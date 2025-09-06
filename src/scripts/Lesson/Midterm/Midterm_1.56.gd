@@ -33,50 +33,50 @@ func _ready():
 	typewriter = Typewriter.new()
 	add_child(typewriter)  
 	
-	typewriter.connect("typing_finished", Callable(self, "_on_header_typing_done"))
+	typewriter.typing_finished.connect(_on_header_typing_done)
 	typewriter.start_typing(header_label, header_text)
 
 func _on_header_typing_done():
 	print("Header typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_header_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_one_typing_done"))
+	typewriter.typing_finished.disconnect(_on_header_typing_done)
+	typewriter.typing_finished.connect(_on_detail_one_typing_done)
 	typewriter.start_typing(detail_one_label, detail_one_text)
 
 func _on_detail_one_typing_done():
 	print("Detail one typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_one_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_two_typing_done"))
+	typewriter.typing_finished.disconnect(_on_detail_one_typing_done)
+	typewriter.typing_finished.connect(_on_detail_two_typing_done)
 	typewriter.start_typing(detail_two_label, detail_two_text)
 
 
 func _on_detail_two_typing_done():
 	print("Detail two typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_two_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_three_typing_done"))
+	typewriter.typing_finished.disconnect(_on_detail_two_typing_done)
+	typewriter.typing_finished.connect(_on_detail_three_typing_done)
 	typewriter.start_typing(detail_three_label, detail_three_text)
 	
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_three_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_four_typing_done"))
+	typewriter.typing_finished.disconnect(_on_detail_three_typing_done)
+	typewriter.typing_finished.connect(_on_detail_four_typing_done)
 	typewriter.start_typing(detail_four_label, detail_four_text)
 	
 func _on_detail_four_typing_done():
 	print("Detail four typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_four_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_five_typing_done"))
+	typewriter.typing_finished.disconnect(_on_detail_four_typing_done)
+	typewriter.typing_finished.connect(_on_detail_five_typing_done)
 	typewriter.start_typing(detail_five_label, detail_five_text)
 	
 func _on_detail_five_typing_done():
 	print("Detail five typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_five_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_six_typing_done"))
+	typewriter.typing_finished.disconnect(_on_detail_five_typing_done)
+	typewriter.typing_finished.connect(_on_detail_six_typing_done)
 	typewriter.start_typing(detail_six_label, detail_six_text)
 	
 func _on_detail_six_typing_done():
 	print("Detail six typing finished!")
-	typewriter.disconnect("typing_finished", Callable(self, "_on_detail_six_typing_done"))
-	typewriter.connect("typing_finished", Callable(self, "_on_detail_seven_typing_done"))
+	typewriter.typing_finished.disconnect(_on_detail_six_typing_done)
+	typewriter.typing_finished.connect(_on_detail_seven_typing_done)
 	typewriter.start_typing(detail_seven_label, detail_seven_text)
 	
 func _on_detail_seven_typing_done():

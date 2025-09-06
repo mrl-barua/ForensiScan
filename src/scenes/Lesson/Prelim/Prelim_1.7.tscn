@@ -24,6 +24,7 @@ offset_bottom = 1077.0
 theme_override_constants/separation = 30
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_msecu")]
+manual_page_number = 7
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.6.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.8.tscn"
 

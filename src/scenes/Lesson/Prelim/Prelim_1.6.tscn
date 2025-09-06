@@ -39,6 +39,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("4_rxx4c")]
 visible = false
+manual_page_number = 6
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.5.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.7.tscn"
 
