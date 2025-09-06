@@ -1,11 +1,133 @@
-[gd_scene load_steps=7 format=3 uid="uid://r7v4w30c0k7l"]
+[gd_scene load_steps=15 format=3 uid="uid://r7v4w30c0k7l"]
 
 [ext_resource type="Script" path="res://src/scripts/Services/PauseHandler.gd" id="1_kdv2a"]
 [ext_resource type="Texture2D" uid="uid://70dib2qtpjbk" path="res://assets/images/Button/Pause_BTN_Normal.png" id="2_h8hu0"]
 [ext_resource type="Texture2D" uid="uid://b3m5wfkqmndtl" path="res://assets/images/Button/Pause_BTN_Active.png" id="3_spoja"]
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="4_0svia"]
-[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="5_rsyja"]
-[ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="6_rwdlk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_menu_panel"]
+bg_color = Color(0.1, 0.15, 0.25, 0.98)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.6, 1, 0.9)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header_panel"]
+bg_color = Color(0.15, 0.25, 0.4, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.7, 1, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_panel"]
+bg_color = Color(0.08, 0.12, 0.2, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.5, 0.8, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_continue_normal"]
+bg_color = Color(0.1, 0.3, 0.15, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.6, 0.3, 0.8)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_continue_hover"]
+bg_color = Color(0.15, 0.4, 0.2, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.8, 0.4, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.15, 0.25, 0.4, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.2, 0.35, 0.55, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.7, 1, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.1, 0.2, 0.35, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5, 0.8, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exit_normal"]
+bg_color = Color(0.3, 0.1, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.2, 0.2, 0.8)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exit_hover"]
+bg_color = Color(0.4, 0.15, 0.15, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.3, 0.3, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Pause" type="Control"]
 layout_mode = 3
@@ -18,31 +140,47 @@ script = ExtResource("1_kdv2a")
 
 [node name="PauseBackground" type="ColorRect" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0, 0, 0.7)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
 
 [node name="PauseButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = -18.0
-offset_top = -18.0
-offset_right = 192.0
-offset_bottom = 192.0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(105, 105)
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 125.0
+offset_bottom = 125.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(52.5, 52.5)
 texture_normal = ExtResource("2_h8hu0")
 texture_pressed = ExtResource("3_spoja")
 texture_hover = ExtResource("3_spoja")
 
-[node name="PauseMenu" type="Panel" parent="."]
+[node name="PauseMenu" type="Control" parent="."]
 layout_mode = 1
-offset_left = 610.0
-offset_top = 290.0
-offset_right = 1310.0
-offset_bottom = 790.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MenuPanel" type="Panel" parent="PauseMenu/CenterContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pause_menu_panel")
+
+[node name="ContentContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,45 +191,135 @@ offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 30
 
-[node name="PauseTitle" type="Label" parent="PauseMenu/VBoxContainer"]
+[node name="HeaderSection" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HeaderPanel" type="Panel" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/HeaderSection"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_header_panel")
+
+[node name="HeaderContent" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/HeaderSection/HeaderPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="PauseTitle" type="Label" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/HeaderSection/HeaderPanel/HeaderContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("4_0svia")
-theme_override_font_sizes/font_size = 48
-text = "PAUSED"
+theme_override_font_sizes/font_size = 42
+text = "⏸️ GAME PAUSED"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PauseMenu/VBoxContainer"]
+[node name="Subtitle" type="Label" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/HeaderSection/HeaderPanel/HeaderContent"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/font = ExtResource("4_0svia")
+theme_override_font_sizes/font_size = 16
+text = "What would you like to do?"
+horizontal_alignment = 1
 
-[node name="ButtonContainer" type="VBoxContainer" parent="PauseMenu/VBoxContainer"]
+[node name="InfoSection" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
-[node name="ContinueButton" type="Button" parent="PauseMenu/VBoxContainer/ButtonContainer"]
+[node name="InfoPanel" type="Panel" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/InfoSection"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_0svia")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("5_rsyja")
-theme_override_styles/hover = ExtResource("6_rwdlk")
-theme_override_styles/pressed = ExtResource("6_rwdlk")
-theme_override_styles/focus = ExtResource("6_rwdlk")
-text = "▶ Continue"
+theme_override_styles/panel = SubResource("StyleBoxFlat_info_panel")
 
-[node name="ExitButton" type="Button" parent="PauseMenu/VBoxContainer/ButtonContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="InfoContent" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/InfoSection/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="ProgressLabel" type="Label" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/InfoSection/InfoPanel/InfoContent"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
 theme_override_fonts/font = ExtResource("4_0svia")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("5_rsyja")
-theme_override_styles/hover = ExtResource("6_rwdlk")
-theme_override_styles/pressed = ExtResource("6_rwdlk")
-theme_override_styles/focus = ExtResource("6_rwdlk")
-text = "🏠 Back to Menu"
+theme_override_font_sizes/font_size = 16
+text = "📊 Current Progress: Lesson 1"
+horizontal_alignment = 1
+
+[node name="TipLabel" type="Label" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/InfoSection/InfoPanel/InfoContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("4_0svia")
+theme_override_font_sizes/font_size = 14
+text = "💡 Tip: Press ESC to pause/resume anytime"
+horizontal_alignment = 1
+
+[node name="ButtonSection" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="ContinueButton" type="Button" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/ButtonSection"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("4_0svia")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_continue_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_continue_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_continue_hover")
+text = "▶️ CONTINUE GAME"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/ButtonSection"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("4_0svia")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "🔄 RESTART LESSON"
+
+[node name="ExitButton" type="Button" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/ButtonSection"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("4_0svia")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_exit_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_exit_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_exit_hover")
+text = "🏠 BACK TO MENU"
+
+[node name="FooterSection" type="VBoxContainer" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HintLabel" type="Label" parent="PauseMenu/CenterContainer/MenuPanel/ContentContainer/FooterSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.6, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_0svia")
+theme_override_font_sizes/font_size = 12
+text = "Your progress is automatically saved"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/ButtonContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/MenuPanel/ContentContainer/ButtonSection/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/MenuPanel/ContentContainer/ButtonSection/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/MenuPanel/ContentContainer/ButtonSection/ExitButton" to="." method="_on_exit_button_pressed"]
