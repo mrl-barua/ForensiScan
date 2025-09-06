@@ -1,55 +1,371 @@
-[gd_scene load_steps=4 format=3 uid="uid://chot4pmsxyvot"]
+[gd_scene load_steps=12 format=3 uid="uid://chot4pmsxyvot"]
 
 [ext_resource type="Script" path="res://src/scripts/Quiz/Prelim/Prelim_Quiz_Result.gd" id="1_cs7un"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_7xrf7"]
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_wnyv4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main_panel"]
+bg_color = Color(0.1, 0.15, 0.25, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.6, 1, 0.8)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header_panel"]
+bg_color = Color(0.15, 0.25, 0.4, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.7, 1, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score_panel"]
+bg_color = Color(0.05, 0.25, 0.15, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.8, 0.4, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_details_panel"]
+bg_color = Color(0.08, 0.12, 0.2, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.5, 0.8, 0.5)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_history_panel"]
+bg_color = Color(0.06, 0.1, 0.18, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.4, 0.7, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.15, 0.25, 0.4, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.2, 0.35, 0.55, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.7, 1, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.1, 0.2, 0.35, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5, 0.8, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="PrelimQuizResult" type="Node2D"]
 script = ExtResource("1_cs7un")
 
 [node name="StarField" type="Sprite2D" parent="."]
-position = Vector2(963.999, 541.998)
+position = Vector2(960, 540)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_7xrf7")
 metadata/_edit_lock_ = true
 
-[node name="HistoryText" type="RichTextLabel" parent="."]
-offset_left = 122.0
-offset_top = 357.0
-offset_right = 1805.0
-offset_bottom = 984.0
-theme_override_fonts/normal_font = ExtResource("3_wnyv4")
-theme_override_font_sizes/normal_font_size = 30
-text = "History Text"
+[node name="MainContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 122.0
-offset_top = 109.0
-offset_right = 1805.0
-offset_bottom = 352.0
+[node name="MainPanel" type="Panel" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -400.0
+offset_right = 700.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_main_panel")
+
+[node name="ContentContainer" type="VBoxContainer" parent="MainContainer/MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+theme_override_constants/separation = 25
+
+[node name="HeaderSection" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HeaderPanel" type="Panel" parent="MainContainer/MainPanel/ContentContainer/HeaderSection"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 80)
+theme_override_styles/panel = SubResource("StyleBoxFlat_header_panel")
+
+[node name="HeaderContent" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/HeaderSection/HeaderPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="MainContainer/MainPanel/ContentContainer/HeaderSection/HeaderPanel/HeaderContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+text = "🎓 QUIZ RESULTS"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MainContainer/MainPanel/ContentContainer/HeaderSection/HeaderPanel/HeaderContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+text = "Preliminary Assessment Complete"
+horizontal_alignment = 1
+
+[node name="MiddleSection" type="HBoxContainer" parent="MainContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="LeftColumn" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="Name" type="Label" parent="VBoxContainer"]
+[node name="ScoreSection" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wnyv4")
-theme_override_font_sizes/font_size = 30
-text = "Name: Test"
+theme_override_constants/separation = 10
 
-[node name="Semester" type="Label" parent="VBoxContainer"]
+[node name="ScorePanel" type="Panel" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/ScoreSection"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wnyv4")
-theme_override_font_sizes/font_size = 30
-text = "Semester: Test"
+custom_minimum_size = Vector2(0, 120)
+theme_override_styles/panel = SubResource("StyleBoxFlat_score_panel")
 
-[node name="DeviceId" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wnyv4")
-theme_override_font_sizes/font_size = 30
-text = "Device: Test"
+[node name="ScoreContent" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/ScoreSection/ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+theme_override_constants/separation = 10
 
-[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+[node name="ScoreTitle" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/ScoreSection/ScorePanel/ScoreContent"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wnyv4")
-theme_override_font_sizes/font_size = 30
-text = "ScoreLabel
-"
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.8, 0.95, 0.85, 1)
+text = "📊 YOUR SCORE"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/ScoreSection/ScorePanel/ScoreContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+text = "8/10"
+horizontal_alignment = 1
+
+[node name="ScorePercentage" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/ScoreSection/ScorePanel/ScoreContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.6, 0.9, 0.7, 1)
+text = "80% - Excellent!"
+horizontal_alignment = 1
+
+[node name="DetailsSection" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="DetailsPanel" type="Panel" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_details_panel")
+
+[node name="DetailsContent" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+theme_override_constants/separation = 15
+
+[node name="DetailsTitle" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+text = "👤 STUDENT INFORMATION"
+
+[node name="StudentInfo" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent/StudentInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+text = "Name: Loading..."
+autowrap_mode = 2
+
+[node name="Semester" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent/StudentInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+text = "Semester: Loading..."
+autowrap_mode = 2
+
+[node name="DeviceId" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/LeftColumn/DetailsSection/DetailsPanel/DetailsContent/StudentInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+text = "Device: Loading..."
+autowrap_mode = 2
+
+[node name="RightColumn" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HistorySection" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/RightColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HistoryPanel" type="Panel" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/RightColumn/HistorySection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_history_panel")
+
+[node name="HistoryContent" type="VBoxContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/RightColumn/HistorySection/HistoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+theme_override_constants/separation = 10
+
+[node name="HistoryTitle" type="Label" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/RightColumn/HistorySection/HistoryPanel/HistoryContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+text = "📋 ANSWER REVIEW"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/RightColumn/HistorySection/HistoryPanel/HistoryContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HistoryText" type="RichTextLabel" parent="MainContainer/MainPanel/ContentContainer/MiddleSection/RightColumn/HistorySection/HistoryPanel/HistoryContent/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_wnyv4")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_colors/default_color = Color(0.85, 0.9, 0.95, 1)
+bbcode_enabled = true
+text = "Loading quiz results..."
+fit_content = true
+
+[node name="BottomSection" type="HBoxContainer" parent="MainContainer/MainPanel/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RetryButton" type="Button" parent="MainContainer/MainPanel/ContentContainer/BottomSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "🔄 RETAKE QUIZ"
+
+[node name="MainMenuButton" type="Button" parent="MainContainer/MainPanel/ContentContainer/BottomSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+theme_override_fonts/font = ExtResource("3_wnyv4")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+text = "🏠 MAIN MENU"
