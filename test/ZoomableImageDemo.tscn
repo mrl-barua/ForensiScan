@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqxvwm2rg3dln"]
+
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="1_zoomable"]
+[ext_resource type="Texture2D" uid="uid://5sx54bp338g5" path="res://assets/images/Lesson/Fingerpint_Sample_1.jpg" id="2_image"]
+
+[node name="ZoomableImageDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 24
+text = "ZoomableImage Component Demo"
+horizontal_alignment = 1
+
+[node name="Instructions" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center][color=white][b]Instructions:[/b][/color][/center]
+
+[color=lightblue]• Click on any image below to open the modal viewer
+• Use mouse wheel or zoom buttons to zoom in/out
+• Drag the image to pan when zoomed
+• Drag the title bar to move the modal window
+• Drag the resize handle to resize the modal
+• Press ESC or click outside to close[/color]
+
+[center][color=yellow]The modal always opens centered, regardless of image position![/color][/center]"
+
+[node name="ImageGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = -50.0
+columns = 3
+
+[node name="TopLeft" parent="ImageGrid" instance=ExtResource("1_zoomable")]
+layout_mode = 2
+image_texture = ExtResource("2_image")
+image_size = Vector2(150, 100)
+label_text = "Top Left"
+
+[node name="TopCenter" parent="ImageGrid" instance=ExtResource("1_zoomable")]
+layout_mode = 2
+image_texture = ExtResource("2_image")
+image_size = Vector2(150, 100)
+label_text = "Top Center"
+
+[node name="TopRight" parent="ImageGrid" instance=ExtResource("1_zoomable")]
+layout_mode = 2
+image_texture = ExtResource("2_image")
+image_size = Vector2(150, 100)
+label_text = "Top Right"
+
+[node name="BottomLeft" parent="ImageGrid" instance=ExtResource("1_zoomable")]
+layout_mode = 2
+image_texture = ExtResource("2_image")
+image_size = Vector2(150, 100)
+label_text = "Bottom Left"
+
+[node name="BottomCenter" parent="ImageGrid" instance=ExtResource("1_zoomable")]
+layout_mode = 2
+image_texture = ExtResource("2_image")
+image_size = Vector2(150, 100)
+label_text = "Bottom Center"
+
+[node name="BottomRight" parent="ImageGrid" instance=ExtResource("1_zoomable")]
+layout_mode = 2
+image_texture = ExtResource("2_image")
+image_size = Vector2(150, 100)
+label_text = "Bottom Right"

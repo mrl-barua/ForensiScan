@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://btest123456789"]
+[gd_scene load_steps=2 format=3 uid="uid://c5ijec5utkufc"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/ZoomableImageTest.gd" id="1_test_script"]
 
@@ -7,6 +7,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_test_script")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -14,6 +16,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.2, 0.2, 0.3, 1)
 
 [node name="Instructions" type="Label" parent="."]
@@ -25,6 +29,7 @@ offset_left = -200.0
 offset_top = 20.0
 offset_right = 200.0
 offset_bottom = 80.0
+grow_horizontal = 2
 text = "ZoomableImage Test
 Click image to test
 Press T to force fullscreen

@@ -2,84 +2,243 @@
 
 [ext_resource type="Script" path="res://src/scripts/Services/ZoomableImage.gd" id="1_4o7uo"]
 [ext_resource type="Texture2D" uid="uid://5sx54bp338g5" path="res://assets/images/Lesson/Fingerpint_Sample_1.jpg" id="2_2csgq"]
-[ext_resource type="StyleBox" uid="uid://dxqxomvxqsgcv" path="res://src/styles/button_style.tres" id="3_button_style"]
+[ext_resource type="StyleBox" uid="uid://c3wm6txdis2nx" path="res://src/styles/button_style.tres" id="3_button_style"]
 
 [node name="ZoomableImage" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 custom_minimum_size = Vector2(400, 350)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 0
 script = ExtResource("1_4o7uo")
 
 [node name="ImageContainer" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 0
+offset_left = -764.0
+offset_top = -420.0
+offset_right = 1156.0
+offset_bottom = 660.0
 
 [node name="ImageButton" type="TextureButton" parent="ImageContainer"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
+offset_left = 760.0
+offset_top = 390.0
+offset_right = 1160.0
+offset_bottom = 690.0
 texture_normal = ExtResource("2_2csgq")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ImageLabel" type="Label" parent="ImageContainer"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -30.0
-offset_right = 100.0
+anchors_preset = -1
+offset_left = 860.0
+offset_top = 1050.0
+offset_right = 1060.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Click to zoom"
 horizontal_alignment = 1
 
 [node name="FullScreenOverlay" type="Control" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
 z_index = 1000
+layout_mode = 1
+anchors_preset = 0
+offset_left = -1492.0
+offset_top = -396.0
+offset_right = 428.0
+offset_bottom = 684.0
+mouse_filter = 2
 
 [node name="ModalBackground" type="ColorRect" parent="FullScreenOverlay"]
 layout_mode = 1
-anchors_preset = 15
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="ModalWindow" type="Panel" parent="FullScreenOverlay"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 560.0
+offset_top = 240.0
+offset_right = 1360.0
+offset_bottom = 840.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResizeHandle" type="Control" parent="FullScreenOverlay/ModalWindow"]
+visible = false
+layout_mode = 1
+anchor_left = -0.7
+anchor_top = -0.4
+anchor_right = -0.7
+anchor_bottom = -0.4
+offset_left = 1340.0
+offset_top = 820.0
+offset_right = 1360.0
+offset_bottom = 840.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ResizeIcon" type="Label" parent="FullScreenOverlay/ModalWindow/ResizeHandle"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -66.817
+anchor_top = -41.361
+anchor_right = -66.817
+anchor_bottom = -41.361
+offset_left = 1336.34
+offset_top = 827.22
+offset_right = 1356.34
+offset_bottom = 847.22
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "⤡"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleBar" type="Panel" parent="FullScreenOverlay/ModalWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.7
+anchor_top = -0.4
+anchor_right = -0.7
+anchor_bottom = -0.4
+offset_left = 560.0
+offset_top = 240.0
+offset_right = 1360.0
+offset_bottom = 290.0
+
+[node name="TitleBarDragArea" type="Control" parent="FullScreenOverlay/ModalWindow/TitleBar"]
+layout_mode = 1
+anchor_left = -0.683
+anchor_top = -5.205
+anchor_right = -0.683
+anchor_bottom = -5.205
+offset_left = 546.4
+offset_top = 260.25
+offset_right = 1296.4
+offset_bottom = 310.25
+grow_horizontal = 0
+
+[node name="Title" type="Label" parent="FullScreenOverlay/ModalWindow/TitleBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.693
+anchor_top = -4.704
+anchor_right = -0.693
+anchor_bottom = -4.704
+offset_left = 569.4
+offset_top = 245.2
+offset_right = 754.4
+offset_bottom = 275.2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Image Viewer"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="FullScreenOverlay/ModalWindow/TitleBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.704
+anchor_top = -4.931
+anchor_right = -0.704
+anchor_bottom = -4.931
+offset_left = 1318.2
+offset_top = 251.55
+offset_right = 1358.2
+offset_bottom = 291.55
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("3_button_style")
+text = "✕"
+
+[node name="ContentArea" type="Control" parent="FullScreenOverlay/ModalWindow"]
+layout_mode = 1
+anchor_left = -0.694
+anchor_top = -0.389
+anchor_right = -0.694
+anchor_bottom = -0.389
+offset_left = 555.2
+offset_top = 283.4
+offset_right = 1355.2
+offset_bottom = 753.4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FullScreenOverlay/ModalWindow/ContentArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.686
+anchor_top = -0.625
+anchor_right = -0.686
+anchor_bottom = -0.625
+offset_left = 558.8
+offset_top = 303.75
+offset_right = 1338.8
+offset_bottom = 753.75
+
+[node name="FullScreenImage" type="TextureRect" parent="FullScreenOverlay/ModalWindow/ContentArea/ScrollContainer"]
+layout_mode = 2
+texture = ExtResource("2_2csgq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BottomBar" type="Panel" parent="FullScreenOverlay/ModalWindow"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.95)
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 2
 
-[node name="SafeArea" type="Control" parent="FullScreenOverlay"]
+[node name="ZoomControls" type="HBoxContainer" parent="FullScreenOverlay/ModalWindow/BottomBar"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="TopBar" type="Panel" parent="FullScreenOverlay/SafeArea"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 80.0
-mouse_filter = 2
+[node name="ZoomOutButton" type="Button" parent="FullScreenOverlay/ModalWindow/BottomBar/ZoomControls"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("3_button_style")
+text = "−"
 
-[node name="CloseButton" type="Button" parent="FullScreenOverlay/SafeArea/TopBar"]
+[node name="ZoomInfo" type="Label" parent="FullScreenOverlay/ModalWindow/BottomBar/ZoomControls"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoomInButton" type="Button" parent="FullScreenOverlay/ModalWindow/BottomBar/ZoomControls"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("3_button_style")
+text = "+"
+
+[node name="ResetZoomButton" type="Button" parent="FullScreenOverlay/ModalWindow/BottomBar"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -87,103 +246,19 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -80.0
-offset_top = -25.0
+offset_top = -20.0
 offset_right = -10.0
-offset_bottom = 25.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = ExtResource("3_button_style")
-theme_override_font_sizes/font_size = 24
-text = "✕"
-
-[node name="Title" type="Label" parent="FullScreenOverlay/SafeArea/TopBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -15.0
-offset_right = 200.0
-offset_bottom = 15.0
-theme_override_font_sizes/font_size = 20
-text = "Image Viewer"
-vertical_alignment = 1
-
-[node name="BottomBar" type="Panel" parent="FullScreenOverlay/SafeArea"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-mouse_filter = 2
-
-[node name="ZoomControls" type="HBoxContainer" parent="FullScreenOverlay/SafeArea/BottomBar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -30.0
-offset_right = 200.0
-offset_bottom = 30.0
-alignment = 1
-
-[node name="ZoomOutButton" type="Button" parent="FullScreenOverlay/SafeArea/BottomBar/ZoomControls"]
-layout_mode = 2
-custom_minimum_size = Vector2(80, 60)
-theme_override_styles/normal = ExtResource("3_button_style")
-theme_override_font_sizes/font_size = 20
-text = "−"
-
-[node name="ZoomInfo" type="Label" parent="FullScreenOverlay/SafeArea/BottomBar/ZoomControls"]
-layout_mode = 2
-custom_minimum_size = Vector2(120, 60)
-theme_override_font_sizes/font_size = 18
-text = "100%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ZoomInButton" type="Button" parent="FullScreenOverlay/SafeArea/BottomBar/ZoomControls"]
-layout_mode = 2
-custom_minimum_size = Vector2(80, 60)
-theme_override_styles/normal = ExtResource("3_button_style")
-theme_override_font_sizes/font_size = 20
-text = "+"
-
-[node name="ResetZoomButton" type="Button" parent="FullScreenOverlay/SafeArea/BottomBar"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -25.0
-offset_right = -20.0
-offset_bottom = 25.0
-theme_override_styles/normal = ExtResource("3_button_style")
-theme_override_font_sizes/font_size = 16
 text = "Reset"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="FullScreenOverlay/SafeArea"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 80.0
-offset_bottom = -120.0
-mouse_filter = 1
-
-[node name="FullScreenImage" type="TextureRect" parent="FullScreenOverlay/SafeArea/ScrollContainer"]
-layout_mode = 2
-texture = ExtResource("2_2csgq")
-expand_mode = 1
-stretch_mode = 5
-mouse_filter = 1
-
 [connection signal="pressed" from="ImageContainer/ImageButton" to="." method="_on_image_clicked"]
-[connection signal="pressed" from="FullScreenOverlay/SafeArea/TopBar/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomOutButton" to="." method="_on_zoom_out_pressed"]
-[connection signal="pressed" from="FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomInButton" to="." method="_on_zoom_in_pressed"]
-[connection signal="pressed" from="FullScreenOverlay/SafeArea/BottomBar/ResetZoomButton" to="." method="_on_reset_zoom_pressed"]
+[connection signal="gui_input" from="FullScreenOverlay/ModalWindow/ResizeHandle" to="." method="_on_resize_handle_input"]
+[connection signal="gui_input" from="FullScreenOverlay/ModalWindow/TitleBar/TitleBarDragArea" to="." method="_on_title_bar_input"]
+[connection signal="pressed" from="FullScreenOverlay/ModalWindow/TitleBar/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/ModalWindow/BottomBar/ZoomControls/ZoomOutButton" to="." method="_on_zoom_out_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/ModalWindow/BottomBar/ZoomControls/ZoomInButton" to="." method="_on_zoom_in_pressed"]
+[connection signal="pressed" from="FullScreenOverlay/ModalWindow/BottomBar/ResetZoomButton" to="." method="_on_reset_zoom_pressed"]

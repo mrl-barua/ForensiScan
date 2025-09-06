@@ -1,0 +1,148 @@
+[gd_scene load_steps=3 format=3 uid="uid://bljy1lqvs1w05"]
+
+[ext_resource type="Script" path="res://src/scripts/Services/ZoomableImage.gd" id="1_s2o4k"]
+[ext_resource type="Texture2D" path="res://assets/images/Lesson/Fingerpint_Sample_1.jpg" id="2_d8r7n"]
+
+[node name="ZoomableImageModal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_s2o4k")
+
+[node name="ImageButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -75.0
+offset_right = 250.0
+offset_bottom = 75.0
+texture_normal = ExtResource("2_d8r7n")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ModalOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="ModalWindow" type="Panel" parent="ModalOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="TitleBar" type="Panel" parent="ModalOverlay/ModalWindow"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+
+[node name="TitleBarDragArea" type="Control" parent="ModalOverlay/ModalWindow/TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="CloseButton" type="Button" parent="ModalOverlay/ModalWindow/TitleBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.0
+offset_right = -10.0
+offset_bottom = 15.0
+text = "×"
+
+[node name="ContentArea" type="Control" parent="ModalOverlay/ModalWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = -40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ModalOverlay/ModalWindow/ContentArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ModalImageContainer" type="Control" parent="ModalOverlay/ModalWindow/ContentArea/ScrollContainer"]
+layout_mode = 2
+
+[node name="ModalImage" type="TextureRect" parent="ModalOverlay/ModalWindow/ContentArea/ScrollContainer/ModalImageContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+texture = ExtResource("2_d8r7n")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BottomControls" type="HBoxContainer" parent="ModalOverlay/ModalWindow"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+alignment = 1
+
+[node name="ZoomOutButton" type="Button" parent="ModalOverlay/ModalWindow/BottomControls"]
+layout_mode = 2
+text = "Zoom -"
+
+[node name="ResetZoomButton" type="Button" parent="ModalOverlay/ModalWindow/BottomControls"]
+layout_mode = 2
+text = "Reset"
+
+[node name="ZoomInButton" type="Button" parent="ModalOverlay/ModalWindow/BottomControls"]
+layout_mode = 2
+text = "Zoom +"
+
+[node name="ResizeHandle" type="Control" parent="ModalOverlay/ModalWindow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+mouse_filter = 1
+mouse_default_cursor_shape = 10
+
+[node name="ResizeIndicator" type="Label" parent="ModalOverlay/ModalWindow/ResizeHandle"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -15.0
+text = "⟲"
+horizontal_alignment = 2
+vertical_alignment = 2

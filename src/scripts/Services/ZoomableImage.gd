@@ -9,6 +9,9 @@ extends Control
 @export var label_text: String = "Click to zoom"
 @export var enable_haptic_feedback: bool = true
 @export var modal_transition_duration: float = 0.3
+@export var modal_window_size: Vector2 = Vector2(800, 600)
+@export var modal_min_size: Vector2 = Vector2(400, 300)
+@export var modal_max_size: Vector2 = Vector2(1200, 900)
 
 # Node references
 @onready var image_container: Control = $ImageContainer
@@ -16,17 +19,20 @@ extends Control
 @onready var image_label: Label = $ImageContainer/ImageLabel
 @onready var fullscreen_overlay: Control = $FullScreenOverlay
 @onready var modal_background: ColorRect = $FullScreenOverlay/ModalBackground
-@onready var safe_area: Control = $FullScreenOverlay/SafeArea
-@onready var top_bar: Panel = $FullScreenOverlay/SafeArea/TopBar
-@onready var close_button: Button = $FullScreenOverlay/SafeArea/TopBar/CloseButton
-@onready var title_label: Label = $FullScreenOverlay/SafeArea/TopBar/Title
-@onready var bottom_bar: Panel = $FullScreenOverlay/SafeArea/BottomBar
-@onready var zoom_out_button: Button = $FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomOutButton
-@onready var zoom_in_button: Button = $FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomInButton
-@onready var reset_zoom_button: Button = $FullScreenOverlay/SafeArea/BottomBar/ResetZoomButton
-@onready var zoom_info: Label = $FullScreenOverlay/SafeArea/BottomBar/ZoomControls/ZoomInfo
-@onready var scroll_container: ScrollContainer = $FullScreenOverlay/SafeArea/ScrollContainer
-@onready var fullscreen_image: TextureRect = $FullScreenOverlay/SafeArea/ScrollContainer/FullScreenImage
+@onready var modal_window: Panel = $FullScreenOverlay/ModalWindow
+@onready var resize_handle: Control = $FullScreenOverlay/ModalWindow/ResizeHandle
+@onready var title_bar: Panel = $FullScreenOverlay/ModalWindow/TitleBar
+@onready var title_bar_drag_area: Control = $FullScreenOverlay/ModalWindow/TitleBar/TitleBarDragArea
+@onready var close_button: Button = $FullScreenOverlay/ModalWindow/TitleBar/CloseButton
+@onready var title_label: Label = $FullScreenOverlay/ModalWindow/TitleBar/Title
+@onready var content_area: Control = $FullScreenOverlay/ModalWindow/ContentArea
+@onready var bottom_bar: Panel = $FullScreenOverlay/ModalWindow/BottomBar
+@onready var zoom_out_button: Button = $FullScreenOverlay/ModalWindow/BottomBar/ZoomControls/ZoomOutButton
+@onready var zoom_in_button: Button = $FullScreenOverlay/ModalWindow/BottomBar/ZoomControls/ZoomInButton
+@onready var reset_zoom_button: Button = $FullScreenOverlay/ModalWindow/BottomBar/ResetZoomButton
+@onready var zoom_info: Label = $FullScreenOverlay/ModalWindow/BottomBar/ZoomControls/ZoomInfo
+@onready var scroll_container: ScrollContainer = $FullScreenOverlay/ModalWindow/ContentArea/ScrollContainer
+@onready var fullscreen_image: TextureRect = $FullScreenOverlay/ModalWindow/ContentArea/ScrollContainer/FullScreenImage
 
 # Zoom and pan variables
 var current_zoom: float = 1.0
@@ -46,6 +52,14 @@ var is_modal_open: bool = false
 var modal_tween: Tween
 var previous_modulate: Color
 var was_mouse_captured: bool = false
+
+# Modal window interaction
+var is_dragging_window: bool = false
+var is_resizing_window: bool = false
+var drag_start_pos: Vector2
+var resize_start_pos: Vector2
+var window_start_pos: Vector2
+var window_start_size: Vector2
 
 # Navigation state
 var previous_scene_path: String = ""
@@ -129,6 +143,21 @@ func connect_signals():
 			print("✅ Connected reset_zoom_button.pressed signal")
 	else:
 		print("❌ reset_zoom_button is null!")
+	
+	# Connect modal window interaction signals
+	if resize_handle:
+		if not resize_handle.gui_input.is_connected(_on_resize_handle_input):
+			resize_handle.gui_input.connect(_on_resize_handle_input)
+			print("✅ Connected resize_handle.gui_input signal")
+	else:
+		print("❌ resize_handle is null!")
+		
+	if title_bar_drag_area:
+		if not title_bar_drag_area.gui_input.is_connected(_on_title_bar_input):
+			title_bar_drag_area.gui_input.connect(_on_title_bar_input)
+			print("✅ Connected title_bar_drag_area.gui_input signal")
+	else:
+		print("❌ title_bar_drag_area is null!")
 
 # Public method to set image from code
 func set_image_texture(texture: Texture2D, new_size: Vector2 = Vector2.ZERO):
@@ -201,7 +230,7 @@ func open_fullscreen_modal():
 	if is_modal_open:
 		return
 		
-	print("🚀 Opening modal fullscreen view - texture size: ", image_texture.get_size())
+	print("🚀 Opening centered resizable modal - texture size: ", image_texture.get_size())
 	is_modal_open = true
 	
 	# Reset zoom
@@ -213,6 +242,9 @@ func open_fullscreen_modal():
 	fullscreen_overlay.z_index = 1000  # Ensure it's on top
 	print("Fullscreen overlay made visible")
 	
+	# Center and size the modal window
+	center_modal_window()
+	
 	# Set initial opacity for animation
 	fullscreen_overlay.modulate.a = 0.0
 	
@@ -222,11 +254,6 @@ func open_fullscreen_modal():
 	# Animate modal appearance
 	animate_modal_in()
 	
-	# Capture mouse for desktop testing
-	if OS.get_name() != "Android":
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		was_mouse_captured = true
-	
 	# Set title
 	if title_label:
 		title_label.text = label_text if label_text != "Click to zoom" else "Image Viewer"
@@ -234,26 +261,53 @@ func open_fullscreen_modal():
 	# Emit signal
 	fullscreen_opened.emit()
 	
-	print("Modal fullscreen view opened")
+	print("Centered resizable modal opened")
+
+# Center the modal window on screen
+func center_modal_window():
+	if not modal_window:
+		return
+		
+	# Get screen size
+	var screen_size = get_viewport().get_visible_rect().size
+	
+	# Calculate window size (clamp to min/max)
+	var window_size = modal_window_size
+	window_size.x = clamp(window_size.x, modal_min_size.x, min(modal_max_size.x, screen_size.x - 100))
+	window_size.y = clamp(window_size.y, modal_min_size.y, min(modal_max_size.y, screen_size.y - 100))
+	
+	# Center the window
+	var window_pos = (screen_size - window_size) / 2
+	
+	# Apply position and size
+	modal_window.position = window_pos
+	modal_window.size = window_size
+	
+	# Clear anchors to use absolute positioning
+	modal_window.anchor_left = 0
+	modal_window.anchor_top = 0
+	modal_window.anchor_right = 0
+	modal_window.anchor_bottom = 0
+	
+	print("Modal window centered at: ", window_pos, " with size: ", window_size)
 
 # Close fullscreen view with modal transition
 func close_fullscreen_modal():
 	if not is_modal_open:
 		return
 		
-	print("🔒 Closing modal fullscreen view")
+	print("🔒 Closing resizable modal view")
 	
 	# Haptic feedback for mobile
 	if enable_haptic_feedback and OS.get_name() == "Android":
 		trigger_haptic_feedback()
 	
+	# Store current window size for next opening
+	if modal_window:
+		modal_window_size = modal_window.size
+	
 	# Animate modal disappearance
 	animate_modal_out()
-	
-	# Restore mouse mode
-	if was_mouse_captured:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		was_mouse_captured = false
 	
 	# Call return callback if set
 	if return_callback.is_valid():
@@ -262,7 +316,7 @@ func close_fullscreen_modal():
 	# Emit signal
 	fullscreen_closed.emit()
 	
-	print("Modal fullscreen view closed")
+	print("Resizable modal view closed")
 
 # Legacy function for backward compatibility
 func open_fullscreen():
@@ -288,13 +342,15 @@ func animate_modal_in():
 	modal_tween = create_tween()
 	modal_tween.set_parallel(true)
 	
-	# Fade in background
+	# Fade in background and window
 	modal_tween.tween_property(fullscreen_overlay, "modulate:a", 1.0, modal_transition_duration)
 	
-	# Scale animation for modal feel
-	fullscreen_overlay.scale = Vector2(0.8, 0.8)
-	modal_tween.tween_property(fullscreen_overlay, "scale", Vector2.ONE, modal_transition_duration)
-	modal_tween.tween_property(fullscreen_overlay, "scale", Vector2.ONE, modal_transition_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	# Scale animation for modal feel - start small and scale to normal
+	if modal_window:
+		modal_window.scale = Vector2(0.7, 0.7)
+		modal_window.modulate.a = 0.0
+		modal_tween.tween_property(modal_window, "scale", Vector2.ONE, modal_transition_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		modal_tween.tween_property(modal_window, "modulate:a", 1.0, modal_transition_duration * 0.8)
 
 # Animate modal closing
 func animate_modal_out():
@@ -304,17 +360,21 @@ func animate_modal_out():
 	modal_tween = create_tween()
 	modal_tween.set_parallel(true)
 	
-	# Fade out
+	# Fade out background and window
 	modal_tween.tween_property(fullscreen_overlay, "modulate:a", 0.0, modal_transition_duration)
 	
-	# Scale down slightly
-	modal_tween.tween_property(fullscreen_overlay, "scale", Vector2(0.95, 0.95), modal_transition_duration)
+	# Scale down the window
+	if modal_window:
+		modal_tween.tween_property(modal_window, "scale", Vector2(0.8, 0.8), modal_transition_duration)
+		modal_tween.tween_property(modal_window, "modulate:a", 0.0, modal_transition_duration)
 	
 	# Hide when animation completes
 	modal_tween.tween_callback(func(): 
 		fullscreen_overlay.visible = false
 		is_modal_open = false
-		fullscreen_overlay.scale = Vector2.ONE
+		if modal_window:
+			modal_window.scale = Vector2.ONE
+			modal_window.modulate.a = 1.0
 	).set_delay(modal_transition_duration)
 
 # Trigger haptic feedback on Android
@@ -558,3 +618,69 @@ func set_preview_size(new_size: Vector2):
 		
 		# Update position using anchors
 		update_image_button_position()
+
+# Set modal window size
+func set_modal_size(new_size: Vector2):
+	modal_window_size = new_size
+	modal_window_size.x = clamp(modal_window_size.x, modal_min_size.x, modal_max_size.x)
+	modal_window_size.y = clamp(modal_window_size.y, modal_min_size.y, modal_max_size.y)
+
+# Handle title bar drag input
+func _on_title_bar_input(event: InputEvent):
+	if not is_modal_open or not modal_window:
+		return
+		
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				is_dragging_window = true
+				drag_start_pos = event.global_position
+				window_start_pos = modal_window.position
+				print("🖱️ Started dragging modal window")
+			else:
+				is_dragging_window = false
+				print("🖱️ Stopped dragging modal window")
+	elif event is InputEventMouseMotion and is_dragging_window:
+		var delta = event.global_position - drag_start_pos
+		var new_pos = window_start_pos + delta
+		
+		# Keep window within screen bounds
+		var screen_size = get_viewport().get_visible_rect().size
+		new_pos.x = clamp(new_pos.x, 0, screen_size.x - modal_window.size.x)
+		new_pos.y = clamp(new_pos.y, 0, screen_size.y - modal_window.size.y)
+		
+		modal_window.position = new_pos
+
+# Handle resize handle input
+func _on_resize_handle_input(event: InputEvent):
+	if not is_modal_open or not modal_window:
+		return
+		
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				is_resizing_window = true
+				resize_start_pos = event.global_position
+				window_start_size = modal_window.size
+				window_start_pos = modal_window.position
+				print("🔄 Started resizing modal window")
+			else:
+				is_resizing_window = false
+				print("🔄 Stopped resizing modal window")
+	elif event is InputEventMouseMotion and is_resizing_window:
+		var delta = event.global_position - resize_start_pos
+		var new_size = window_start_size + delta
+		
+		# Clamp to min/max size
+		new_size.x = clamp(new_size.x, modal_min_size.x, modal_max_size.x)
+		new_size.y = clamp(new_size.y, modal_min_size.y, modal_max_size.y)
+		
+		# Ensure window doesn't go off screen
+		var screen_size = get_viewport().get_visible_rect().size
+		var max_width = screen_size.x - modal_window.position.x
+		var max_height = screen_size.y - modal_window.position.y
+		new_size.x = min(new_size.x, max_width)
+		new_size.y = min(new_size.y, max_height)
+		
+		modal_window.size = new_size
+		modal_window_size = new_size  # Store for next opening
