@@ -10,8 +10,8 @@ extends Control
 @export var enable_haptic_feedback: bool = true
 @export var modal_transition_duration: float = 0.3
 @export var modal_window_size: Vector2 = Vector2(800, 600)
-@export var modal_min_size: Vector2 = Vector2(400, 300)
-@export var modal_max_size: Vector2 = Vector2(1200, 900)
+@export var modal_min_size: Vector2 = Vector2(800, 600)
+@export var modal_max_size: Vector2 = Vector2(1600, 1200)
 
 # Node references
 @onready var image_container: Control = $ImageContainer
