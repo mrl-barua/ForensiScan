@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cioc3x7tqay3b"]
+[gd_scene load_steps=7 format=3 uid="uid://cioc3x7tqay3b"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.25.gd" id="1_07ia7"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_g5s68"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_i2q81"]
-[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="5_d7bf5"]
+[ext_resource type="StyleBox" path="res://src/styles/lesson_button_style.tres" id="4_normal_style"]
+[ext_resource type="StyleBox" path="res://src/styles/lesson_button_hover_style.tres" id="5_hover_style"]
+[ext_resource type="StyleBox" path="res://src/styles/lesson_button_pressed_style.tres" id="6_pressed_style"]
 
 [node name="Prelim1_25" type="Node2D"]
 script = ExtResource("1_07ia7")
@@ -47,25 +49,63 @@ fit_content = true
 
 [node name="ProceedToQuizButton" type="Button" parent="."]
 visible = false
-offset_left = 53.0
-offset_top = 917.0
-offset_right = 837.0
-offset_bottom = 1037.0
-scale = Vector2(0.879999, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("5_d7bf5")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 611.0
+offset_top = 933.0
+offset_right = 961.0
+offset_bottom = 1033.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_normal_style")
+theme_override_styles/hover = ExtResource("5_hover_style")
+theme_override_styles/pressed = ExtResource("6_pressed_style")
 text = "Proceed to Quiz"
 
 [node name="GoBackToMenuButton" type="Button" parent="."]
 visible = false
-offset_left = 1155.0
-offset_top = 917.0
-offset_right = 1967.0
-offset_bottom = 1037.0
-scale = Vector2(0.879999, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("5_d7bf5")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1061.0
+offset_top = 933.0
+offset_right = 1411.0
+offset_bottom = 1033.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_normal_style")
+theme_override_styles/hover = ExtResource("5_hover_style")
+theme_override_styles/pressed = ExtResource("6_pressed_style")
 text = "Go back to menu"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.0
+offset_top = -200.0
+offset_right = 425.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
 
 [node name="Pause" parent="." instance=ExtResource("3_i2q81")]
 
