@@ -1,11 +1,13 @@
 # Splash Screen UI/UX Improvements
 
 ## Overview
+
 The splash screens have been redesigned to match the modern, professional aesthetic of the ForensiScan application. The improvements focus on visual cohesion, user engagement, and smooth transitions.
 
 ## Key Improvements
 
 ### 1. Engine Splash Screen (EngineSplash.tscn)
+
 - **Modern Panel Design**: Replaced basic background with a glassmorphism-inspired panel featuring rounded corners, border glow, and shadow effects
 - **Improved Layout**: Restructured using proper containers (CenterContainer, VBoxContainer) for better responsiveness
 - **Enhanced Typography**: Added consistent font styling with proper hierarchy
@@ -14,9 +16,10 @@ The splash screens have been redesigned to match the modern, professional aesthe
 - **Visual Consistency**: Matches the main application's blue-purple gradient theme
 
 ### 2. Main Splash Screen (SplashScreen.tscn)
+
 - **Professional Layout**: Complete redesign with centered panel containing all elements
 - **Enhanced Branding**: Proper logo display with animated search icon
-- **Improved Progress Indicator**: 
+- **Improved Progress Indicator**:
   - Modern progress bar with custom styling
   - Percentage display
   - Color transitions based on progress
@@ -28,6 +31,7 @@ The splash screens have been redesigned to match the modern, professional aesthe
 - **Background Effects**: Particle system for visual appeal
 
 ### 3. Enhanced Scripting
+
 - **Better Animation Timing**: Coordinated animations for smooth transitions
 - **Progressive Feedback**: Dynamic loading messages with visual feedback
 - **Smooth Transitions**: Fade-out effects when transitioning between scenes
@@ -37,13 +41,15 @@ The splash screens have been redesigned to match the modern, professional aesthe
 ## Design Elements
 
 ### Color Palette
+
 - Primary: `#42A5F5` (Blue)
-- Secondary: `#5C6BC0` (Indigo) 
+- Secondary: `#5C6BC0` (Indigo)
 - Accent: `#7E57C2` (Deep Purple)
 - Background: `Color(0.05, 0.1, 0.2, 0.95)` (Dark blue with transparency)
 - Text: Various shades of light blue/white for contrast
 
 ### Visual Effects
+
 - Glassmorphism panels with transparency and blur effects
 - Subtle particle systems for ambient movement
 - Smooth scale and fade animations
@@ -51,6 +57,7 @@ The splash screens have been redesigned to match the modern, professional aesthe
 - Glowing borders with brand colors
 
 ### Typography
+
 - Consistent font usage (official_font.tres)
 - Clear hierarchy with different font sizes
 - Appropriate color contrast for readability
@@ -59,17 +66,20 @@ The splash screens have been redesigned to match the modern, professional aesthe
 ## Technical Implementation
 
 ### New Resources Created
+
 - `gradient_background.tres` - Reusable modern panel style
 - `modern_progress_fill.tres` - Custom progress bar styling
 - Enhanced particle systems with gradient textures
 - Improved animation curves and timing
 
 ### Performance Considerations
+
 - Efficient particle systems with controlled emission
 - Optimized animations using Godot's Tween system
 - Proper resource management and scene transitions
 
 ## User Experience Benefits
+
 1. **Professional Appearance**: Matches modern app design standards
 2. **Clear Feedback**: Users always know what's happening during loading
 3. **Brand Consistency**: Visual elements align with main application
@@ -77,6 +87,7 @@ The splash screens have been redesigned to match the modern, professional aesthe
 5. **Engaging Visuals**: Keeps users interested during loading times
 
 ## Responsive Design
+
 - Uses proper container layouts for different screen sizes
 - Scalable elements that maintain proportions
 - Flexible spacing and margins

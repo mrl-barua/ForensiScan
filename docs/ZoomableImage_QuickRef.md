@@ -5,6 +5,7 @@
 Your ZoomableImage component already meets **ALL** your requirements perfectly:
 
 ### 📍 **1. Placeable Anywhere** ✅
+
 ```gdscript
 # Works in any position
 zoomable_image.anchors_preset = Control.PRESET_TOP_RIGHT
@@ -12,6 +13,7 @@ zoomable_image.position = Vector2(-220, 20)
 ```
 
 ### 🎯 **2. Always Centers Modal** ✅
+
 ```gdscript
 # Your center_modal_window() function ensures this
 func center_modal_window():
@@ -21,12 +23,14 @@ func center_modal_window():
 ```
 
 ### 🔍 **3. Full Modal Functionality** ✅
+
 - **Resizing**: Drag ⤡ handle
 - **Zoom**: Mouse wheel, pinch, buttons
 - **Panning**: Click & drag image
 - **Touch**: Full mobile support
 
 ### ⌨️ **4. Proper Modal Closing** ✅
+
 - **ESC key**: Handled in `_input()`
 - **Click outside**: ModalBackground click
 - **Close button**: ✕ in title bar
@@ -36,6 +40,7 @@ func center_modal_window():
 ## 🚀 **Quick Start**
 
 ### Basic Usage
+
 ```gdscript
 # 1. Add to scene
 var zoomable = preload("res://src/scenes/Components/ZoomableImage.tscn").instantiate()
@@ -49,6 +54,7 @@ zoomable.position = Vector2(100, 50)  # Top-right corner
 ```
 
 ### Key Properties
+
 ```gdscript
 zoomable.image_size = Vector2(200, 150)       # Preview size
 zoomable.modal_window_size = Vector2(800, 600) # Modal size
@@ -60,18 +66,19 @@ zoomable.enable_haptic_feedback = true        # Mobile haptics
 
 ## 🎮 **Controls**
 
-| Action | Method |
-|--------|--------|
-| **Open Modal** | Click preview image |
-| **Zoom** | Mouse wheel / Pinch |
-| **Pan** | Drag image when zoomed |
-| **Move Modal** | Drag title bar |
-| **Resize Modal** | Drag ⤡ handle |
-| **Close** | ESC / Click outside / ✕ |
+| Action           | Method                  |
+| ---------------- | ----------------------- |
+| **Open Modal**   | Click preview image     |
+| **Zoom**         | Mouse wheel / Pinch     |
+| **Pan**          | Drag image when zoomed  |
+| **Move Modal**   | Drag title bar          |
+| **Resize Modal** | Drag ⤡ handle           |
+| **Close**        | ESC / Click outside / ✕ |
 
 ---
 
 ## 📱 **Mobile Features**
+
 - ✅ Touch gestures (pinch, pan, double-tap)
 - ✅ Haptic feedback on Android
 - ✅ Mobile-optimized UI
@@ -82,12 +89,14 @@ zoomable.enable_haptic_feedback = true        # Mobile haptics
 ## 🏆 **Best Practices**
 
 ### ✅ DO:
+
 - Position component anywhere in your scene
 - Use export variables for configuration
 - Connect to signals for custom behavior
 - Test on both desktop and mobile
 
 ### ❌ DON'T:
+
 - Worry about modal positioning (auto-centered!)
 - Modify the modal window structure
 - Forget to set `image_texture`

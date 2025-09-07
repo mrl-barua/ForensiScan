@@ -26,24 +26,32 @@ var resume_dialog_open: bool = false  # Prevent multiple dialog openings
 func _ready() -> void:
 	ApplicationManager.resume()
 	setup_ui()
+	
+	# Connect license validation signal
+	if not license_verifier.license_validated.is_connected(_on_license_validated):
+		license_verifier.license_validated.connect(_on_license_validated)
+	
+	# Check license status and show appropriate UI
 	check_license_status()
-	var license_verifier_script = preload("res://src/scripts/Services/LicenseVerifier.gd")
-	if license_verifier_script.is_activated():
-		if license_verifier.get_node("CanvasLayer").visible:
-			license_verifier.get_node("CanvasLayer").hide()
-		if not main_container.visible or main_container.modulate.a < 1.0:
-			show_main_menu()
 
 func check_license_status():
 	"""Check license activation and show appropriate screen"""
 	var license_verifier_script = preload("res://src/scripts/Services/LicenseVerifier.gd")
 	if license_verifier_script.is_activated():
+		# License is valid - hide verifier and show main menu
 		license_verifier.get_node("CanvasLayer").hide()
 		show_main_menu()
 	else:
-		pass
-		#license_verifier.get_node("CanvasLayer").show()
-		#hide_main_menu()
+		# No valid license - hide main menu and show license verifier
+		hide_main_menu()
+		license_verifier.get_node("CanvasLayer").show()
+		print("No valid license found - showing license verifier")
+
+func _on_license_validated():
+	"""Handle successful license validation"""
+	print("License validated successfully - showing main menu")
+	license_verifier.get_node("CanvasLayer").hide()
+	show_main_menu()
 
 func setup_ui():
 	"""Initialize UI components and collect button references"""
@@ -86,16 +94,20 @@ func collect_buttons():
 
 func setup_initial_state():
 	"""Set initial visual state - keep UI visible by default"""
-	# Keep main container visible by default
+	# Ensure main container is properly positioned and visible
 	main_container.modulate.a = 1.0
 	main_container.visible = true
+	main_container.scale = Vector2(1.0, 1.0)
+	main_container.rotation = 0.0
 	
-	# Reset panel positions to center
+	# Reset panel positions to center (no offsets)
 	left_panel.position.x = 0
 	right_panel.position.x = 0
 	
 	# Set buttons to normal state and clean up any existing tweens
 	reset_all_buttons()
+	
+	print("Main menu UI setup complete - all elements reset to default state")
 
 func reset_all_buttons():
 	"""Reset all buttons to their default state"""
@@ -105,12 +117,13 @@ func reset_all_buttons():
 			tween.kill()
 	button_tweens.clear()
 	
-	# Reset button states
+	# Reset button states to normal
 	for button in buttons_array:
 		button.scale = Vector2(1.0, 1.0)
-		button.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		button.modulate = Color(1.0, 1.0, 1.0, 1.0)  # Full visibility
 		button.rotation = 0.0
 		button.disabled = false  # Ensure buttons are always enabled
+		button.visible = true    # Ensure buttons are visible
 
 func update_status_display():
 	"""Update status information"""
@@ -122,16 +135,16 @@ func show_main_menu():
 	main_container.modulate.a = 1.0
 	main_container.visible = true
 	
-	# Reset any transform changes
+	# Reset any transform changes to ensure proper layout
 	left_panel.position.x = 0
 	right_panel.position.x = 0
+	main_container.scale = Vector2(1.0, 1.0)
+	main_container.rotation = 0.0
 	
 	# Make sure all buttons are visible and properly reset
 	reset_all_buttons()
 	
-	# Optional: Play entrance animation if desired
-	if not is_animating:
-		animate_menu_entrance()
+	print("Main menu shown - layout restored")
 
 func hide_main_menu():
 	"""Hide main menu"""
@@ -161,8 +174,9 @@ func animate_menu_entrance():
 		entrance_tween.tween_property(button, "modulate:a", 1.0, 0.5).set_delay(delay)
 		entrance_tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).set_delay(delay)
 	
-	# Complete animation callback
-	entrance_tween.tween_callback(func(): is_animating = false).set_delay(1.5)
+	# Complete animation callback with proper interval
+	entrance_tween.tween_interval(1.5)
+	entrance_tween.tween_callback(func(): is_animating = false)
 
 func _on_button_hover(button: Button):
 	"""Enhanced button hover effect"""

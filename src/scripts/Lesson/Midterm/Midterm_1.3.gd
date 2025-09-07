@@ -20,10 +20,14 @@ extends Node2D
 var typewriter: Typewriter
 
 @onready var navigation_buttons: Control = $NavigationControls
+@onready var zoomable_image: Control = $ZoomableImage
 
 func _ready():
 	# Track progress for this lesson
 	ProgressManager.update_lesson_progress("midterm", 3)
+	
+	# Setup multiple images for the ZoomableImage component
+	# setup_multiple_images()  # Commented out - no multiple images
 	
 	header_label.text = ''
 	detail_one_label.text = ''
@@ -38,6 +42,36 @@ func _ready():
 	
 	typewriter.typing_finished.connect(_on_header_typing_done)
 	typewriter.start_typing(header_label, header_text)
+
+func setup_multiple_images():
+	if zoomable_image:
+		# Set custom VBox separation
+		zoomable_image.set_vbox_separation(30)
+		
+		# Create array of image textures
+		var image_textures: Array[Texture2D] = []
+		
+		# Try to load multiple midterm images
+		var image_paths = [
+			"res://assets/images/Lesson/Midterm/Midterm_1.3.1.jpg",
+			"res://assets/images/Lesson/Midterm/Midterm_1.14.jpg",
+			"res://assets/images/Lesson/Midterm/Midterm_1.15.jpg"
+		]
+		
+		for path in image_paths:
+			var texture = load(path) as Texture2D
+			if texture:
+				image_textures.append(texture)
+				print("Loaded image: ", path)
+			else:
+				print("Failed to load image: ", path)
+		
+		# Set the multiple images
+		if image_textures.size() > 0:
+			zoomable_image.set_image_textures(image_textures)
+			print("Set ", image_textures.size(), " images to ZoomableImage component")
+		else:
+			print("Warning: No images loaded for ZoomableImage component")
 
 func _on_header_typing_done():
 	print("Header typing finished!")

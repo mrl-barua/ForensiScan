@@ -156,15 +156,13 @@ func _on_successful_validation():
 	success_tween.tween_property(main_panel, "modulate", Color(0.8, 1.2, 0.8, 1.0), 0.3)
 	success_tween.tween_property(main_panel, "scale", Vector2(1.05, 1.05), 0.3)
 	
-	success_tween.chain().set_parallel(true)
+	success_tween.tween_interval(0.3)
 	success_tween.tween_property(main_panel, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.3)
 	success_tween.tween_property(main_panel, "scale", Vector2(1.0, 1.0), 0.3)
 	
-	# Emit success signal and transition after animation
-	success_tween.chain().tween_delay(0.5)
+	success_tween.tween_interval(0.5)
 	success_tween.tween_callback(func(): 
 		license_validated.emit()
-		get_tree().change_scene_to_file("res://src/scenes/Splash/SplashScreen.tscn")
 	)
 
 func _on_failed_validation():

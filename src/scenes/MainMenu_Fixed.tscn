@@ -1,0 +1,356 @@
+[gd_scene load_steps=15 format=3 uid="uid://dil8qcyfhtjau"]
+
+[ext_resource type="Script" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_bg"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_4j4m6"]
+[ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="3_rkgjm"]
+[ext_resource type="PackedScene" uid="uid://baarscbqx0i40" path="res://src/scenes/Components/LicenseVerifier.tscn" id="4_cwid3"]
+[ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="4_gc3lr"]
+[ext_resource type="PackedScene" uid="uid://bh8u3xjqm7fs2" path="res://src/scenes/Components/ResumeProgressDialog.tscn" id="5_dialog"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header_panel"]
+bg_color = Color(0.1, 0.2, 0.35, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.8, 1, 0.6)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main_panel"]
+bg_color = Color(0.08, 0.12, 0.2, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.6, 1, 0.7)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_secondary_button"]
+bg_color = Color(0.15, 0.25, 0.4, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_button"]
+bg_color = Color(0.4, 0.15, 0.15, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.3, 0.3, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_a00hu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BackgroundOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.1, 0.7)
+
+[node name="MainContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 60.0
+offset_right = -80.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="LeftPanel" type="VBoxContainer" parent="CanvasLayer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+theme_override_constants/separation = 30
+
+[node name="HeaderPanel" type="Panel" parent="CanvasLayer/MainContainer/LeftPanel"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_header_panel")
+
+[node name="HeaderContent" type="VBoxContainer" parent="CanvasLayer/MainContainer/LeftPanel/HeaderPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = -40.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="AppIcon" type="Label" parent="CanvasLayer/MainContainer/LeftPanel/HeaderPanel/HeaderContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.7, 1, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 72
+text = "🔍"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/MainContainer/LeftPanel/HeaderPanel/HeaderContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 48
+text = "ForensiScan"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/MainContainer/LeftPanel/HeaderPanel/HeaderContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 18
+text = "Digital Forensics Learning Platform"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InfoPanel" type="Panel" parent="CanvasLayer/MainContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_main_panel")
+
+[node name="InfoContent" type="VBoxContainer" parent="CanvasLayer/MainContainer/LeftPanel/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="WelcomeLabel" type="Label" parent="CanvasLayer/MainContainer/LeftPanel/InfoPanel/InfoContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 24
+text = "Welcome to ForensiScan! 👋"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainContainer/LeftPanel/InfoPanel/InfoContent"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_secondary_button")
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="CanvasLayer/MainContainer/LeftPanel/InfoPanel/InfoContent"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/normal_font = ExtResource("3_4j4m6")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]🎓 [b]Learn Digital Forensics[/b]
+Master fingerprint analysis and forensic techniques
+
+📚 [b]Interactive Lessons[/b]
+Step-by-step guided learning experience
+
+📝 [b]Practice Exams[/b]
+Test your knowledge with comprehensive quizzes
+
+🔬 [b]Hands-on Training[/b]
+Real-world forensic scenarios and case studies[/center]"
+fit_content = true
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/MainContainer/LeftPanel/InfoPanel/InfoContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.7, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 14
+text = "🟢 System Ready | Version 1.0.0"
+horizontal_alignment = 1
+
+[node name="RightPanel" type="VBoxContainer" parent="CanvasLayer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="MenuPanel" type="Panel" parent="CanvasLayer/MainContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_main_panel")
+
+[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="MenuTitle" type="Label" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 32
+text = "📋 Main Menu"
+horizontal_alignment = 1
+
+[node name="MenuSeparator" type="HSeparator" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_secondary_button")
+
+[node name="LessonSection" type="VBoxContainer" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LessonLabel" type="Label" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/LessonSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 20
+text = "📚 Learning Modules"
+
+[node name="StartPrelimLesson" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/LessonSection"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "📖 Prelim Lesson"
+
+[node name="StartMidtermButton" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/LessonSection"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_rkgjm")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "📑 Midterm Lesson"
+
+[node name="AssessmentSection" type="VBoxContainer" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="AssessmentLabel" type="Label" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 20
+text = "📝 Assessments"
+
+[node name="StartPrelimExamButton" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_secondary_button")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "📊 Prelim Exam"
+
+[node name="Button4" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_secondary_button")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "🎯 Practice Quiz"
+
+[node name="BottomSpacer" type="Control" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuitSection" type="VBoxContainer" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="QuitSeparator" type="HSeparator" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/QuitSection"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_secondary_button")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/QuitSection"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_quit_button")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "🚪 Exit Application"
+
+[node name="LicenseVerifier" parent="." instance=ExtResource("4_cwid3")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 818.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" parent="LicenseVerifier" index="0"]
+visible = false
+
+[node name="DialogCanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ResumeProgressDialog" parent="DialogCanvasLayer" instance=ExtResource("5_dialog")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/LessonSection/StartPrelimLesson" to="." method="_on_start_prelim_lesson_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/LessonSection/StartMidtermButton" to="." method="_on_start_midterm_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection/StartPrelimExamButton" to="." method="_on_start_prelim_exam_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/QuitSection/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="dialog_closed" from="DialogCanvasLayer/ResumeProgressDialog" to="." method="_on_resume_dialog_closed"]
+[connection signal="resume_selected" from="DialogCanvasLayer/ResumeProgressDialog" to="." method="_on_resume_selected"]
+[connection signal="start_fresh_selected" from="DialogCanvasLayer/ResumeProgressDialog" to="." method="_on_start_fresh_selected"]
+
+[editable path="LicenseVerifier"]

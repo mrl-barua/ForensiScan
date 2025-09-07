@@ -43,6 +43,7 @@ fit_content = true
 
 [node name="ZoomableImage" parent="." instance=ExtResource("5_a8o4f")]
 scale = Vector2(1.0036, 1.00362)
+pivot_offset = Vector2(-279.992, -934.617)
 image_texture = ExtResource("7_y88mo")
 metadata/_edit_use_anchors_ = true
 

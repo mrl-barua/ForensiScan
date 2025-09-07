@@ -1,9 +1,11 @@
 # ZoomableImage Component Usage Guide
 
 ## Overview
+
 The ZoomableImage component is a reusable Godot component that displays images with click-to-zoom functionality. When clicked, images open in a full-screen view with zoom, pan, and navigation controls.
 
 ## Features
+
 - ✅ **Resizable Preview**: Configurable preview image size
 - ✅ **Click to Zoom**: Click any image to open full-screen view
 - ✅ **Full-Screen Navigation**: Dedicated full-screen mode with controls
@@ -17,6 +19,7 @@ The ZoomableImage component is a reusable Godot component that displays images w
 ## Quick Start
 
 ### 1. Basic Usage in Scene
+
 ```gdscript
 # Add ZoomableImage.tscn to your scene
 # Set properties in the inspector:
@@ -26,6 +29,7 @@ The ZoomableImage component is a reusable Godot component that displays images w
 ```
 
 ### 2. Programmatic Usage
+
 ```gdscript
 # Load and instantiate the component
 var zoomable_scene = preload("res://src/scenes/Components/ZoomableImage.tscn")
@@ -46,6 +50,7 @@ add_child(zoomable_image)
 ## Configuration Properties
 
 ### Exported Properties (Set in Inspector)
+
 - `image_texture: Texture2D` - The image to display
 - `image_size: Vector2` - Size of the preview image (default: 400x300)
 - `zoom_speed: float` - Speed of zoom operations (default: 0.2)
@@ -56,6 +61,7 @@ add_child(zoomable_image)
 ## Methods
 
 ### Image Management
+
 ```gdscript
 # Set image texture and optional size
 set_image_texture(texture: Texture2D, new_size: Vector2 = Vector2.ZERO)
@@ -71,6 +77,7 @@ set_label_text(text: String)
 ```
 
 ### Navigation
+
 ```gdscript
 # Set callback for returning from fullscreen
 set_return_callback(callback: Callable)
@@ -81,6 +88,7 @@ close_fullscreen()
 ```
 
 ### Zoom Controls
+
 ```gdscript
 # Zoom operations
 zoom_in()
@@ -92,6 +100,7 @@ reset_zoom()
 ## Signals
 
 ### Available Signals
+
 ```gdscript
 # Emitted when image preview is clicked
 signal image_clicked
@@ -104,6 +113,7 @@ signal fullscreen_closed
 ```
 
 ### Signal Usage Example
+
 ```gdscript
 func _ready():
     zoomable_image.image_clicked.connect(_on_image_clicked)
@@ -126,18 +136,21 @@ func _on_fullscreen_closed():
 ## Controls
 
 ### Mouse Controls (Desktop)
+
 - **Click Image**: Open full-screen view
 - **Mouse Wheel**: Zoom in/out in full-screen mode
 - **Click & Drag**: Pan image in full-screen mode
 - **ESC Key**: Close full-screen view
 
 ### Touch Controls (Mobile)
+
 - **Tap Image**: Open full-screen view
 - **Pinch Gesture**: Zoom in/out in full-screen mode
 - **Single Touch Drag**: Pan image in full-screen mode
 - **Close Button**: Exit full-screen view
 
 ### Button Controls
+
 - **Zoom In (+)**: Increase zoom level
 - **Zoom Out (-)**: Decrease zoom level
 - **Reset**: Fit image to screen
@@ -146,6 +159,7 @@ func _on_fullscreen_closed():
 ## Integration Examples
 
 ### Forensic Evidence Gallery
+
 ```gdscript
 extends Control
 
@@ -157,10 +171,10 @@ func _ready():
 func load_evidence_images():
     var evidence_files = [
         "res://assets/images/Evidence/fingerprint_1.jpg",
-        "res://assets/images/Evidence/footprint_1.jpg", 
+        "res://assets/images/Evidence/footprint_1.jpg",
         "res://assets/images/Evidence/document_1.jpg"
     ]
-    
+
     for i in range(evidence_files.size()):
         var zoomable = create_zoomable_image(evidence_files[i])
         zoomable.set_label_text("Evidence " + str(i + 1))
@@ -180,6 +194,7 @@ func _on_return_to_gallery():
 ```
 
 ### Lesson Integration
+
 ```gdscript
 extends Control
 
@@ -189,7 +204,7 @@ func setup_lesson_images():
     fingerprint_image.set_image_texture(fingerprint_texture)
     fingerprint_image.set_label_text("Examine the ridge patterns")
     fingerprint_image.set_return_callback(_on_continue_lesson)
-    
+
     # When user returns, continue with lesson
     fingerprint_image.image_clicked.connect(_on_fingerprint_examined)
 
@@ -203,6 +218,7 @@ func _on_continue_lesson():
 ```
 
 ## File Structure
+
 ```
 src/
 ├── scenes/Components/
@@ -218,21 +234,25 @@ src/
 ## Best Practices
 
 ### Performance
+
 - Use compressed textures for large images
 - Consider image resolution vs. device capabilities
 - Preload frequently used images
 
 ### User Experience
+
 - Provide clear labels indicating images are clickable
 - Use consistent image sizes within the same context
 - Ensure zoom controls are easily accessible on mobile
 
 ### Educational Context
+
 - Use meaningful labels that relate to learning objectives
 - Integrate with progress tracking systems
 - Provide context for why users should examine images
 
 ### Accessibility
+
 - Ensure touch targets are at least 44px for mobile
 - Use high contrast for control buttons
 - Provide alternative text descriptions when possible
@@ -240,17 +260,19 @@ src/
 ## Troubleshooting
 
 ### Common Issues
+
 1. **Image not showing**: Check texture path and format (PNG/JPG supported)
 2. **Zoom not working**: Ensure min_zoom < max_zoom and zoom_speed > 0
 3. **Touch controls not responding**: Check if mouse_filter is set correctly
 4. **Return callback not working**: Verify callback is set and callable is valid
 
 ### Debug Tips
+
 ```gdscript
 # Enable debug output
 func _ready():
     zoomable_image.image_clicked.connect(_debug_image_clicked)
-    
+
 func _debug_image_clicked():
     print("Image clicked - texture: ", zoomable_image.image_texture)
     print("Current zoom: ", zoomable_image.current_zoom)

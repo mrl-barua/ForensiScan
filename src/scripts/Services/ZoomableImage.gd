@@ -1,7 +1,8 @@
 extends Control
 
 # Configurable properties
-@export var image_texture: Texture2D
+@export var image_texture: Texture2D  # Legacy single image support
+@export var image_textures: Array[Texture2D] = []  # Multiple images support
 @export var image_size: Vector2 = Vector2(400, 300)
 @export var zoom_speed: float = 0.2
 @export var min_zoom: float = 0.3
@@ -12,6 +13,9 @@ extends Control
 @export var modal_window_size: Vector2 = Vector2(900, 700)
 @export var modal_min_size: Vector2 = Vector2(400, 300)
 @export var modal_max_size: Vector2 = Vector2(1600, 1200)
+@export_group("Multiple Images Settings")
+@export var vbox_separation: int = 20
+@export var max_visible_images: int = 5
 @export_group("Android Settings")
 @export var android_use_fullscreen_modal: bool = true
 @export var android_modal_padding: int = 40
@@ -19,7 +23,8 @@ extends Control
 
 # Node references
 @onready var image_container: Control = $ImageContainer
-@onready var image_button: TextureButton = $ImageContainer/ImageButton
+@onready var vbox_container: VBoxContainer = $ImageContainer/VBoxContainer
+@onready var image_buttons: Array[TextureButton] = []
 @onready var image_label: Label = $ImageContainer/ImageLabel
 @onready var fullscreen_overlay: Control = $FullScreenOverlay
 @onready var modal_background: ColorRect = $FullScreenOverlay/ModalBackground
@@ -56,6 +61,7 @@ var is_modal_open: bool = false
 var modal_tween: Tween
 var previous_modulate: Color
 var was_mouse_captured: bool = false
+var current_image_index: int = 0  # Track which image is currently displayed in modal
 
 # Modal window interaction
 var is_dragging_window: bool = false
@@ -76,6 +82,18 @@ signal fullscreen_closed
 
 func _ready():
 	print("ZoomableImage _ready() called")
+	
+	# Initialize image buttons array
+	if vbox_container:
+		for i in range(max_visible_images):
+			var button_name = "ImageButton" + str(i + 1)
+			var button = vbox_container.get_node_or_null(button_name)
+			if button:
+				image_buttons.append(button)
+				print("Found image button: ", button_name)
+			else:
+				print("Warning: Could not find image button: ", button_name)
+	
 	setup_component()
 	connect_signals()
 	# Call deferred to ensure layout is calculated
@@ -83,18 +101,28 @@ func _ready():
 
 func _update_layout():
 	print("ZoomableImage _update_layout() called")
-	# Update the image button position after layout is calculated
-	if image_texture and image_button:
-		update_image_button_position()
-		print("Image button updated - size: ", image_button.size, " position: ", image_button.position)
+	# Update the image button positions after layout is calculated
+	if image_buttons.size() > 0:
+		for i in range(image_buttons.size()):
+			var button = image_buttons[i]
+			if button and button.visible:
+				button.custom_minimum_size = image_size
+				print("Image button ", i + 1, " updated - size: ", button.size, " position: ", button.position)
 
 func setup_component():
 	print("ZoomableImage setup_component() called")
-	print("Image texture: ", image_texture)
-	print("Image size: ", image_size)
 	
-	# Setup image button
-	if image_texture:
+	# Set VBoxContainer separation
+	if vbox_container:
+		vbox_container.add_theme_constant_override("separation", vbox_separation)
+		print("VBoxContainer separation set to: ", vbox_separation)
+	
+	# Setup images - prioritize image_textures array, fallback to single image_texture
+	if image_textures.size() > 0:
+		print("Setting up multiple images: ", image_textures.size())
+		set_image_textures(image_textures)
+	elif image_texture:
+		print("Setting up single image texture")
 		set_image_texture(image_texture)
 	
 	# Setup label
@@ -110,15 +138,17 @@ func setup_component():
 func connect_signals():
 	print("ZoomableImage connect_signals() called")
 	
-	# Connect button signals (already connected in scene, but ensuring they exist)
-	if image_button:
-		if not image_button.pressed.is_connected(_on_image_clicked):
-			image_button.pressed.connect(_on_image_clicked)
-			print("✅ Connected image_button.pressed signal")
+	# Connect image button signals
+	for i in range(image_buttons.size()):
+		var button = image_buttons[i]
+		if button:
+			if not button.pressed.is_connected(_on_image_clicked):
+				button.pressed.connect(_on_image_clicked.bind(i))
+				print("✅ Connected image_button", i + 1, ".pressed signal")
+			else:
+				print("ℹ️ image_button", i + 1, ".pressed signal already connected")
 		else:
-			print("ℹ️ image_button.pressed signal already connected")
-	else:
-		print("❌ image_button is null!")
+			print("❌ image_button", i + 1, " is null!")
 		
 	if close_button:
 		if not close_button.pressed.is_connected(_on_close_button_pressed):
@@ -167,9 +197,11 @@ func connect_signals():
 func set_image_texture(texture: Texture2D, new_size: Vector2 = Vector2.ZERO):
 	image_texture = texture
 	
-	if texture:
-		# Set for preview button
-		image_button.texture_normal = texture
+	if texture and image_buttons.size() > 0:
+		# Set for the first button (backward compatibility)
+		var first_button = image_buttons[0]
+		first_button.texture_normal = texture
+		first_button.visible = true
 		
 		# Set for fullscreen view
 		fullscreen_image.texture = texture
@@ -177,30 +209,44 @@ func set_image_texture(texture: Texture2D, new_size: Vector2 = Vector2.ZERO):
 		# Store original size
 		original_image_size = texture.get_size()
 		
-		# Resize the preview image button
+		# Resize the preview image buttons
 		if new_size != Vector2.ZERO:
 			image_size = new_size
 		
-		image_button.custom_minimum_size = image_size
-		image_button.size = image_size
+		first_button.custom_minimum_size = image_size
 		
-		# Update position
-		update_image_button_position()
+		# Hide other buttons
+		for i in range(1, image_buttons.size()):
+			image_buttons[i].visible = false
 
-# Update image button position 
-func update_image_button_position():
-	if not image_button or not image_container:
-		return
-		
-	# Use the anchors to center instead of manual positioning
-	image_button.anchor_left = 0.5
-	image_button.anchor_top = 0.5
-	image_button.anchor_right = 0.5
-	image_button.anchor_bottom = 0.5
-	image_button.offset_left = -image_size.x / 2
-	image_button.offset_top = -image_size.y / 2
-	image_button.offset_right = image_size.x / 2
-	image_button.offset_bottom = image_size.y / 2
+# Public method to set multiple images
+func set_image_textures(textures: Array[Texture2D]):
+	image_textures = textures
+	
+	# Show/hide buttons based on available textures
+	for i in range(image_buttons.size()):
+		var button = image_buttons[i]
+		if i < textures.size() and textures[i] != null:
+			button.texture_normal = textures[i]
+			button.custom_minimum_size = image_size
+			button.visible = true
+			print("Set texture for button ", i + 1)
+		else:
+			button.visible = false
+			print("Hidden button ", i + 1)
+	
+	# Set the first texture for fullscreen view (default)
+	if textures.size() > 0 and textures[0] != null:
+		fullscreen_image.texture = textures[0]
+		original_image_size = textures[0].get_size()
+		current_image_index = 0
+
+# Utility function to set custom size
+func set_preview_size(new_size: Vector2):
+	image_size = new_size
+	for button in image_buttons:
+		if button and button.visible:
+			button.custom_minimum_size = image_size
 
 # Public method to set label text
 func set_label_text(text: String):
@@ -213,8 +259,26 @@ func set_return_callback(callback: Callable):
 	return_callback = callback
 
 # Handle image click to open fullscreen
-func _on_image_clicked():
-	print("🖱️ _on_image_clicked() called - opening modal fullscreen view")
+func _on_image_clicked(image_index: int = 0):
+	print("🖱️ _on_image_clicked() called for image index: ", image_index)
+	
+	# Store which image was clicked
+	current_image_index = image_index
+	
+	# Set the appropriate texture for fullscreen view
+	var texture_to_show: Texture2D
+	if image_textures.size() > image_index:
+		texture_to_show = image_textures[image_index]
+	elif image_index == 0 and image_texture:
+		texture_to_show = image_texture
+	
+	if texture_to_show:
+		fullscreen_image.texture = texture_to_show
+		original_image_size = texture_to_show.get_size()
+		print("Set fullscreen texture for image ", image_index + 1)
+	else:
+		print("❌ Warning: No texture found for image index ", image_index)
+		return
 	
 	# Haptic feedback for mobile
 	if enable_haptic_feedback and OS.get_name() == "Android":
@@ -222,19 +286,34 @@ func _on_image_clicked():
 	
 	open_fullscreen_modal()
 	image_clicked.emit()
-	print("✅ Image clicked signal emitted")
+	print("✅ Image clicked signal emitted for image ", image_index + 1)
 
 # Open fullscreen view with modal transition
 func open_fullscreen_modal():
 	print("🔍 open_fullscreen_modal() called")
-	if not image_texture:
+	
+	# Check if we have any texture to display
+	var has_texture = false
+	if fullscreen_image and fullscreen_image.texture:
+		has_texture = true
+	elif image_texture:
+		has_texture = true
+		fullscreen_image.texture = image_texture
+		original_image_size = image_texture.get_size()
+	elif image_textures.size() > 0 and image_textures[0]:
+		has_texture = true
+		fullscreen_image.texture = image_textures[0]
+		original_image_size = image_textures[0].get_size()
+		current_image_index = 0
+	
+	if not has_texture:
 		print("❌ Warning: No image texture set for fullscreen view")
 		return
 	
 	if is_modal_open:
 		return
 		
-	print("🚀 Opening centered resizable modal - texture size: ", image_texture.get_size())
+	print("🚀 Opening centered resizable modal - texture size: ", fullscreen_image.texture.get_size())
 	is_modal_open = true
 	
 	# Reset zoom
@@ -435,11 +514,11 @@ func trigger_haptic_feedback():
 
 # Reset fullscreen image to fit container
 func reset_fullscreen_image():
-	if not image_texture:
+	if not fullscreen_image or not fullscreen_image.texture:
 		return
 	
 	var container_size = scroll_container.size
-	var texture_size = original_image_size
+	var texture_size = fullscreen_image.texture.get_size()
 	
 	# Calculate scale to fit image in container while maintaining aspect ratio
 	var scale_x = container_size.x / texture_size.x
@@ -451,10 +530,11 @@ func reset_fullscreen_image():
 
 # Apply current zoom to fullscreen image
 func apply_zoom_to_image():
-	if not image_texture:
+	if not fullscreen_image or not fullscreen_image.texture:
 		return
 	
-	var new_size = original_image_size * current_zoom
+	var texture_size = fullscreen_image.texture.get_size()
+	var new_size = texture_size * current_zoom
 	fullscreen_image.custom_minimum_size = new_size
 	fullscreen_image.size = new_size
 	
@@ -659,16 +739,6 @@ func load_image_from_path(path: String) -> bool:
 		print("Failed to load image from: " + path)
 		return false
 
-# Utility function to set custom size
-func set_preview_size(new_size: Vector2):
-	image_size = new_size
-	if image_button:
-		image_button.custom_minimum_size = image_size
-		image_button.size = image_size
-		
-		# Update position using anchors
-		update_image_button_position()
-
 # Set modal window size
 func set_modal_size(new_size: Vector2):
 	modal_window_size = new_size
@@ -747,6 +817,93 @@ func configure_for_android(use_large_modal: bool = true, padding: int = 20):
 		android_modal_padding = padding
 		android_modal_scale = 2  # Large scale by default
 		print("📱 Configured for Android - fullscreen:", use_large_modal, " padding:", padding)
+
+# Set VBoxContainer separation
+func set_vbox_separation(separation: int):
+	vbox_separation = separation
+	if vbox_container:
+		vbox_container.add_theme_constant_override("separation", separation)
+		print("VBoxContainer separation updated to: ", separation)
+
+# Add a single image to the collection
+func add_image(texture: Texture2D) -> bool:
+	if image_textures.size() >= max_visible_images:
+		print("Warning: Maximum number of images reached (", max_visible_images, ")")
+		return false
+	
+	image_textures.append(texture)
+	
+	# Update the corresponding button
+	var index = image_textures.size() - 1
+	if index < image_buttons.size():
+		var button = image_buttons[index]
+		button.texture_normal = texture
+		button.custom_minimum_size = image_size
+		button.visible = true
+		print("Added image to button ", index + 1)
+		
+		# If this is the first image, set it as default for fullscreen
+		if index == 0:
+			fullscreen_image.texture = texture
+			original_image_size = texture.get_size()
+			current_image_index = 0
+		
+		return true
+	
+	return false
+
+# Remove an image from the collection
+func remove_image(index: int) -> bool:
+	if index < 0 or index >= image_textures.size():
+		print("Warning: Invalid image index ", index)
+		return false
+	
+	image_textures.remove_at(index)
+	
+	# Update all buttons
+	for i in range(image_buttons.size()):
+		var button = image_buttons[i]
+		if i < image_textures.size():
+			button.texture_normal = image_textures[i]
+			button.visible = true
+		else:
+			button.visible = false
+	
+	# Update current index if needed
+	if current_image_index >= image_textures.size():
+		current_image_index = max(0, image_textures.size() - 1)
+	
+	# Update fullscreen texture
+	if image_textures.size() > 0:
+		fullscreen_image.texture = image_textures[current_image_index]
+		original_image_size = image_textures[current_image_index].get_size()
+	
+	print("Removed image at index ", index)
+	return true
+
+# Clear all images
+func clear_images():
+	image_textures.clear()
+	for button in image_buttons:
+		button.visible = false
+	
+	current_image_index = 0
+	print("Cleared all images")
+
+# Get the number of visible images
+func get_image_count() -> int:
+	return image_textures.size()
+
+# Set the maximum number of visible images
+func set_max_visible_images(max_count: int):
+	max_visible_images = clamp(max_count, 1, 5)
+	
+	# Hide buttons beyond the max count
+	for i in range(max_visible_images, image_buttons.size()):
+		if i < image_buttons.size():
+			image_buttons[i].visible = false
+	
+	print("Max visible images set to: ", max_visible_images)
 
 # Helper function to dynamically adjust modal size for device orientation
 func adjust_for_orientation():

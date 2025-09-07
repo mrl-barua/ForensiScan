@@ -7,22 +7,26 @@ Your ZoomableImage component is **already excellent** and meets all your require
 ## ✅ **Requirements Met**
 
 ### 1. ✅ Placeable Anywhere
+
 - The component can be placed anywhere in your scene
 - Uses Control node with flexible anchoring system
 - Maintains its functionality regardless of position
 
 ### 2. ✅ Modal Opens Centered
+
 - `center_modal_window()` function ensures modal always appears at screen center
 - Independent of the component's position in the scene
 - Responsive to different screen sizes
 
 ### 3. ✅ Full Modal Functionality
+
 - **Resizing**: Drag the resize handle (⤡) in bottom-right corner
 - **Zoom**: Mouse wheel, pinch gestures, or zoom buttons
 - **Panning**: Click and drag the image
 - **Touch Support**: Full mobile gesture support
 
 ### 4. ✅ Modal Closing
+
 - ESC key support (implemented in `_input()` function)
 - Click outside the modal (ModalBackground)
 - Close button (✕) in title bar
@@ -47,6 +51,7 @@ ZoomableImage (Control)
 ## 🚀 **Key Features**
 
 ### **Centering Logic** ⭐
+
 ```gdscript
 func center_modal_window():
     var screen_size = get_viewport().get_visible_rect().size
@@ -56,6 +61,7 @@ func center_modal_window():
 ```
 
 ### **Zoom Functionality** ⭐
+
 - Mouse wheel zoom
 - Pinch-to-zoom (mobile)
 - Zoom buttons
@@ -63,11 +69,13 @@ func center_modal_window():
 - Zoom limits (min_zoom: 0.3, max_zoom: 8.0)
 
 ### **Pan & Drag** ⭐
+
 - Pan the image when zoomed
 - Drag the modal window by title bar
 - Touch-friendly with gesture recognition
 
 ### **Mobile Optimization** ⭐
+
 - Haptic feedback for Android
 - Touch gesture support
 - Mobile-friendly button sizes
@@ -76,6 +84,7 @@ func center_modal_window():
 ## 📱 **Usage Examples**
 
 ### Basic Usage
+
 ```gdscript
 # Add to any scene
 var zoomable_image = preload("res://src/scenes/Components/ZoomableImage.tscn").instantiate()
@@ -90,6 +99,7 @@ zoomable_image.image_size = Vector2(200, 150)
 ```
 
 ### Advanced Configuration
+
 ```gdscript
 # Configure modal behavior
 zoomable_image.modal_window_size = Vector2(1000, 700)
@@ -103,6 +113,7 @@ zoomable_image.fullscreen_closed.connect(_on_modal_closed)
 ```
 
 ### Positioning Examples
+
 ```gdscript
 # Top-right corner
 zoomable_image.anchors_preset = Control.PRESET_TOP_RIGHT
@@ -119,21 +130,25 @@ zoomable_image.anchors_preset = Control.PRESET_CENTER
 ## 🎮 **Controls Reference**
 
 ### Preview Mode
+
 - **Click**: Open modal
 
 ### Modal Mode
+
 - **Mouse Wheel**: Zoom in/out
 - **Click + Drag**: Pan image (when zoomed)
 - **ESC**: Close modal
 - **Click Outside**: Close modal
 
 ### Mobile Gestures
+
 - **Pinch**: Zoom in/out
 - **Double Tap**: Toggle zoom
 - **Single Touch + Drag**: Pan image
 - **Haptic Feedback**: On Android devices
 
 ### Window Controls
+
 - **Title Bar Drag**: Move modal window
 - **Resize Handle**: Resize modal window
 - **Zoom Buttons**: Manual zoom control
@@ -142,6 +157,7 @@ zoomable_image.anchors_preset = Control.PRESET_CENTER
 ## 🔧 **Customization Options**
 
 ### Export Variables
+
 ```gdscript
 @export var image_texture: Texture2D          # The image to display
 @export var image_size: Vector2 = Vector2(400, 300)  # Preview size
@@ -156,21 +172,25 @@ zoomable_image.anchors_preset = Control.PRESET_CENTER
 ## 🏆 **Best Practices for Godot 4.2**
 
 ### 1. **Modal Management** ✅ (You're doing this!)
+
 - Use z_index for proper layering
 - Handle input properly with mouse_filter
 - Animate transitions with Tween
 
 ### 2. **Performance** ✅ (You're doing this!)
+
 - Use TextureRect with proper stretch modes
 - Efficient zoom calculations
 - Proper signal connections
 
 ### 3. **Mobile Support** ✅ (You're doing this!)
+
 - Touch gesture recognition
 - Haptic feedback integration
 - Responsive UI elements
 
 ### 4. **Accessibility** ✅ (You're doing this!)
+
 - Keyboard shortcuts (ESC)
 - Clear visual feedback
 - Proper button labels

@@ -7,24 +7,28 @@ The ZoomableImage component now provides a fully native Android modal experience
 ### ✨ **New Android Features**
 
 #### 📱 **Modal Design**
+
 - **Full-screen overlay**: Dark background with 95% opacity
 - **Safe area support**: Respects device notches and system UI
 - **Smooth animations**: 300ms modal transitions with scale effects
 - **Top/bottom bars**: Clean UI with title and controls
 
 #### 👆 **Enhanced Touch Controls**
+
 - **Double-tap to zoom**: Quick zoom toggle at tap location
 - **Pinch-to-zoom**: Smooth pinch gestures with center point zoom
 - **Pan threshold**: Prevents accidental panning (20px threshold)
 - **Smart touch detection**: Distinguishes between pan and zoom gestures
 
 #### 📳 **Haptic Feedback**
+
 - **Touch start**: Light vibration on image tap
 - **Modal open/close**: Medium vibration for transitions
 - **Double-tap zoom**: Light vibration for zoom toggle
 - **Configurable**: `enable_haptic_feedback` property to control
 
 #### 🎯 **Mobile-Optimized Properties**
+
 ```gdscript
 # Enhanced zoom range for mobile viewing
 min_zoom = 0.3  # Allow more zoom-out for overview
@@ -38,6 +42,7 @@ modal_transition_duration = 0.3  # Quick modal animations
 ### 🔧 **Usage for Android**
 
 #### Basic Android Setup
+
 ```gdscript
 # Configure for optimal Android experience
 @onready var evidence_image = $ZoomableImage
@@ -50,6 +55,7 @@ func _ready():
 ```
 
 #### Mobile Event Handling
+
 ```gdscript
 func setup_mobile_evidence():
     evidence_image.image_clicked.connect(_on_evidence_tapped)
@@ -59,11 +65,11 @@ func setup_mobile_evidence():
 func _on_evidence_tapped():
     # Track that user examined evidence
     print("📱 Student examined evidence on mobile")
-    
+
 func _on_modal_opened():
     # Hide navigation during examination
     navigation_ui.visible = false
-    
+
 func _on_modal_closed():
     # Restore UI and continue lesson
     navigation_ui.visible = true
@@ -73,15 +79,17 @@ func _on_modal_closed():
 ### 🎮 **Touch Gesture Guide**
 
 #### **Primary Gestures**
-| Gesture | Action | Feedback |
-|---------|--------|----------|
-| **Tap** | Open modal | Light haptic |
-| **Double-tap** | Toggle zoom | Light haptic |
-| **Pinch** | Zoom in/out | Visual zoom |
-| **Drag** | Pan image | Smooth scroll |
+
+| Gesture         | Action      | Feedback      |
+| --------------- | ----------- | ------------- |
+| **Tap**         | Open modal  | Light haptic  |
+| **Double-tap**  | Toggle zoom | Light haptic  |
+| **Pinch**       | Zoom in/out | Visual zoom   |
+| **Drag**        | Pan image   | Smooth scroll |
 | **Back button** | Close modal | Medium haptic |
 
 #### **Advanced Interactions**
+
 - **Zoom centering**: Double-tap zooms to tap location
 - **Pinch centering**: Zoom centers between fingers
 - **Smart panning**: Only activates after 20px movement
@@ -106,20 +114,22 @@ FullScreenOverlay (z-index: 1000)
 ### 🔌 **Android Integration**
 
 #### Haptic Feedback System
+
 ```gdscript
 # Custom vibration utility for Android
 AndroidVibrationUtil.light_feedback()    # UI interactions
-AndroidVibrationUtil.medium_feedback()   # Important actions  
+AndroidVibrationUtil.medium_feedback()   # Important actions
 AndroidVibrationUtil.strong_feedback()   # Major events
 ```
 
 #### Device Adaptation
+
 ```gdscript
 func adapt_for_android():
     if OS.get_name() == "Android":
         # Enable Android-specific features
         zoomable_image.enable_haptic_feedback = true
-        
+
         # Adapt for screen size
         if is_tablet():
             zoomable_image.image_size = Vector2(400, 300)
@@ -140,6 +150,7 @@ Use `ZoomableImageMobileDemo.tscn` to see the full Android experience:
 ### 🏗️ **Implementation Examples**
 
 #### Forensic Evidence Gallery
+
 ```gdscript
 extends Control
 
@@ -150,7 +161,7 @@ func setup_evidence_gallery():
         load_dna_analysis_chart(),
         load_lab_report_scan()
     ]
-    
+
     for i in range(evidence_images.size()):
         var zoomable = create_mobile_evidence_viewer(evidence_images[i])
         zoomable.set_return_callback(_on_evidence_examined.bind(i))
@@ -159,35 +170,37 @@ func setup_evidence_gallery():
 func create_mobile_evidence_viewer(texture: Texture2D) -> Control:
     var zoomable_scene = preload("res://src/scenes/Components/ZoomableImage.tscn")
     var zoomable = zoomable_scene.instantiate()
-    
+
     # Configure for mobile forensic viewing
     zoomable.set_image_texture(texture, Vector2(320, 240))
     zoomable.enable_haptic_feedback = true
     zoomable.min_zoom = 0.3  # See full evidence context
     zoomable.max_zoom = 12.0  # Examine fine details
-    
+
     return zoomable
 ```
 
 #### Educational Integration
+
 ```gdscript
 func setup_lesson_images():
     var lesson_images = get_lesson_images()
-    
+
     for image_data in lesson_images:
         var zoomable = create_lesson_image(image_data)
-        
+
         # Track educational interactions
         zoomable.image_clicked.connect(_on_student_examined_image)
         zoomable.fullscreen_opened.connect(_on_detailed_study_started)
         zoomable.fullscreen_closed.connect(_on_study_completed)
-        
+
         lesson_container.add_child(zoomable)
 ```
 
 ### 🛡️ **Android Permissions**
 
 For haptic feedback, ensure your Android export includes:
+
 ```xml
 <uses-permission android:name="android.permission.VIBRATE" />
 ```

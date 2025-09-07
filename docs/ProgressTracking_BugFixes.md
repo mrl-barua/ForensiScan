@@ -3,9 +3,11 @@
 ## Issues Identified and Fixed
 
 ### 1. Missing ProgressManager Singleton
+
 **Problem**: The ProgressManager.gd file was missing from the autoload folder, causing all progress tracking calls to fail.
 
 **Solution**: Created `src/autoload/ProgressManager.gd` with complete functionality:
+
 - Progress tracking for Prelim (25 lessons) and Midterm (65 lessons)
 - JSON-based save/load system
 - Resume functionality with timestamp tracking
@@ -13,9 +15,11 @@
 - Progress reset capabilities
 
 ### 2. Missing Signal Connections
+
 **Problem**: The ResumeProgressDialog signals were not connected to the MainMenu in the .tscn file.
 
 **Solution**: Added proper signal connections in `MainMenu.tscn`:
+
 ```
 [connection signal="resume_selected" from="ResumeProgressDialog" to="." method="_on_resume_selected"]
 [connection signal="start_fresh_selected" from="ResumeProgressDialog" to="." method="_on_start_fresh_selected"]
@@ -23,9 +27,11 @@
 ```
 
 ### 3. Signal Await Issue
+
 **Problem**: ResumeProgressDialog was incorrectly awaiting its own signal emission, causing deadlock.
 
 **Solution**: Changed the await calls to wait for the animation tween instead:
+
 ```gdscript
 # Before (incorrect)
 await dialog_closed
@@ -35,17 +41,21 @@ await dialog_tween.finished
 ```
 
 ### 4. Button State Management
+
 **Problem**: Buttons could become disabled after returning from lessons.
 
 **Solution**: Added explicit button enabling in `reset_all_buttons()`:
+
 ```gdscript
 button.disabled = false  # Ensure buttons are always enabled
 ```
 
 ### 5. Scene Path Validation
+
 **Problem**: No validation for scene file existence could cause crashes.
 
 **Solution**: Added fallback scene paths:
+
 ```gdscript
 if not FileAccess.file_exists(scene_path):
     # Fallback to known working scenes
@@ -58,6 +68,7 @@ if not FileAccess.file_exists(scene_path):
 ## Files Modified
 
 ### Core System Files
+
 - ✅ `src/autoload/ProgressManager.gd` - **CREATED** - Complete progress tracking system
 - ✅ `src/scripts/Services/ResumeProgressDialog.gd` - Fixed signal await issues
 - ✅ `src/scenes/Components/ResumeProgressDialog.tscn` - Already properly configured
@@ -66,18 +77,21 @@ if not FileAccess.file_exists(scene_path):
 - ✅ `project.godot` - ProgressManager already in autoloads
 
 ### Lesson Scripts (88 files updated)
+
 - ✅ All Prelim lesson scripts (24 files) - Added progress tracking calls
 - ✅ All Midterm lesson scripts (64 files) - Added progress tracking calls
 
 ## How the System Works Now
 
 ### Normal Flow
+
 1. User clicks "Prelim Lesson" or "Midterm Lesson"
 2. System checks if there's existing progress using `ProgressManager.has_progress()`
 3. If no progress or user is at lesson 1, start fresh
 4. If progress exists and user is beyond lesson 1, show resume dialog
 
 ### Resume Dialog Flow
+
 1. Dialog shows last accessed lesson info with timestamp
 2. User can choose:
    - **Continue**: Resume from last lesson
@@ -86,6 +100,7 @@ if not FileAccess.file_exists(scene_path):
 3. Dialog animates out and navigates accordingly
 
 ### Progress Tracking
+
 1. Each lesson automatically calls `ProgressManager.update_lesson_progress(lesson_type, lesson_number)`
 2. Progress is saved to `user://progress_data.json`
 3. System tracks current lesson, completed lessons, and timestamps
