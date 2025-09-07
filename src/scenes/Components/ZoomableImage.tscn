@@ -69,6 +69,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.7)
 
 [node name="ModalWindow" type="Panel" parent="FullScreenOverlay"]
+custom_minimum_size = Vector2(900, 700)
 layout_mode = 1
 anchors_preset = -1
 offset_left = 560.0
@@ -93,7 +94,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="ResizeIcon" type="Label" parent="FullScreenOverlay/ModalWindow/ResizeHandle"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -66.817
@@ -118,10 +118,10 @@ anchor_left = -0.7
 anchor_top = -0.4
 anchor_right = -0.7
 anchor_bottom = -0.4
-offset_left = 560.0
-offset_top = 240.0
-offset_right = 1360.0
-offset_bottom = 290.0
+offset_left = 631.0
+offset_top = 228.0
+offset_right = 1529.0
+offset_bottom = 278.0
 
 [node name="TitleBarDragArea" type="Control" parent="FullScreenOverlay/ModalWindow/TitleBar"]
 layout_mode = 1
@@ -129,10 +129,10 @@ anchor_left = -0.683
 anchor_top = -5.205
 anchor_right = -0.683
 anchor_bottom = -5.205
-offset_left = 546.4
-offset_top = 260.25
-offset_right = 1296.4
-offset_bottom = 310.25
+offset_left = 612.334
+offset_top = 259.25
+offset_right = 1513.33
+offset_bottom = 309.25
 grow_horizontal = 0
 
 [node name="Title" type="Label" parent="FullScreenOverlay/ModalWindow/TitleBar"]
@@ -142,10 +142,10 @@ anchor_left = -0.693
 anchor_top = -4.704
 anchor_right = -0.693
 anchor_bottom = -4.704
-offset_left = 569.4
-offset_top = 245.2
-offset_right = 754.4
-offset_bottom = 275.2
+offset_left = 635.314
+offset_top = 246.2
+offset_right = 820.314
+offset_bottom = 276.2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 18
 text = "Image Viewer"
@@ -158,10 +158,10 @@ anchor_left = -0.704
 anchor_top = -4.931
 anchor_right = -0.704
 anchor_bottom = -4.931
-offset_left = 1318.2
-offset_top = 251.55
-offset_right = 1358.2
-offset_bottom = 291.55
+offset_left = 1483.19
+offset_top = 252.55
+offset_right = 1523.19
+offset_bottom = 292.55
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -186,10 +186,10 @@ anchor_left = -0.686
 anchor_top = -0.625
 anchor_right = -0.686
 anchor_bottom = -0.625
-offset_left = 558.8
-offset_top = 303.75
-offset_right = 1338.8
-offset_bottom = 753.75
+offset_left = 633.8
+offset_top = 293.75
+offset_right = 1509.8
+offset_bottom = 889.75
 
 [node name="FullScreenImage" type="TextureRect" parent="FullScreenOverlay/ModalWindow/ContentArea/ScrollContainer"]
 layout_mode = 2

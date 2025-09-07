@@ -9,9 +9,13 @@ extends Control
 @export var label_text: String = "Click to zoom"
 @export var enable_haptic_feedback: bool = true
 @export var modal_transition_duration: float = 0.3
-@export var modal_window_size: Vector2 = Vector2(800, 600)
-@export var modal_min_size: Vector2 = Vector2(800, 600)
+@export var modal_window_size: Vector2 = Vector2(900, 700)
+@export var modal_min_size: Vector2 = Vector2(400, 300)
 @export var modal_max_size: Vector2 = Vector2(1600, 1200)
+@export_group("Android Settings")
+@export var android_use_fullscreen_modal: bool = true
+@export var android_modal_padding: int = 40
+@export_enum("Small:0.7", "Medium:0.85", "Large:0.95", "Custom") var android_modal_scale: int = 2
 
 # Node references
 @onready var image_container: Control = $ImageContainer
@@ -297,10 +301,28 @@ func center_modal_window():
 	fullscreen_overlay.position = Vector2.ZERO
 	fullscreen_overlay.size = screen_size
 	
-	# Calculate window size (clamp to min/max)
+	# Calculate window size with Android optimization
 	var window_size = modal_window_size
-	window_size.x = clamp(window_size.x, modal_min_size.x, min(modal_max_size.x, screen_size.x - 100))
-	window_size.y = clamp(window_size.y, modal_min_size.y, min(modal_max_size.y, screen_size.y - 100))
+	
+	# Android-specific sizing for better mobile experience
+	if OS.get_name() == "Android":
+		if android_use_fullscreen_modal:
+			# Use padding-based sizing
+			window_size.x = screen_size.x - android_modal_padding
+			window_size.y = screen_size.y - android_modal_padding
+			print("📱 Android fullscreen mode - size: ", window_size)
+		else:
+			# Use scale-based sizing
+			var scale_values = [0.7, 0.85, 0.95]  # Small, Medium, Large
+			var scale = scale_values[android_modal_scale] if android_modal_scale < 3 else 0.85
+			window_size.x = screen_size.x * scale
+			window_size.y = screen_size.y * scale
+			print("📱 Android scale mode (", scale, ") - size: ", window_size)
+	else:
+		# Desktop sizing with standard constraints
+		window_size.x = clamp(window_size.x, modal_min_size.x, min(modal_max_size.x, screen_size.x - 100))
+		window_size.y = clamp(window_size.y, modal_min_size.y, min(modal_max_size.y, screen_size.y - 100))
+		print("🖥️ Desktop/Standard sizing: ", window_size)
 	
 	# Center the window within the overlay
 	var window_pos = (screen_size - window_size) / 2
@@ -712,3 +734,25 @@ func _on_resize_handle_input(event: InputEvent):
 		
 		modal_window.size = new_size
 		modal_window_size = new_size  # Store for next opening
+
+# Helper function to configure Android-specific modal settings
+func configure_for_android(use_large_modal: bool = true, padding: int = 20):
+	"""
+	Configure the modal for optimal Android experience
+	use_large_modal: If true, uses nearly full screen
+	padding: Margin from screen edges in pixels
+	"""
+	if OS.get_name() == "Android":
+		android_use_fullscreen_modal = use_large_modal
+		android_modal_padding = padding
+		android_modal_scale = 2  # Large scale by default
+		print("📱 Configured for Android - fullscreen:", use_large_modal, " padding:", padding)
+
+# Helper function to dynamically adjust modal size for device orientation
+func adjust_for_orientation():
+	"""
+	Call this when device orientation changes to readjust modal size
+	"""
+	if is_modal_open and OS.get_name() == "Android":
+		center_modal_window()
+		print("📱 Modal size adjusted for orientation change")
