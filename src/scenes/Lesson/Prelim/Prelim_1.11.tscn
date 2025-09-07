@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c01hselo5cfha"]
+[gd_scene load_steps=7 format=3 uid="uid://c01hselo5cfha"]
 
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_ffi4v"]
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.11.gd" id="1_ijj0y"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="2_s6yqb"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_gfy4x"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="5_18yov"]
 [ext_resource type="Texture2D" uid="uid://dgenhlk5ssf6g" path="res://assets/images/Lesson/Prelim/prelim_1.11.png" id="5_yhdnt"]
 
 [node name="Prelim1_11" type="Node2D"]
@@ -46,14 +47,36 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
+[node name="ZoomableImage" parent="." instance=ExtResource("5_18yov")]
+image_texture = ExtResource("5_yhdnt")
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="ZoomableImage" index="0"]
+offset_left = 658.0
+offset_top = 54.0
+offset_right = 2578.0
+offset_bottom = 1134.0
+
+[node name="ImageButton" parent="ZoomableImage/ImageContainer" index="0"]
+anchor_top = 0.456
+anchor_bottom = 0.456
+offset_left = -212.0
+offset_top = -150.48
+offset_right = 188.0
+offset_bottom = 149.52
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.907966)
+
+[node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
+visible = false
+
 [node name="NavigationControls" parent="." instance=ExtResource("4_gfy4x")]
 visible = false
 manual_page_number = 11
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.10.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.12.tscn"
 
-[node name="Prelim1_11" type="Sprite2D" parent="."]
-position = Vector2(1669, 578)
-texture = ExtResource("5_yhdnt")
-
 [node name="Pause" parent="." instance=ExtResource("2_s6yqb")]
+
+[editable path="ZoomableImage"]

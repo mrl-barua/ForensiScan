@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmt15t1g05h6e"]
+[gd_scene load_steps=7 format=3 uid="uid://dmt15t1g05h6e"]
 
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_2nqs6"]
 [ext_resource type="Script" path="res://src/scripts/Lesson/Prelim/Prelim_1.3.gd" id="1_18uwh"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="2_04fx6"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_ohrqv"]
 [ext_resource type="Texture2D" uid="uid://c4ljtkbc0te5j" path="res://assets/images/Lesson/Prelim/prelim_1.3.png" id="5_ywu6s"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="6_f1sct"]
 
 [node name="Prelim1_3" type="Node2D"]
 script = ExtResource("1_18uwh")
@@ -41,15 +42,40 @@ text = "Rich Text"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
+[node name="ZoomableImage" parent="." instance=ExtResource("6_f1sct")]
+image_texture = ExtResource("5_ywu6s")
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="ZoomableImage" index="0"]
+offset_left = 658.0
+offset_top = 54.0
+offset_right = 2578.0
+offset_bottom = 1134.0
+
+[node name="ImageButton" parent="ZoomableImage/ImageContainer" index="0"]
+anchor_left = 0.415
+anchor_top = 0.493
+anchor_right = 0.415
+anchor_bottom = 0.493
+offset_left = -381.8
+offset_top = -231.44
+offset_right = 383.2
+offset_bottom = 278.56
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.907966)
+ignore_texture_size = false
+
+[node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
+visible = false
+
 [node name="NavigationControls" parent="." instance=ExtResource("4_ohrqv")]
 visible = false
 manual_page_number = 3
 previous_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.2.tscn"
 next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.4.tscn"
 
-[node name="Prelim1_3" type="Sprite2D" parent="."]
-position = Vector2(1550, 505)
-scale = Vector2(1.41561, 1.71078)
-texture = ExtResource("5_ywu6s")
-
 [node name="Pause" parent="." instance=ExtResource("2_04fx6")]
+visible = false
+
+[editable path="ZoomableImage"]

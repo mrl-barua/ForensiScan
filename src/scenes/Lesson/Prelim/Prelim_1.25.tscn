@@ -67,7 +67,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("5_d7bf5")
 text = "Go back to menu"
 
+[node name="Pause" parent="." instance=ExtResource("3_i2q81")]
+
 [connection signal="pressed" from="ProceedToQuizButton" to="." method="_on_proceed_to_quiz_button_pressed"]
 [connection signal="pressed" from="GoBackToMenuButton" to="." method="_on_go_back_to_menu_button_pressed"]
-
-[node name="Pause" parent="." instance=ExtResource("3_i2q81")]
