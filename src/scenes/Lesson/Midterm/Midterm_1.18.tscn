@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnmim1d8df768"]
+[gd_scene load_steps=9 format=3 uid="uid://dnmim1d8df768"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.18.gd" id="1_3m2l4"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_sg1c8"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_qthxo"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_6l7g4"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="5_htr1t"]
+[ext_resource type="Texture2D" uid="uid://dn4cgjulj1ku7" path="res://assets/images/Lesson/Prelim/prelim_1.4.png" id="6_c4dk8"]
+[ext_resource type="Texture2D" uid="uid://d3xmbw8v5jsxx" path="res://assets/images/Lesson/Midterm/Midterm_1.18.1.jpg" id="7_os7yq"]
+[ext_resource type="Texture2D" uid="uid://d3sbomv423lfx" path="res://assets/images/Lesson/Midterm/Midterm_1.18.2.jpg" id="8_e6pqg"]
 
 [node name="Midterm1_18" type="Node2D"]
 script = ExtResource("1_3m2l4")
@@ -17,7 +21,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 68.0
 offset_top = 220.0
-offset_right = 1868.0
+offset_right = 1374.0
 offset_bottom = 1077.0
 theme_override_constants/separation = 30
 
@@ -69,6 +73,31 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
+[node name="ZoomableImage" parent="." instance=ExtResource("5_htr1t")]
+image_texture = ExtResource("6_c4dk8")
+image_textures = Array[Texture2D]([ExtResource("7_os7yq"), ExtResource("8_e6pqg")])
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="ZoomableImage" index="0"]
+offset_left = 658.0
+offset_top = 54.0
+offset_right = 2578.0
+offset_bottom = 1134.0
+
+[node name="ImageButton" parent="ZoomableImage/ImageContainer" index="0"]
+anchor_top = 0.456
+anchor_bottom = 0.456
+offset_left = -212.0
+offset_top = -150.48
+offset_right = 188.0
+offset_bottom = 149.52
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.907966)
+
+[node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
+visible = false
+
 [node name="NavigationControls" parent="." instance=ExtResource("4_6l7g4")]
 visible = false
 manual_page_number = 18
@@ -76,3 +105,5 @@ previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.17.tscn"
 next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.19.tscn"
 
 [node name="Pause" parent="." instance=ExtResource("3_qthxo")]
+
+[editable path="ZoomableImage"]

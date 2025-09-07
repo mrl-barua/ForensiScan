@@ -11,8 +11,7 @@ extends Node2D
 @onready var detail_three_label: RichTextLabel = $VBoxContainer/DetailThree
 var typewriter: Typewriter
 
-@onready var proceed_to_quiz_button: Button = $ProceedToQuizButton
-@onready var go_back_to_menu_button: Button = $GoBackToMenuButton
+@onready var options_button: Button = $ButtonContainer
 
 func _ready():
 	# Track progress for this lesson
@@ -48,8 +47,7 @@ func _on_detail_two_typing_done():
 	
 func _on_detail_three_typing_done():
 	print("Detail three typing finished!")
-	proceed_to_quiz_button.show();
-	go_back_to_menu_button.show()
+	options_button.show();
 
 func _on_proceed_to_quiz_button_pressed():
 	get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci63qe57koq2s"]
+[gd_scene load_steps=7 format=3 uid="uid://ci63qe57koq2s"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.52.gd" id="1_hbi6p"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_t1dyh"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_7bhqo"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="3_41f3b"]
+[ext_resource type="Texture2D" uid="uid://2iduina3msd2" path="res://assets/images/Lesson/Midterm/Midterm_1.52.png" id="4_sg1me"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_xpomj"]
 
 [node name="Midterm1_52" type="Node2D"]
@@ -17,7 +19,7 @@ metadata/_edit_lock_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 68.0
 offset_top = 220.0
-offset_right = 1868.0
+offset_right = 1373.0
 offset_bottom = 1077.0
 theme_override_constants/separation = 30
 
@@ -69,6 +71,30 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
+[node name="ZoomableImage" parent="." instance=ExtResource("3_41f3b")]
+image_texture = ExtResource("4_sg1me")
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="ZoomableImage" index="0"]
+offset_left = -20.0
+offset_top = 105.0
+offset_right = 1900.0
+offset_bottom = 1185.0
+
+[node name="ImageButton" parent="ZoomableImage/ImageContainer" index="0"]
+anchor_top = 0.456
+anchor_bottom = 0.456
+offset_left = -212.0
+offset_top = -150.48
+offset_right = 188.0
+offset_bottom = 149.52
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.907966)
+
+[node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
+visible = false
+
 [node name="NavigationControls" parent="." instance=ExtResource("4_xpomj")]
 visible = false
 manual_page_number = 52
@@ -76,3 +102,5 @@ previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.51.tscn"
 next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.53.tscn"
 
 [node name="Pause" parent="." instance=ExtResource("3_7bhqo")]
+
+[editable path="ZoomableImage"]

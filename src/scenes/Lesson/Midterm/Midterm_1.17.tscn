@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0s5b7lhyhxbf"]
+[gd_scene load_steps=7 format=3 uid="uid://d0s5b7lhyhxbf"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.17.gd" id="1_mdsyf"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_abxyf"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="3_3vnrb"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_y62u6"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_wnlmy"]
+[ext_resource type="Texture2D" uid="uid://1ueilu5jv6yw" path="res://assets/images/Lesson/Midterm/Midterm_1.17.1.jpg" id="4_wsvlk"]
 
 [node name="Midterm1_17" type="Node2D"]
 script = ExtResource("1_mdsyf")
@@ -69,6 +71,31 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
+[node name="ZoomableImage" parent="VBoxContainer" instance=ExtResource("3_3vnrb")]
+layout_mode = 2
+image_texture = ExtResource("4_wsvlk")
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="VBoxContainer/ZoomableImage" index="0"]
+offset_left = 658.0
+offset_top = 54.0
+offset_right = 2578.0
+offset_bottom = 1134.0
+
+[node name="ImageButton" parent="VBoxContainer/ZoomableImage/ImageContainer" index="0"]
+anchor_top = 0.456
+anchor_bottom = 0.456
+offset_left = -212.0
+offset_top = -150.48
+offset_right = 188.0
+offset_bottom = 149.52
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.907966)
+
+[node name="FullScreenOverlay" parent="VBoxContainer/ZoomableImage" index="1"]
+visible = false
+
 [node name="NavigationControls" parent="." instance=ExtResource("4_wnlmy")]
 visible = false
 manual_page_number = 17
@@ -76,3 +103,5 @@ previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.16.tscn"
 next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.18.tscn"
 
 [node name="Pause" parent="." instance=ExtResource("3_y62u6")]
+
+[editable path="VBoxContainer/ZoomableImage"]

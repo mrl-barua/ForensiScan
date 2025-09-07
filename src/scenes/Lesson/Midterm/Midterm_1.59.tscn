@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ffoenre5hde"]
+[gd_scene load_steps=7 format=3 uid="uid://d1ffoenre5hde"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Midterm/Midterm_1.59.gd" id="1_m8a7d"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_bs886"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="3_ujctf"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="3_xopjv"]
+[ext_resource type="Texture2D" uid="uid://b3cwdeiupdujj" path="res://assets/images/Lesson/Midterm/Midterm_1.59.png" id="4_cybc0"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="4_t2sob"]
 
 [node name="Midterm1_59" type="Node2D"]
@@ -69,6 +71,30 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
+[node name="ZoomableImage" parent="." instance=ExtResource("3_xopjv")]
+image_texture = ExtResource("4_cybc0")
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="ZoomableImage" index="0"]
+offset_left = 6.0
+offset_top = 93.0
+offset_right = 1926.0
+offset_bottom = 1173.0
+
+[node name="ImageButton" parent="ZoomableImage/ImageContainer" index="0"]
+anchor_top = 0.456
+anchor_bottom = 0.456
+offset_left = -212.0
+offset_top = -150.48
+offset_right = 188.0
+offset_bottom = 149.52
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1, 0.907966)
+
+[node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
+visible = false
+
 [node name="NavigationControls" parent="." instance=ExtResource("4_t2sob")]
 visible = false
 manual_page_number = 59
@@ -76,3 +102,5 @@ previous_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.58.tscn"
 next_scene_path = "res://src/scenes/Lesson/Midterm/Midterm_1.60.tscn"
 
 [node name="Pause" parent="." instance=ExtResource("3_ujctf")]
+
+[editable path="ZoomableImage"]
