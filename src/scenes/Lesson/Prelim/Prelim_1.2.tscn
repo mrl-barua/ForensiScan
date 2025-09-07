@@ -11,6 +11,7 @@
 script = ExtResource("1_pq7yu")
 
 [node name="StarField" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
 texture = ExtResource("2_q0f44")
@@ -51,8 +52,25 @@ next_scene_path = "res://src/scenes/Lesson/Prelim/Prelim_1.3.tscn"
 visible = false
 
 [node name="ZoomableImage" parent="." instance=ExtResource("5_a8o4f")]
-offset_left = 1469.0
-offset_top = 376.0
-offset_right = 1869.0
-offset_bottom = 726.0
 image_texture = ExtResource("7_y88mo")
+metadata/_edit_use_anchors_ = true
+
+[node name="ImageContainer" parent="ZoomableImage" index="0"]
+offset_left = 658.0
+offset_top = 54.0
+offset_right = 2578.0
+offset_bottom = 1134.0
+
+[node name="ImageButton" parent="ZoomableImage/ImageContainer" index="0"]
+anchor_left = 0.5
+anchor_top = 0.456
+anchor_right = 0.5
+anchor_bottom = 0.456
+offset_left = -212.0
+offset_top = -150.48
+offset_right = 188.0
+offset_bottom = 149.52
+grow_horizontal = 0
+grow_vertical = 0
+
+[editable path="ZoomableImage"]

@@ -240,10 +240,25 @@ func open_fullscreen_modal():
 	# Show fullscreen overlay
 	fullscreen_overlay.visible = true
 	fullscreen_overlay.z_index = 1000  # Ensure it's on top
-	print("Fullscreen overlay made visible")
+	
+	# Force fullscreen overlay to cover entire viewport
+	fullscreen_overlay.anchor_left = 0.0
+	fullscreen_overlay.anchor_top = 0.0
+	fullscreen_overlay.anchor_right = 1.0
+	fullscreen_overlay.anchor_bottom = 1.0
+	fullscreen_overlay.offset_left = 0.0
+	fullscreen_overlay.offset_top = 0.0
+	fullscreen_overlay.offset_right = 0.0
+	fullscreen_overlay.offset_bottom = 0.0
+	
+	print("✅ Fullscreen overlay made visible and covering viewport")
+	print("📐 Overlay anchors: L:", fullscreen_overlay.anchor_left, " T:", fullscreen_overlay.anchor_top, " R:", fullscreen_overlay.anchor_right, " B:", fullscreen_overlay.anchor_bottom)
 	
 	# Center and size the modal window
 	center_modal_window()
+	
+	# Ensure centering after layout is processed
+	call_deferred("center_modal_window")
 	
 	# Set initial opacity for animation
 	fullscreen_overlay.modulate.a = 0.0
@@ -266,30 +281,43 @@ func open_fullscreen_modal():
 # Center the modal window on screen
 func center_modal_window():
 	if not modal_window:
+		print("❌ modal_window is null in center_modal_window()")
+		return
+	
+	if not fullscreen_overlay:
+		print("❌ fullscreen_overlay is null in center_modal_window()")
 		return
 		
-	# Get screen size
-	var screen_size = get_viewport().get_visible_rect().size
+	# Get the viewport (screen) size - this should be the actual screen size
+	var viewport = get_viewport()
+	var screen_size = viewport.get_visible_rect().size
+	print("🖥️ Screen size from viewport: ", screen_size)
+	
+	# Make sure the overlay covers the entire viewport
+	fullscreen_overlay.position = Vector2.ZERO
+	fullscreen_overlay.size = screen_size
 	
 	# Calculate window size (clamp to min/max)
 	var window_size = modal_window_size
 	window_size.x = clamp(window_size.x, modal_min_size.x, min(modal_max_size.x, screen_size.x - 100))
 	window_size.y = clamp(window_size.y, modal_min_size.y, min(modal_max_size.y, screen_size.y - 100))
 	
-	# Center the window
+	# Center the window within the overlay
 	var window_pos = (screen_size - window_size) / 2
+	
+	# Force clear all anchors to use absolute positioning
+	modal_window.anchor_left = 0.0
+	modal_window.anchor_top = 0.0
+	modal_window.anchor_right = 0.0
+	modal_window.anchor_bottom = 0.0
 	
 	# Apply position and size
 	modal_window.position = window_pos
 	modal_window.size = window_size
 	
-	# Clear anchors to use absolute positioning
-	modal_window.anchor_left = 0
-	modal_window.anchor_top = 0
-	modal_window.anchor_right = 0
-	modal_window.anchor_bottom = 0
-	
-	print("Modal window centered at: ", window_pos, " with size: ", window_size)
+	print("🎯 Modal window centered at: ", window_pos, " with size: ", window_size)
+	print("📐 Modal anchors set to: L:", modal_window.anchor_left, " T:", modal_window.anchor_top, " R:", modal_window.anchor_right, " B:", modal_window.anchor_bottom)
+	print("📐 Overlay position: ", fullscreen_overlay.position, " size: ", fullscreen_overlay.size)
 
 # Close fullscreen view with modal transition
 func close_fullscreen_modal():
