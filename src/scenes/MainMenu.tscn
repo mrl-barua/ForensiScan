@@ -302,6 +302,7 @@ theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "📋 Midterm Exam"
 
 [node name="Button4" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection"]
+visible = false
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4j4m6")

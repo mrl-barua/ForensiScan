@@ -408,13 +408,18 @@ func add_test_data():
 	print("Adding test data to QuizManager...")
 	
 	if QuizManager:
-		# Add test Prelim quiz result
-		QuizManager.store_quiz_results("Prelim_Quiz_Complete", 8, 10, [], [])
-		
-		# Add test Midterm quiz result
-		QuizManager.store_quiz_results("Midterm_Quiz_1.1", 9, 10, [], [])
+		# Use the new force save test data function if available
+		if QuizManager.has_method("force_save_test_data"):
+			QuizManager.force_save_test_data()
+		else:
+			# Fallback to manual test data creation
+			QuizManager.store_quiz_results("Prelim_Quiz_Complete", 8, 10, [], [])
+			QuizManager.store_quiz_results("Midterm_Quiz_1.1", 9, 10, [], [])
 		
 		print("Test data added successfully!")
+		print("=== QuizManager Debug Info ===")
+		QuizManager.print_debug_info()
+		print("==============================")
 		
 		# Reload the display
 		load_quiz_results()

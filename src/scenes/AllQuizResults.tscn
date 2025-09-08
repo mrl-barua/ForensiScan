@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7r2xkqp41kdf"]
+[gd_scene load_steps=6 format=3 uid="uid://b7u02tt2n3e4o"]
 
-[ext_resource type="Theme" uid="uid://dqjv6k13xh14l" path="res://modern_button.tres" id="1_72abc"]
 [ext_resource type="Script" path="res://src/scripts/AllQuizResults.gd" id="2_34def"]
-[ext_resource type="Texture2D" uid="uid://di6f08rjcaxxd" path="res://assets/images/Background/StarField.png" id="3_56ghi"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="3_56ghi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1_abcde"]
 bg_color = Color(0.15, 0.15, 0.25, 0.95)
@@ -45,6 +44,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_34def")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -52,6 +53,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_56ghi")
 expand_mode = 1
 stretch_mode = 6
@@ -65,10 +68,12 @@ offset_left = 50.0
 offset_top = 50.0
 offset_right = -50.0
 offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TitlePanel" type="Panel" parent="MainContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1_abcde")
 
 [node name="TitleLabel" type="Label" parent="MainContainer/TitlePanel"]
@@ -82,14 +87,16 @@ offset_left = -150.0
 offset_top = -25.0
 offset_right = 150.0
 offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "📊 Quiz Results Dashboard"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="ContentContainer" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
@@ -102,8 +109,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PrelimTitle" type="Label" parent="MainContainer/ContentContainer/PrelimSection"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "🎓 Prelim Quizzes"
 horizontal_alignment = 1
@@ -124,14 +131,16 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PrelimResultsList" type="VBoxContainer" parent="MainContainer/ContentContainer/PrelimSection/PrelimPanel/PrelimScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VSeparator" type="VSeparator" parent="MainContainer/ContentContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
 
 [node name="MidtermSection" type="VBoxContainer" parent="MainContainer/ContentContainer"]
 layout_mode = 2
@@ -139,8 +148,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MidtermTitle" type="Label" parent="MainContainer/ContentContainer/MidtermSection"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "📚 Midterm Quizzes"
 horizontal_alignment = 1
@@ -161,18 +170,20 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MidtermResultsList" type="VBoxContainer" parent="MainContainer/ContentContainer/MidtermSection/MidtermPanel/MidtermScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="SummaryPanel" type="Panel" parent="MainContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3_klmno")
 
 [node name="SummaryContainer" type="HBoxContainer" parent="MainContainer/SummaryPanel"]
@@ -184,6 +195,8 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TotalQuizzesLabel" type="Label" parent="MainContainer/SummaryPanel/SummaryContainer"]
 layout_mode = 2
@@ -210,32 +223,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="MainContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="ButtonContainer" type="HBoxContainer" parent="MainContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 
 [node name="Spacer1" type="Control" parent="MainContainer/ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="BackButton" type="Button" parent="MainContainer/ButtonContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(200, 60)
-theme = ExtResource("1_72abc")
+layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "🏠 Back to Main Menu"
 
 [node name="Spacer2" type="Control" parent="MainContainer/ButtonContainer"]
-layout_mode = 2
 custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
 
 [node name="ClearDataButton" type="Button" parent="MainContainer/ButtonContainer"]
-layout_mode = 2
+visible = false
 custom_minimum_size = Vector2(200, 60)
-theme = ExtResource("1_72abc")
+layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "🗑️ Clear All Data"
 
