@@ -19,6 +19,55 @@ extends Node2D
 var entrance_tween: Tween
 var button_tweens: Dictionary = {}
 
+# Quiz data storage (enhanced with persistence)
+var quiz_score: int = 0
+var total_questions: int = 10
+var quiz_answers: Array = []
+var quiz_percentage: float = 0.0
+
+func _ready():
+	load_quiz_data_from_persistence()
+	setup_animations()
+	setup_button_connections()
+	await display_results_with_animation()
+
+func load_quiz_data_from_persistence():
+	"""Load quiz data from QuizManager persistence or fallback to legacy system"""
+	print("🔄 Loading quiz data from persistence...")
+	
+	# Try to get data from QuizManager first (new persistence system)
+	var persisted_data = QuizManager.get_latest_score()
+	
+	if persisted_data.has("score") and persisted_data.get("quiz_id") == "Prelim_Quiz_Complete":
+		# Use persisted data from QuizManager
+		quiz_score = persisted_data.get("score", 0) / 10  # Convert back to number of correct answers
+		total_questions = persisted_data.get("total_questions", 10)
+		quiz_answers = persisted_data.get("user_answers", [])
+		quiz_percentage = persisted_data.get("percentage", 0.0)
+		
+		print("✅ Loaded data from QuizManager persistence:")
+		print("  Score: ", quiz_score, "/", total_questions)
+		print("  Percentage: ", quiz_percentage, "%")
+	else:
+		# Fallback to legacy QuizManager data
+		quiz_score = QuizManager.get_score()
+		total_questions = QuizManager.current_set.size()
+		quiz_answers = QuizManager.get_answer_history()
+		quiz_percentage = (float(quiz_score) / float(total_questions)) * 100.0
+		
+		print("⚠️ Using legacy QuizManager data:")
+		print("  Score: ", quiz_score, "/", total_questions)
+		print("  Percentage: ", quiz_percentage, "%")
+		
+		# Store in new persistence system for future use
+		QuizManager.store_quiz_results(
+			"Prelim_Quiz_Complete",
+			quiz_score * 10,
+			total_questions,
+			quiz_answers,
+			[]
+		)
+
 func _ready():
 	setup_animations()
 	setup_button_connections()
@@ -103,9 +152,10 @@ func display_results_with_animation():
 
 func display_score_animated():
 	"""Display score with counting animation"""
-	var final_score = QuizManager.get_score()
-	var total_questions = QuizManager.current_set.size()
-	var percentage = (float(final_score) / float(total_questions)) * 100.0
+	# Use persisted data instead of direct QuizManager calls
+	var final_score = quiz_score
+	var total_questions = self.total_questions
+	var percentage = quiz_percentage
 	
 	# Animate score counting
 	var score_tween = create_tween()
@@ -125,7 +175,6 @@ func display_score_animated():
 
 func update_score_display(current_score: int):
 	"""Update score display during counting animation"""
-	var total_questions = QuizManager.current_set.size()
 	score_label.text = "%d/%d" % [current_score, total_questions]
 
 func get_grade_text(percentage: float) -> String:
@@ -171,7 +220,7 @@ func display_student_info():
 
 func display_answer_history():
 	"""Display answer history with enhanced formatting"""
-	var answers = QuizManager.get_answer_history()
+	var answers = quiz_answers  # Use persisted data
 	var history_bbcode = "[center][b]📝 DETAILED REVIEW[/b][/center]\n\n"
 	
 	for i in range(answers.size()):
@@ -205,19 +254,29 @@ func display_answer_history():
 	await history_tween.finished
 
 func save_performance():
-	"""Save quiz performance data"""
+	"""Save quiz performance data (enhanced with persistence integration)"""
 	var cfg = ConfigFile.new()
 	var timestamp = Time.get_datetime_string_from_system()
 	
-	cfg.set_value("performance", "score", QuizManager.get_score())
-	cfg.set_value("performance", "total_questions", QuizManager.current_set.size())
-	cfg.set_value("performance", "percentage", (float(QuizManager.get_score()) / float(QuizManager.current_set.size())) * 100.0)
-	cfg.set_value("performance", "answers", QuizManager.get_answer_history())
+	# Use persisted data for consistency
+	cfg.set_value("performance", "score", quiz_score)
+	cfg.set_value("performance", "total_questions", total_questions)
+	cfg.set_value("performance", "percentage", quiz_percentage)
+	cfg.set_value("performance", "answers", quiz_answers)
 	cfg.set_value("performance", "timestamp", timestamp)
 	cfg.set_value("performance", "student_info", LicenseProcessor.get_license_details())
 	
 	cfg.save("user://prelim_performance.cfg")
-	print("Quiz performance saved successfully")
+	print("✅ Quiz performance saved successfully (with persistence integration)")
+	
+	# Also ensure data is stored in QuizManager for cross-quiz access
+	QuizManager.store_quiz_results(
+		"Prelim_Quiz_Complete",
+		quiz_score * 10,  # Convert to points
+		total_questions,
+		quiz_answers,
+		[]
+	)
 
 func _on_retry_button_pressed():
 	"""Handle retry quiz button"""
@@ -228,6 +287,27 @@ func _on_retry_button_pressed():
 func _on_main_menu_button_pressed():
 	"""Handle main menu button"""
 	print("Returning to main menu...")
+	
+	# Debug: Print all available quiz results for verification
+	print("=== QUIZ RESULTS SUMMARY ===")
+	QuizManager.print_debug_info()
+	
+	var prelim_results = QuizManager.get_prelim_results()
+	var midterm_results = QuizManager.get_midterm_results()
+	
+	print("📊 Prelim Results Available: ", not prelim_results.is_empty())
+	if not prelim_results.is_empty():
+		print("  Prelim Score: ", prelim_results.get("score", "N/A"))
+		print("  Prelim Percentage: ", prelim_results.get("percentage", "N/A"), "%")
+	
+	print("📊 Midterm Results Available: ", not midterm_results.is_empty())
+	if not midterm_results.is_empty():
+		print("  Midterm Score: ", midterm_results.get("score", "N/A"))
+		print("  Midterm Percentage: ", midterm_results.get("percentage", "N/A"), "%")
+	
+	print("✅ All quiz data persisted for cross-access!")
+	print("============================")
+	
 	get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn")
 
 func _on_pdf_button_pressed():

@@ -29,6 +29,22 @@ func _on_MultipleChoice_answer_selected(option: String, letter: String):
 	if QuizManager.next_question():
 		show_question()
 	else:
+		print("Quiz completed! Storing results...")
+		
+		# Store quiz results in QuizManager for persistence
+		var final_score = QuizManager.get_score()
+		var total_questions = QuizManager.current_set.size()
+		var user_answers = QuizManager.get_answer_history()
+		
+		# Store prelim quiz results
+		QuizManager.store_quiz_results(
+			"Prelim_Quiz_Complete",
+			final_score * 10,  # Convert to points (each question worth 10 points)
+			total_questions,
+			user_answers,
+			[]  # Correct answers are embedded in user_answers array
+		)
+		
 		print("Changing to result scene")
 		get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_Result.tscn")
 
@@ -38,5 +54,21 @@ func _on_MultipleChoice_time_expired():
 	if QuizManager.next_question():
 		show_question()
 	else:
+		print("Quiz completed! Storing results...")
+		
+		# Store quiz results in QuizManager for persistence
+		var final_score = QuizManager.get_score()
+		var total_questions = QuizManager.current_set.size()
+		var user_answers = QuizManager.get_answer_history()
+		
+		# Store prelim quiz results
+		QuizManager.store_quiz_results(
+			"Prelim_Quiz_Complete",
+			final_score * 10,  # Convert to points (each question worth 10 points)
+			total_questions,
+			user_answers,
+			[]  # Correct answers are embedded in user_answers array
+		)
+		
 		print("Changing to result scene")
 		get_tree().change_scene_to_file("res://src/scenes/Quiz/Prelim/Prelim_Quiz_Result.tscn")

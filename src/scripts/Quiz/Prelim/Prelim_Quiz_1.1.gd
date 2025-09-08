@@ -13,6 +13,10 @@ func _ready():
 	multiple_choice.visible = true
 	multiple_choice.z_index = 10  # Ensure it's on top
 	
+	# Start quiz session for tracking
+	QuizManager.session_active = true
+	print("🚀 Prelim quiz session started")
+	
 	QuizManager.load_questions("Prelim")
 	print("Quiz: Questions loaded, connecting signal")
 	multiple_choice.answer_selected.connect(_on_MultipleChoice_answer_selected)

@@ -160,3 +160,24 @@ func print_debug_info():
 	print("  Session Active: ", session_active)
 	print("  Latest Score: ", latest_score_data)
 	print("  Stored Quizzes: ", quiz_results_storage.keys())
+
+func get_prelim_results() -> Dictionary:
+	"""Get specifically the Prelim quiz results"""
+	return get_quiz_results("Prelim_Quiz_Complete")
+
+func get_midterm_results() -> Dictionary:
+	"""Get specifically the Midterm quiz results"""
+	return get_quiz_results("Midterm_Quiz_1.1")
+
+func has_completed_quiz(quiz_id: String) -> bool:
+	"""Check if a specific quiz has been completed and has valid results"""
+	var results = get_quiz_results(quiz_id)
+	return results.has("completed") and results.get("completed", false)
+
+func get_all_completed_quizzes() -> Array[String]:
+	"""Get list of all completed quiz IDs"""
+	var completed = []
+	for quiz_id in quiz_results_storage.keys():
+		if has_completed_quiz(quiz_id):
+			completed.append(quiz_id)
+	return completed

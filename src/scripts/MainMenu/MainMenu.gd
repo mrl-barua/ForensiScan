@@ -91,6 +91,8 @@ func collect_buttons():
 	for child in quit_section.get_children():
 		if child is Button:
 			buttons_array.append(child)
+	
+	print("📋 Collected ", buttons_array.size(), " buttons for animations")
 
 func setup_initial_state():
 	"""Set initial visual state - keep UI visible by default"""
@@ -248,6 +250,11 @@ func _on_start_prelim_lesson_pressed():
 func _on_start_prelim_exam_button_pressed():
 	"""Navigate to Prelim Exam with enhanced transition"""
 	smooth_transition("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn", "📋 Loading Prelim Exam...")
+
+func _on_start_midterm_exam_button_pressed():
+	"""Navigate to Midterm Exam (Quiz 1.1) with enhanced transition"""
+	print("Midterm Exam button clicked!")
+	smooth_transition("res://src/scenes/Quiz/Midterm/Midterm_Quiz_1.1.tscn", "📋 Loading Midterm Exam...")
 	
 func _on_start_midterm_button_pressed():
 	"""Navigate to Midterm Lesson with resume option"""

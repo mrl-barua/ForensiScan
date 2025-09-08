@@ -230,6 +230,27 @@ func _on_main_menu_button_pressed():
 	"""Handle main menu button"""
 	print("🏠 Main menu button pressed")
 	animate_button_press(main_menu_button)
+	
+	# Debug: Print all available quiz results for verification
+	print("=== QUIZ RESULTS SUMMARY ===")
+	QuizManager.print_debug_info()
+	
+	var prelim_results = QuizManager.get_prelim_results()
+	var midterm_results = QuizManager.get_midterm_results()
+	
+	print("📊 Prelim Results Available: ", not prelim_results.is_empty())
+	if not prelim_results.is_empty():
+		print("  Prelim Score: ", prelim_results.get("score", "N/A"))
+		print("  Prelim Percentage: ", prelim_results.get("percentage", "N/A"), "%")
+	
+	print("📊 Midterm Results Available: ", not midterm_results.is_empty())
+	if not midterm_results.is_empty():
+		print("  Midterm Score: ", midterm_results.get("score", "N/A"))
+		print("  Midterm Percentage: ", midterm_results.get("percentage", "N/A"), "%")
+	
+	print("✅ All quiz data persisted for cross-access!")
+	print("============================")
+	
 	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn")
 
