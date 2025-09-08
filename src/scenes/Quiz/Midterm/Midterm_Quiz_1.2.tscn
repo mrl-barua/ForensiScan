@@ -1,22 +1,20 @@
 [gd_scene load_steps=9 format=3 uid="uid://bbpwvpar77iai"]
 
-[ext_resource type="Script" path="res://src/scripts/Quiz/Midterm/Midterm_Quiz_1.2.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_bj6t6"]
+[ext_resource type="Script" path="res://src/scripts/Quiz/Midterm/Midterm_Quiz_1.2.gd" id="1_script"]
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="2_gfqw6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_success"]
-bg_color = Color(0.2, 0.6, 0.3, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.3, 0.8, 0.4, 0.9)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-shadow_color = Color(0.1, 0.4, 0.2, 0.6)
-shadow_size = 8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_panel"]
+bg_color = Color(0.1, 0.15, 0.25, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_continue"]
 bg_color = Color(0.15, 0.35, 0.65, 0.95)
@@ -46,17 +44,19 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.2, 0.4, 0.8, 0.4)
 shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_info_panel"]
-bg_color = Color(0.1, 0.15, 0.25, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.3, 0.5, 0.8, 0.7)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_success"]
+bg_color = Color(0.2, 0.6, 0.3, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.8, 0.4, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.1, 0.4, 0.2, 0.6)
+shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight"]
 bg_color = Color(0.2, 0.3, 0.5, 0.8)
@@ -117,6 +117,8 @@ offset_left = 50.0
 offset_top = 50.0
 offset_right = -50.0
 offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_gfqw6")
 theme_override_font_sizes/font_size = 22
@@ -195,6 +197,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_gfqw6")
 theme_override_font_sizes/font_size = 18
