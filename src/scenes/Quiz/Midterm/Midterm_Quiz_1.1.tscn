@@ -1,0 +1,270 @@
+[gd_scene load_steps=9 format=3 uid="uid://vdx8orbs40rq"]
+
+[ext_resource type="Script" path="res://src/scripts/Quiz/Midterm/Midterm_Quiz_1.1.gd" id="1_74vt2"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_ddiru"]
+[ext_resource type="Texture2D" uid="uid://bw6x05subkny4" path="res://assets/images/Quiz/Midterm/Midterm_Lesson.png" id="2_x0yqe"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_htsv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elsub"]
+bg_color = Color(0.15, 0.25, 0.4, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yte35"]
+bg_color = Color(0.2, 0.35, 0.55, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.7, 1, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.2, 0.4, 0.8, 0.4)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i36i5"]
+bg_color = Color(0.2, 0.6, 0.3, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.8, 0.4, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.1, 0.4, 0.2, 0.6)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr3xs"]
+bg_color = Color(0.15, 0.15, 0.25, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.7, 1, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MidtermQuiz1_1" type="Node2D"]
+script = ExtResource("1_74vt2")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("1_ddiru")
+metadata/_edit_lock_ = true
+
+[node name="Header" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 32.0
+offset_right = 1865.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 80
+text = "ACTIVITY NO. 1"
+
+[node name="Instruction" type="Label" parent="."]
+offset_left = 51.0
+offset_top = 144.0
+offset_right = 1872.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 30
+text = "Instruction: Solve the following using the Classification line:
+
+1. Primary Classification-10pts 				                                               2. Secondary Classification-10pts
+3. Sub-Secondary Classification-10pts                                   4. Fingerprint pattern Identification-10pts
+"
+
+[node name="MidtermLesson" type="Sprite2D" parent="."]
+position = Vector2(952.25, 645.375)
+scale = Vector2(1.86165, 1.80167)
+texture = ExtResource("2_x0yqe")
+
+[node name="OptionA" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 80)
+offset_left = 752.0
+offset_top = 979.0
+offset_right = 1128.0
+offset_bottom = 1059.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_elsub")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yte35")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i36i5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yte35")
+text = "Submit"
+text_overrun_behavior = 3
+
+[node name="LicenseInput1" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 85.4999
+offset_top = 355.75
+offset_right = 462.5
+offset_bottom = 468.75
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput2" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 430.5
+offset_top = 354.75
+offset_right = 807.5
+offset_bottom = 467.75
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput3" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 778.5
+offset_top = 354.75
+offset_right = 1132.5
+offset_bottom = 467.75
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput4" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 1106.5
+offset_top = 354.75
+offset_right = 1503.5
+offset_bottom = 467.75
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput5" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 1473.5
+offset_top = 356.75
+offset_right = 1870.5
+offset_bottom = 469.75
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput6" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 85.0
+offset_top = 647.0
+offset_right = 462.0
+offset_bottom = 760.0
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput7" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 432.0
+offset_top = 649.0
+offset_right = 809.0
+offset_bottom = 762.0
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput8" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 779.0
+offset_top = 649.0
+offset_right = 1129.0
+offset_bottom = 762.0
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput9" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 1105.0
+offset_top = 649.0
+offset_right = 1500.0
+offset_bottom = 762.0
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[node name="LicenseInput10" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 60)
+offset_left = 1476.0
+offset_top = 646.0
+offset_right = 1845.0
+offset_bottom = 759.0
+scale = Vector2(0.914041, 0.654366)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_fonts/font = ExtResource("3_htsv4")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_rr3xs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
+placeholder_text = "Answer here"
+alignment = 1
+
+[connection signal="pressed" from="OptionA" to="." method="_on_option_a_pressed"]
