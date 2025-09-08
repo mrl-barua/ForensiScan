@@ -63,7 +63,7 @@ horizontal_alignment = 1
 offset_left = 300.0
 offset_top = 280.0
 offset_right = 1620.0
-offset_bottom = 650.0
+offset_bottom = 856.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_info_panel")
 
 [node name="CompletionMessage" type="Label" parent="MainPanel"]
@@ -80,26 +80,16 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_gfqw6")
 theme_override_font_sizes/font_size = 22
-text = "Excellent work! You've completed the enumeration quiz.
-
-� What's Next:
-Using the fingerprint image from this activity, complete the advanced classification analysis on paper:
-
-• Secondary Classification
-• Sub-Secondary Classification  
-
-📝 Submit your written work to the instructor for evaluation.
-
-🎯 This practical exercise applies your forensic analysis skills!"
+text = "Loading results..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ProgressIndicator" type="Panel" parent="."]
 offset_left = 50.0
-offset_top = 700.0
+offset_top = 943.0
 offset_right = 1870.0
-offset_bottom = 750.0
+offset_bottom = 993.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_highlight")
 
 [node name="ProgressLabel" type="Label" parent="ProgressIndicator"]

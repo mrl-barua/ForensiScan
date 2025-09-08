@@ -33,15 +33,16 @@ func setup_simplified_content():
 		var percentage = latest_score.get("percentage", 0.0)
 		var grade = QuizManager.get_letter_grade(percentage)
 		
-		score_info = "\n\n🏆 YOUR RESULTS:\n"
+		score_info = "\n🏆 YOUR RESULTS:\n"
 		score_info += "• Score: %d out of 100 points\n" % score
 		score_info += "• Percentage: %.0f%%\n" % percentage
-		score_info += "• Grade: %s\n\n" % grade
+		score_info += "• Grade: %s\n" % grade
 	
-	# Update completion message with results
+	# Set complete text content (not appending to avoid duplication)
 	if completion_message:
 		completion_message.text = """Excellent work! You've completed the enumeration quiz.
-%s📋 What's Next:
+%s
+📋 What's Next:
 Using the fingerprint image from this activity, complete the advanced classification analysis on paper:
 
 • Secondary Classification
