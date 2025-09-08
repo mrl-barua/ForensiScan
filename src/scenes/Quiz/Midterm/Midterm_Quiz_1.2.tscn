@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bbpwvpar77iai"]
+[gd_scene load_steps=2 format=3 uid="uid://bbpwvpar77iai"]
+
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_bj6t6"]
 
 [node name="MidtermQuiz1_2" type="Node2D"]
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("1_bj6t6")
+metadata/_edit_lock_ = true
