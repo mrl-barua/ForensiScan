@@ -181,3 +181,55 @@ func get_all_completed_quizzes() -> Array[String]:
 		if has_completed_quiz(quiz_id):
 			completed.append(quiz_id)
 	return completed
+
+func get_all_results() -> Array:
+	"""Get all quiz results formatted for the results dashboard"""
+	var all_results = []
+	
+	for quiz_id in quiz_results_storage.keys():
+		var quiz_data = quiz_results_storage[quiz_id]
+		if quiz_data.get("completed", false):
+			var result = {
+				"quiz_name": format_quiz_name(quiz_id),
+				"quiz_type": determine_quiz_type_from_id(quiz_id),
+				"score": quiz_data.get("score", 0),
+				"percentage": quiz_data.get("percentage", 0.0),
+				"grade": get_letter_grade(quiz_data.get("percentage", 0.0)),
+				"total_questions": quiz_data.get("total_questions", 0),
+				"correct_answers": quiz_data.get("score", 0),
+				"timestamp": format_timestamp(quiz_data.get("timestamp", 0))
+			}
+			all_results.append(result)
+	
+	return all_results
+
+func format_quiz_name(quiz_id: String) -> String:
+	"""Format quiz ID into a readable name"""
+	match quiz_id:
+		"Prelim_Quiz_Complete":
+			return "Prelim Quiz 1.1"
+		"Midterm_Quiz_1.1":
+			return "Midterm Quiz 1.1"
+		_:
+			return quiz_id.replace("_", " ")
+
+func determine_quiz_type_from_id(quiz_id: String) -> String:
+	"""Determine quiz type from quiz ID"""
+	if "Prelim" in quiz_id or "prelim" in quiz_id:
+		return "prelim"
+	elif "Midterm" in quiz_id or "midterm" in quiz_id:
+		return "midterm"
+	else:
+		return "unknown"
+
+func format_timestamp(timestamp_ms: int) -> String:
+	"""Format timestamp for display"""
+	if timestamp_ms == 0:
+		return "Unknown"
+	
+	var datetime = Time.get_datetime_dict_from_unix_time(timestamp_ms / 1000)
+	return "%04d-%02d-%02d %02d:%02d" % [datetime.year, datetime.month, datetime.day, datetime.hour, datetime.minute]
+
+func clear_all_results():
+	"""Clear all stored quiz results"""
+	clear_quiz_data()

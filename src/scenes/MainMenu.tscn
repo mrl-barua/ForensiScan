@@ -312,6 +312,17 @@ theme_override_styles/pressed = ExtResource("4_gc3lr")
 theme_override_styles/focus = ExtResource("4_gc3lr")
 text = "🎯 Practice Quiz"
 
+[node name="ShowAllResultsButton" type="Button" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j4m6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_secondary_button")
+theme_override_styles/hover = ExtResource("4_gc3lr")
+theme_override_styles/pressed = ExtResource("4_gc3lr")
+theme_override_styles/focus = ExtResource("4_gc3lr")
+text = "📊 Show All Results"
+
 [node name="BottomSpacer" type="Control" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -360,6 +371,7 @@ visible = false
 [connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection/StartPrelimExamButton" to="." method="_on_start_prelim_exam_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection/StartMidtermExamButton" to="." method="_on_start_midterm_exam_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/AssessmentSection/ShowAllResultsButton" to="." method="_on_show_all_results_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/QuitSection/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="dialog_closed" from="DialogCanvasLayer/ResumeProgressDialog" to="." method="_on_resume_dialog_closed"]
 [connection signal="resume_selected" from="DialogCanvasLayer/ResumeProgressDialog" to="." method="_on_resume_selected"]

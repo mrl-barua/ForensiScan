@@ -68,11 +68,6 @@ func load_quiz_data_from_persistence():
 			[]
 		)
 
-func _ready():
-	setup_animations()
-	setup_button_connections()
-	await display_results_with_animation()
-
 func setup_animations():
 	"""Setup entrance animations for modern feel"""
 	# Set initial state for entrance animation

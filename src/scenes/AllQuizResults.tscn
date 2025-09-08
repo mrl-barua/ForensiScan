@@ -1,0 +1,247 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7r2xkqp41kdf"]
+
+[ext_resource type="Theme" uid="uid://dqjv6k13xh14l" path="res://modern_button.tres" id="1_72abc"]
+[ext_resource type="Script" path="res://src/scripts/AllQuizResults.gd" id="2_34def"]
+[ext_resource type="Texture2D" uid="uid://di6f08rjcaxxd" path="res://assets/images/Background/StarField.png" id="3_56ghi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1_abcde"]
+bg_color = Color(0.15, 0.15, 0.25, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.6, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2_fghij"]
+bg_color = Color(0.1, 0.1, 0.2, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.6, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3_klmno"]
+bg_color = Color(0.05, 0.15, 0.05, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.6, 0.2, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="AllQuizResults" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_34def")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3_56ghi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+
+[node name="TitlePanel" type="Panel" parent="MainContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1_abcde")
+
+[node name="TitleLabel" type="Label" parent="MainContainer/TitlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 36
+text = "📊 Quiz Results Dashboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="ContentContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PrelimSection" type="VBoxContainer" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PrelimTitle" type="Label" parent="MainContainer/ContentContainer/PrelimSection"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+theme_override_font_sizes/font_size = 24
+text = "🎓 Prelim Quizzes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrelimPanel" type="Panel" parent="MainContainer/ContentContainer/PrelimSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2_fghij")
+
+[node name="PrelimScrollContainer" type="ScrollContainer" parent="MainContainer/ContentContainer/PrelimSection/PrelimPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="PrelimResultsList" type="VBoxContainer" parent="MainContainer/ContentContainer/PrelimSection/PrelimPanel/PrelimScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(20, 0)
+
+[node name="MidtermSection" type="VBoxContainer" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MidtermTitle" type="Label" parent="MainContainer/ContentContainer/MidtermSection"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+theme_override_font_sizes/font_size = 24
+text = "📚 Midterm Quizzes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MidtermPanel" type="Panel" parent="MainContainer/ContentContainer/MidtermSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2_fghij")
+
+[node name="MidtermScrollContainer" type="ScrollContainer" parent="MainContainer/ContentContainer/MidtermSection/MidtermPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="MidtermResultsList" type="VBoxContainer" parent="MainContainer/ContentContainer/MidtermSection/MidtermPanel/MidtermScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="SummaryPanel" type="Panel" parent="MainContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3_klmno")
+
+[node name="SummaryContainer" type="HBoxContainer" parent="MainContainer/SummaryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="TotalQuizzesLabel" type="Label" parent="MainContainer/SummaryPanel/SummaryContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Total Quizzes: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AverageScoreLabel" type="Label" parent="MainContainer/SummaryPanel/SummaryContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Average Score: 0%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScoreLabel" type="Label" parent="MainContainer/SummaryPanel/SummaryContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Best Score: 0%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 80)
+
+[node name="Spacer1" type="Control" parent="MainContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="MainContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 60)
+theme = ExtResource("1_72abc")
+theme_override_font_sizes/font_size = 18
+text = "🏠 Back to Main Menu"
+
+[node name="Spacer2" type="Control" parent="MainContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(20, 0)
+
+[node name="ClearDataButton" type="Button" parent="MainContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 60)
+theme = ExtResource("1_72abc")
+theme_override_font_sizes/font_size = 18
+text = "🗑️ Clear All Data"
+
+[node name="Spacer3" type="Control" parent="MainContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="MainContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainContainer/ButtonContainer/ClearDataButton" to="." method="_on_clear_data_button_pressed"]

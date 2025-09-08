@@ -265,6 +265,11 @@ func _on_button_4_pressed():
 	"""Navigate to Practice Quiz with enhanced transition"""
 	smooth_transition("res://src/scenes/Quiz/Prelim/Prelim_Quiz_1.1.tscn", "🎯 Loading Practice Quiz...")
 
+func _on_show_all_results_button_pressed():
+	"""Navigate to All Quiz Results with enhanced transition"""
+	print("Show All Results button clicked!")
+	smooth_transition("res://src/scenes/AllQuizResults.tscn", "📊 Loading Quiz Results...")
+
 func show_lesson_with_resume(lesson_type: String):
 	"""Show resume dialog or navigate directly to lessons"""
 	print("=== show_lesson_with_resume called ===")
