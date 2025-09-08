@@ -94,124 +94,261 @@ position = Vector2(912, 485)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_x0yqe")
 
+[node name="ImageLabels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 259.0
+offset_right = 517.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 262.0
+offset_right = 780.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 261.0
+offset_right = 1024.0
+offset_bottom = 318.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 1025.0
+offset_top = 261.0
+offset_right = 1302.0
+offset_bottom = 318.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 1306.0
+offset_top = 262.0
+offset_right = 1564.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 487.0
+offset_right = 520.0
+offset_bottom = 544.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 489.0
+offset_right = 777.0
+offset_bottom = 546.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 487.0
+offset_right = 1023.0
+offset_bottom = 544.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 487.0
+offset_right = 1300.0
+offset_bottom = 544.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="ImageLabels"]
+layout_mode = 0
+offset_left = 1306.0
+offset_top = 490.0
+offset_right = 1561.0
+offset_bottom = 547.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="QuestionLabels" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 105.0
-offset_top = 93.0
-offset_right = 2025.0
-offset_bottom = 1173.0
-metadata/_edit_lock_ = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label1" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 680.0
-offset_right = 185.0
-offset_bottom = 700.0
+offset_left = 197.0
+offset_top = 761.0
+offset_right = 297.0
+offset_bottom = 781.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 1:"
+text = "Image 1:"
 
 [node name="Label2" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 395.0
-offset_top = 680.0
-offset_right = 495.0
-offset_bottom = 700.0
+offset_left = 507.0
+offset_top = 761.0
+offset_right = 607.0
+offset_bottom = 781.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 2:"
+text = "Image 2:"
 
 [node name="Label3" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 705.0
-offset_top = 680.0
-offset_right = 805.0
-offset_bottom = 700.0
+offset_left = 817.0
+offset_top = 761.0
+offset_right = 917.0
+offset_bottom = 781.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 3:"
+text = "Image 3:"
 
 [node name="Label4" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 1015.0
-offset_top = 680.0
-offset_right = 1115.0
-offset_bottom = 700.0
+offset_left = 1127.0
+offset_top = 761.0
+offset_right = 1227.0
+offset_bottom = 781.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 4:"
+text = "Image 4:"
 
 [node name="Label5" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 1325.0
-offset_top = 680.0
-offset_right = 1425.0
-offset_bottom = 700.0
+offset_left = 1437.0
+offset_top = 761.0
+offset_right = 1537.0
+offset_bottom = 781.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 5:"
+text = "Image 5:"
 
 [node name="Label6" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 780.0
-offset_right = 185.0
-offset_bottom = 800.0
+offset_left = 197.0
+offset_top = 861.0
+offset_right = 297.0
+offset_bottom = 881.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 6:"
+text = "Image 6:"
 
 [node name="Label7" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 395.0
-offset_top = 780.0
-offset_right = 495.0
-offset_bottom = 800.0
+offset_left = 507.0
+offset_top = 861.0
+offset_right = 607.0
+offset_bottom = 881.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 7:"
+text = "Image 7:"
 
 [node name="Label8" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 705.0
-offset_top = 780.0
-offset_right = 805.0
-offset_bottom = 800.0
+offset_left = 817.0
+offset_top = 861.0
+offset_right = 917.0
+offset_bottom = 881.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 8:"
+text = "Image 8:"
 
 [node name="Label9" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 1015.0
-offset_top = 780.0
-offset_right = 1115.0
-offset_bottom = 800.0
+offset_left = 1127.0
+offset_top = 861.0
+offset_right = 1227.0
+offset_bottom = 881.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 9:"
+text = "Image 9:"
 
 [node name="Label10" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 1325.0
-offset_top = 780.0
-offset_right = 1435.0
-offset_bottom = 800.0
+offset_left = 1437.0
+offset_top = 861.0
+offset_right = 1547.0
+offset_bottom = 881.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_htsv4")
 theme_override_font_sizes/font_size = 16
-text = "Question 10:"
+text = "Image 10:"
 
 [node name="OptionA" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 60)
