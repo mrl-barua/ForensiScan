@@ -107,7 +107,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_yte35")
 text = "Submit"
 text_overrun_behavior = 3
 
-[node name="LicenseInput1" type="LineEdit" parent="."]
+[node name="Question_1" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 85.4999
 offset_top = 355.75
@@ -123,7 +123,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput2" type="LineEdit" parent="."]
+[node name="Question_2" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 430.5
 offset_top = 354.75
@@ -139,7 +139,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput3" type="LineEdit" parent="."]
+[node name="Question_3" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 778.5
 offset_top = 354.75
@@ -155,7 +155,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput4" type="LineEdit" parent="."]
+[node name="Question_4" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 1106.5
 offset_top = 354.75
@@ -171,7 +171,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput5" type="LineEdit" parent="."]
+[node name="Question_5" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 1473.5
 offset_top = 356.75
@@ -187,7 +187,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput6" type="LineEdit" parent="."]
+[node name="Question_6" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 85.0
 offset_top = 647.0
@@ -203,7 +203,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput7" type="LineEdit" parent="."]
+[node name="Question_7" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 432.0
 offset_top = 649.0
@@ -219,7 +219,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput8" type="LineEdit" parent="."]
+[node name="Question_8" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 779.0
 offset_top = 649.0
@@ -235,7 +235,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput9" type="LineEdit" parent="."]
+[node name="Question_9" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 1105.0
 offset_top = 649.0
@@ -251,7 +251,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_rr3xs")
 placeholder_text = "Answer here"
 alignment = 1
 
-[node name="LicenseInput10" type="LineEdit" parent="."]
+[node name="Question_10" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(0, 60)
 offset_left = 1476.0
 offset_top = 646.0
