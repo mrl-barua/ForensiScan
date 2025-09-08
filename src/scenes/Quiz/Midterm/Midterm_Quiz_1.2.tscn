@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbpwvpar77iai"]
+[gd_scene load_steps=6 format=3 uid="uid://bbpwvpar77iai"]
 
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_bj6t6"]
 [ext_resource type="Script" path="res://src/scripts/Quiz/Midterm/Midterm_Quiz_1.2.gd" id="1_script"]
@@ -15,48 +15,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_continue"]
-bg_color = Color(0.15, 0.35, 0.65, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.3, 0.6, 1, 0.9)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-shadow_color = Color(0.1, 0.2, 0.5, 0.4)
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
-bg_color = Color(0.25, 0.45, 0.75, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.4, 0.7, 1, 0.9)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-shadow_color = Color(0.2, 0.4, 0.8, 0.4)
-shadow_size = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_success"]
-bg_color = Color(0.2, 0.6, 0.3, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.3, 0.8, 0.4, 0.9)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-shadow_color = Color(0.1, 0.4, 0.2, 0.6)
-shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight"]
 bg_color = Color(0.2, 0.3, 0.5, 0.8)
@@ -137,59 +95,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ActionButtons" type="HBoxContainer" parent="."]
-offset_left = 460.0
-offset_top = 700.0
-offset_right = 1460.0
-offset_bottom = 780.0
-alignment = 1
-
-[node name="ReviewButton" type="Button" parent="ActionButtons"]
-custom_minimum_size = Vector2(180, 60)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
-theme_override_fonts/font = ExtResource("2_gfqw6")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_continue")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_success")
-text = "📊 Review"
-
-[node name="Spacer1" type="Control" parent="ActionButtons"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-
-[node name="ContinueButton" type="Button" parent="ActionButtons"]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
-theme_override_fonts/font = ExtResource("2_gfqw6")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_success")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_continue")
-text = "🎯 Continue"
-
-[node name="Spacer2" type="Control" parent="ActionButtons"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-
-[node name="MainMenuButton" type="Button" parent="ActionButtons"]
-custom_minimum_size = Vector2(180, 60)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
-theme_override_fonts/font = ExtResource("2_gfqw6")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_continue")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_success")
-text = "🏠 Menu"
-
 [node name="ProgressIndicator" type="Panel" parent="."]
 offset_left = 50.0
-offset_top = 820.0
+offset_top = 700.0
 offset_right = 1870.0
-offset_bottom = 870.0
+offset_bottom = 750.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_highlight")
 
 [node name="ProgressLabel" type="Label" parent="ProgressIndicator"]
@@ -202,6 +112,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_gfqw6")
 theme_override_font_sizes/font_size = 18
-text = "📈 Midterm Part 1 Complete | Next: Classification Analysis"
+text = "📈 Redirecting to detailed results... | Midterm Part 1 Complete"
 horizontal_alignment = 1
 vertical_alignment = 1

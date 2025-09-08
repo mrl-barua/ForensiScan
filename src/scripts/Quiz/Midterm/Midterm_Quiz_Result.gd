@@ -41,15 +41,21 @@ func _ready():
 	connect_button_signals()
 
 func load_quiz_data():
-	"""Load quiz data from autoload or use default values"""
-	# Check if QuizManager autoload exists and has data
-	if has_node("/root/QuizManager"):
-		var quiz_manager = get_node("/root/QuizManager")
-		if quiz_manager.has_method("get_latest_score"):
-			var score_data = quiz_manager.get_latest_score()
-			if score_data:
-				quiz_score = score_data.get("score", 0)
-				total_questions = score_data.get("total_questions", 10)
+	"""Load quiz data from QuizManager autoload"""
+	# Get latest quiz results from QuizManager
+	var quiz_results = QuizManager.get_latest_score()
+	
+	if quiz_results.has("score"):
+		quiz_score = quiz_results.get("score", 0)
+		total_questions = quiz_results.get("total_questions", 10)
+		print("📊 Quiz data loaded from QuizManager:")
+		print("  Score: ", quiz_score)
+		print("  Total Questions: ", total_questions)
+	else:
+		# Fallback - no data found, use default values
+		quiz_score = 0
+		total_questions = 10
+		print("⚠️ No quiz data found in QuizManager, using defaults")
 	
 	# Calculate derived values
 	correct_count = quiz_score / 10  # Each question worth 10 points
@@ -57,7 +63,7 @@ func load_quiz_data():
 	percentage = (quiz_score / 100.0) * 100
 	grade = get_letter_grade(percentage)
 	
-	print("📋 Quiz Results Loaded:")
+	print("📋 Final Quiz Results:")
 	print("  Score: ", quiz_score, "/100")
 	print("  Correct: ", correct_count, "/", total_questions)
 	print("  Percentage: ", percentage, "%")

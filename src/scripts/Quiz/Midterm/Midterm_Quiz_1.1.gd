@@ -393,19 +393,17 @@ func show_final_results():
 	"""Show detailed results or navigate to next section"""
 	print("🎯 Showing final detailed results...")
 	
-	# Here you could show a detailed breakdown or navigate to the next quiz
-	# Pass score data to the results screen
+	# Store score data in QuizManager for persistence
+	QuizManager.store_quiz_results(
+		"Midterm_Quiz_1.1",
+		score,
+		correct_answers.size(),
+		user_answers,
+		correct_answers
+	)
+	
+	# Navigate to completion screen
 	await get_tree().create_timer(1.0).timeout
-	
-	# Store score data for the next scene
-	var quiz_data_dict = {
-		"score": score,
-		"total_questions": correct_answers.size(),
-		"percentage": (score / 100.0) * 100,
-		"completed_quiz": "Midterm_1.1"
-	}
-	
-	# Save to autoload or temporary storage if you have one, otherwise navigate directly
 	get_tree().change_scene_to_file("res://src/scenes/Quiz/Midterm/Midterm_Quiz_1.2.tscn")
 
 # Legacy function for compatibility
