@@ -1,241 +1,241 @@
 {
   "Prelim": [
-	{
-	  "text": "Who is known as the Father of Fingerprints?",
-	  "options": [
-		"Sir Francis Galton",
-		"Sir William Herschel",
-		"Sir Edward Richard Henry",
-		"Juan Vucetich"
-	  ],
-	  "answer": "Sir Edward Richard Henry"
-	},
-	{
-	  "text": "Who published the book Fingerprints and classified them into Arches, Loops, and Whorls?",
-	  "options": [
-		"Gilbert Thompson",
-		"Sir Francis Galton",
-		"Marcello Malpighi",
-		"Dr. Henry Faulds"
-	  ],
-	  "answer": "Sir Francis Galton"
-	},
-	{
-	  "text": "Who is credited as the Father of Dactyloscopy?",
-	  "options": [
-		"John Evangelist Purkinji",
-		"William Herschel",
-		"Juan Vucetich",
-		"Alphonse Bertillon"
-	  ],
-	  "answer": "John Evangelist Purkinji"
-	},
-	{
-	  "text": "Who first used fingerprints in a practical manner on contracts in India?",
-	  "options": [
-		"Sir Edward Henry",
-		"Sir William Herschel",
-		"Dr. Henry Faulds",
-		"Gilbert Thompson"
-	  ],
-	  "answer": "Sir William Herschel"
-	},
-	{
-	  "text": "Who made the first criminal fingerprint identification in Argentina in 1892?",
-	  "options": [
-		"Francisca Rojas",
-		"Gilbert Thompson",
-		"Juan Vucetich",
-		"Sir Francis Galton"
-	  ],
-	  "answer": "Juan Vucetich"
-	},
-	{
-	  "text": "Who first used fingerprints in the U.S. to prevent forgery?",
-	  "options": [
-		"Marcello Malpighi",
-		"Gilbert Thompson",
-		"Henry Faulds",
-		"Edward Henry"
-	  ],
-	  "answer": "Gilbert Thompson"
-	},
-	{
-	  "text": "The scientist who noticed ridges, spirals, and loops in fingerprints in 1686 was:",
-	  "options": [
-		"Marcello Malpighi",
-		"John Evangelist Purkinji",
-		"Sir Francis Galton",
-		"Juan Vucetich"
-	  ],
-	  "answer": "Marcello Malpighi"
-	},
-	{
-	  "text": "Which fingerprint pattern includes Plain Arch and Tented Arch?",
-	  "options": ["Arches", "Loops", "Whorls", "Double loop"],
-	  "answer": "Arches"
-	},
-	{
-	  "text": "Which of the following is NOT a principle of fingerprints?",
-	  "options": ["Uniqueness", "Permanence", "Universality", "Reversibility"],
-	  "answer": "Reversibility"
-	},
-	{
-	  "text": "The Bertillon System of identification was based on:",
-	  "options": [
-		"Blood type",
-		"Measurements of body parts",
-		"DNA analysis",
-		"Eye color"
-	  ],
-	  "answer": "Measurements of body parts"
-	},
-	{
-	  "text": "The case that proved the failure of the Bertillon System was the:",
-	  "options": [
-		"Francisca Rojas Case",
-		"Will West Case",
-		"Malpighi Case",
-		"Galton Case"
-	  ],
-	  "answer": "Will West Case"
-	},
-	{
-	  "text": "Which fingerprint classification is based on the patterns of both index fingers?",
-	  "options": [
-		"Primary classification",
-		"Secondary classification",
-		"Sub-secondary classification",
-		"Henry system"
-	  ],
-	  "answer": "Secondary classification"
-	},
-	{
-	  "text": "AFIS stands for:",
-	  "options": [
-		"Automatic Fingerprint Identification System",
-		"Automated Fingerprint Information System",
-		"Automated Fingerprint Identification System",
-		"American Forensic Identification System"
-	  ],
-	  "answer": "Automated Fingerprint Identification System"
-	},
-	{
-	  "text": "Which method involves Analysis, Comparison, Evaluation, and Verification?",
-	  "options": ["AFIS", "ACE-V", "DNA Profiling", "Henry System"],
-	  "answer": "ACE-V"
-	},
-	{
-	  "text": "Which type of fingerprint is left on clay or wax?",
-	  "options": [
-		"Latent print",
-		"Visible print",
-		"Plastic print",
-		"Chemical print"
-	  ],
-	  "answer": "Plastic print"
-	},
-	{
-	  "text": "Which type of fingerprint is invisible and requires powder or chemicals to develop?",
-	  "options": [
-		"Latent print",
-		"Visible print",
-		"Plastic print",
-		"DNA print"
-	  ],
-	  "answer": "Latent print"
-	},
-	{
-	  "text": "Which fingerprint principle states that fingerprints remain unchanged throughout life?",
-	  "options": [
-		"Permanence",
-		"Universality",
-		"Uniqueness",
-		"Classifiability"
-	  ],
-	  "answer": "Permanence"
-	},
-	{
-	  "text": "Who sent fingerprint classification ideas to Charles Darwin in 1880?",
-	  "options": [
-		"Francis Galton",
-		"Dr. Henry Faulds",
-		"John Evangelist Purkinji",
-		"Gilbert Thompson"
-	  ],
-	  "answer": "Dr. Henry Faulds"
-	},
-	{
-	  "text": "In earlier civilizations, criminals were identified by:",
-	  "options": [
-		"Branding and maiming",
-		"Photography",
-		"DNA testing",
-		"Fingerprints"
-	  ],
-	  "answer": "Branding and maiming"
-	},
-	{
-	  "text": "Who identified the bloody fingerprint that convicted Francisca Rojas?",
-	  "options": [
-		"Sir Edward Henry",
-		"Sir William Herschel",
-		"Juan Vucetich",
-		"Marcello Malpighi"
-	  ],
-	  "answer": "Juan Vucetich"
-	}
+    {
+      "text": "Who is known as the Father of Fingerprints?",
+      "options": [
+        "Sir Francis Galton",
+        "Sir William Herschel",
+        "Sir Edward Richard Henry",
+        "Juan Vucetich"
+      ],
+      "answer": "Sir Edward Richard Henry"
+    },
+    {
+      "text": "Who published the book Fingerprints and classified them into Arches, Loops, and Whorls?",
+      "options": [
+        "Gilbert Thompson",
+        "Sir Francis Galton",
+        "Marcello Malpighi",
+        "Dr. Henry Faulds"
+      ],
+      "answer": "Sir Francis Galton"
+    },
+    {
+      "text": "Who is credited as the Father of Dactyloscopy?",
+      "options": [
+        "John Evangelist Purkinji",
+        "William Herschel",
+        "Juan Vucetich",
+        "Alphonse Bertillon"
+      ],
+      "answer": "John Evangelist Purkinji"
+    },
+    {
+      "text": "Who first used fingerprints in a practical manner on contracts in India?",
+      "options": [
+        "Sir Edward Henry",
+        "Sir William Herschel",
+        "Dr. Henry Faulds",
+        "Gilbert Thompson"
+      ],
+      "answer": "Sir William Herschel"
+    },
+    {
+      "text": "Who made the first criminal fingerprint identification in Argentina in 1892?",
+      "options": [
+        "Francisca Rojas",
+        "Gilbert Thompson",
+        "Juan Vucetich",
+        "Sir Francis Galton"
+      ],
+      "answer": "Juan Vucetich"
+    },
+    {
+      "text": "Who first used fingerprints in the U.S. to prevent forgery?",
+      "options": [
+        "Marcello Malpighi",
+        "Gilbert Thompson",
+        "Henry Faulds",
+        "Edward Henry"
+      ],
+      "answer": "Gilbert Thompson"
+    },
+    {
+      "text": "The scientist who noticed ridges, spirals, and loops in fingerprints in 1686 was:",
+      "options": [
+        "Marcello Malpighi",
+        "John Evangelist Purkinji",
+        "Sir Francis Galton",
+        "Juan Vucetich"
+      ],
+      "answer": "Marcello Malpighi"
+    },
+    {
+      "text": "Which fingerprint pattern includes Plain Arch and Tented Arch?",
+      "options": ["Arches", "Loops", "Whorls", "Double loop"],
+      "answer": "Arches"
+    },
+    {
+      "text": "Which of the following is NOT a principle of fingerprints?",
+      "options": ["Uniqueness", "Permanence", "Universality", "Reversibility"],
+      "answer": "Reversibility"
+    },
+    {
+      "text": "The Bertillon System of identification was based on:",
+      "options": [
+        "Blood type",
+        "Measurements of body parts",
+        "DNA analysis",
+        "Eye color"
+      ],
+      "answer": "Measurements of body parts"
+    },
+    {
+      "text": "The case that proved the failure of the Bertillon System was the:",
+      "options": [
+        "Francisca Rojas Case",
+        "Will West Case",
+        "Malpighi Case",
+        "Galton Case"
+      ],
+      "answer": "Will West Case"
+    },
+    {
+      "text": "Which fingerprint classification is based on the patterns of both index fingers?",
+      "options": [
+        "Primary classification",
+        "Secondary classification",
+        "Sub-secondary classification",
+        "Henry system"
+      ],
+      "answer": "Secondary classification"
+    },
+    {
+      "text": "AFIS stands for:",
+      "options": [
+        "Automatic Fingerprint Identification System",
+        "Automated Fingerprint Information System",
+        "Automated Fingerprint Identification System",
+        "American Forensic Identification System"
+      ],
+      "answer": "Automated Fingerprint Identification System"
+    },
+    {
+      "text": "Which method involves Analysis, Comparison, Evaluation, and Verification?",
+      "options": ["AFIS", "ACE-V", "DNA Profiling", "Henry System"],
+      "answer": "ACE-V"
+    },
+    {
+      "text": "Which type of fingerprint is left on clay or wax?",
+      "options": [
+        "Latent print",
+        "Visible print",
+        "Plastic print",
+        "Chemical print"
+      ],
+      "answer": "Plastic print"
+    },
+    {
+      "text": "Which type of fingerprint is invisible and requires powder or chemicals to develop?",
+      "options": [
+        "Latent print",
+        "Visible print",
+        "Plastic print",
+        "DNA print"
+      ],
+      "answer": "Latent print"
+    },
+    {
+      "text": "Which fingerprint principle states that fingerprints remain unchanged throughout life?",
+      "options": [
+        "Permanence",
+        "Universality",
+        "Uniqueness",
+        "Classifiability"
+      ],
+      "answer": "Permanence"
+    },
+    {
+      "text": "Who sent fingerprint classification ideas to Charles Darwin in 1880?",
+      "options": [
+        "Francis Galton",
+        "Dr. Henry Faulds",
+        "John Evangelist Purkinji",
+        "Gilbert Thompson"
+      ],
+      "answer": "Dr. Henry Faulds"
+    },
+    {
+      "text": "In earlier civilizations, criminals were identified by:",
+      "options": [
+        "Branding and maiming",
+        "Photography",
+        "DNA testing",
+        "Fingerprints"
+      ],
+      "answer": "Branding and maiming"
+    },
+    {
+      "text": "Who identified the bloody fingerprint that convicted Francisca Rojas?",
+      "options": [
+        "Sir Edward Henry",
+        "Sir William Herschel",
+        "Juan Vucetich",
+        "Marcello Malpighi"
+      ],
+      "answer": "Juan Vucetich"
+    }
   ],
   "Midterm": [
-	{
-	  "text": "Question_1",
-	  "options": [],
-	  "answer": "FingerPrint 1"
-	},
-	{
-	  "text": "Question_2",
-	  "options": [],
-	  "answer": "FingerPrint 2"
-	},
-	{
-	  "text": "Question_3",
-	  "options": [],
-	  "answer": "FingerPrint 3"
-	},
-	{
-	  "text": "Question_4",
-	  "options": [],
-	  "answer": "FingerPrint 4"
-	},
-	{
-	  "text": "Question_5",
-	  "options": [],
-	  "answer": "FingerPrint 5"
-	},
-	{
-	  "text": "Question_6",
-	  "options": [],
-	  "answer": "FingerPrint 6"
-	},
-	{
-	  "text": "Question_7",
-	  "options": [],
-	  "answer": "FingerPrint 7"
-	},
-	{
-	  "text": "Question_8",
-	  "options": [],
-	  "answer": "FingerPrint 8"
-	},
-	{
-	  "text": "Question_9",
-	  "options": [],
-	  "answer": "FingerPrint 9"
-	},
-	{
-	  "text": "Question_10",
-	  "options": [],
-	  "answer": "FingerPrint 10"
-	}
+    {
+      "text": "Question_1",
+      "options": [],
+      "answer": "FingerPrint 1"
+    },
+    {
+      "text": "Question_2",
+      "options": [],
+      "answer": "FingerPrint 2"
+    },
+    {
+      "text": "Question_3",
+      "options": [],
+      "answer": "FingerPrint 3"
+    },
+    {
+      "text": "Question_4",
+      "options": [],
+      "answer": "FingerPrint 4"
+    },
+    {
+      "text": "Question_5",
+      "options": [],
+      "answer": "FingerPrint 5"
+    },
+    {
+      "text": "Question_6",
+      "options": [],
+      "answer": "FingerPrint 6"
+    },
+    {
+      "text": "Question_7",
+      "options": [],
+      "answer": "FingerPrint 7"
+    },
+    {
+      "text": "Question_8",
+      "options": [],
+      "answer": "FingerPrint 8"
+    },
+    {
+      "text": "Question_9",
+      "options": [],
+      "answer": "FingerPrint 9"
+    },
+    {
+      "text": "Question_10",
+      "options": [],
+      "answer": "FingerPrint 10"
+    }
   ]
 }
