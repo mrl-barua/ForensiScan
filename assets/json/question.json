@@ -237,5 +237,47 @@
 	  "options": [],
 	  "answer": "FingerPrint 10"
 	}
+  ],
+  "Semining": [
+	{
+	  "text": "Question_1",
+	  "options": [],
+	  "answer": "FingerPrint 1"
+	},
+	{
+	  "text": "Question_2",
+	  "options": [],
+	  "answer": "FingerPrint 2"
+	},
+	{
+	  "text": "Question_3",
+	  "options": [],
+	  "answer": "FingerPrint 3"
+	},
+	{
+	  "text": "Question_4",
+	  "options": [],
+	  "answer": "FingerPrint 4"
+	},
+	{
+	  "text": "Question_5",
+	  "options": [],
+	  "answer": "FingerPrint 5"
+	},
+	{
+	  "text": "Question_6",
+	  "options": [],
+	  "answer": "FingerPrint 6"
+	},
+	{
+	  "text": "Question_7",
+	  "options": [],
+	  "answer": "FingerPrint 7"
+	},
+	{
+	  "text": "Question_8",
+	  "options": [],
+	  "answer": "FingerPrint 8"
+	}
   ]
 }

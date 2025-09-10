@@ -1,0 +1,351 @@
+[gd_scene load_steps=9 format=3 uid="uid://duju1rpyhxyf"]
+
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_3a54j"]
+[ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_Quiz_1.2.gd" id="1_ybnht"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="2_of8ev"]
+[ext_resource type="Texture2D" uid="uid://y68ixsxr3yqu" path="res://assets/images/Quiz/Semining/Semining_1.2.png" id="3_wb46w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r67hy"]
+bg_color = Color(0.15, 0.25, 0.4, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jikvq"]
+bg_color = Color(0.2, 0.35, 0.55, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.7, 1, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.2, 0.4, 0.8, 0.4)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhog7"]
+bg_color = Color(0.2, 0.6, 0.3, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.8, 0.4, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.1, 0.4, 0.2, 0.6)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btahc"]
+bg_color = Color(0.15, 0.15, 0.25, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.7, 1, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="SeminingQuiz1_2" type="Node2D"]
+script = ExtResource("1_ybnht")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("1_3a54j")
+metadata/_edit_lock_ = true
+
+[node name="Header" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 54.0
+offset_right = 1862.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 64
+text = "SEMINING EXAMINATION - ACTIVITY NO. 1"
+horizontal_alignment = 1
+
+[node name="Instruction" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 152.0
+offset_right = 1869.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 20
+text = "Instructions: Answer the following questions by analyzing the fingerprint image below and typing your answers in the text fields.
+📝 Enumeration Quiz - Each question worth 10 points (Total: 100 points) ⏱️ Take your time to analyze carefully ✅ Submit when ready"
+horizontal_alignment = 1
+
+[node name="MidtermLesson" type="Sprite2D" parent="."]
+position = Vector2(940, 470)
+scale = Vector2(1.08421, 0.904865)
+texture = ExtResource("3_wb46w")
+
+[node name="QuestionLabels" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label1" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 747.0
+offset_right = 454.0
+offset_bottom = 767.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 1:"
+
+[node name="Label2" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 747.0
+offset_right = 764.0
+offset_bottom = 767.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 2:"
+
+[node name="Label3" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 974.0
+offset_top = 747.0
+offset_right = 1074.0
+offset_bottom = 767.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 3:"
+
+[node name="Label4" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 1284.0
+offset_top = 747.0
+offset_right = 1384.0
+offset_bottom = 767.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 4:"
+
+[node name="Label5" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 857.0
+offset_right = 464.0
+offset_bottom = 877.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 5:"
+
+[node name="Label6" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 855.0
+offset_right = 776.0
+offset_bottom = 875.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 6:"
+
+[node name="Label7" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 986.0
+offset_top = 855.0
+offset_right = 1086.0
+offset_bottom = 875.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 7:"
+
+[node name="Label8" type="Label" parent="QuestionLabels"]
+layout_mode = 0
+offset_left = 1296.0
+offset_top = 855.0
+offset_right = 1396.0
+offset_bottom = 875.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+text = "Image 8:"
+
+[node name="OptionA" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 60)
+offset_left = 838.0
+offset_top = 977.0
+offset_right = 1038.0
+offset_bottom = 1037.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_r67hy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jikvq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lhog7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jikvq")
+text = "Submit Quiz"
+text_overrun_behavior = 3
+
+[node name="Question_1" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 347.0
+offset_top = 779.0
+offset_right = 627.0
+offset_bottom = 829.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_2" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 657.0
+offset_top = 779.0
+offset_right = 937.0
+offset_bottom = 829.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_3" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 967.0
+offset_top = 779.0
+offset_right = 1247.0
+offset_bottom = 829.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_4" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 1277.0
+offset_top = 779.0
+offset_right = 1557.0
+offset_bottom = 829.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_5" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 348.0
+offset_top = 885.0
+offset_right = 628.0
+offset_bottom = 935.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_6" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 663.0
+offset_top = 885.0
+offset_right = 943.0
+offset_bottom = 935.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_7" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 973.0
+offset_top = 885.0
+offset_right = 1253.0
+offset_bottom = 935.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
+
+[node name="Question_8" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(280, 50)
+offset_left = 1283.0
+offset_top = 885.0
+offset_right = 1563.0
+offset_bottom = 935.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
+theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_of8ev")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btahc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btahc")
+placeholder_text = "Enter answer..."
+alignment = 1
+max_length = 100
