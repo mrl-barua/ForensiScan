@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://df7tj2kffe6tk"]
 
-[ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_1.7.gd" id="1_ov15c"]
+[ext_resource type="Script" path="res://src/scripts/Lesson/Semining/Semining_1.7.gd" id="1_ov15c"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_bxa8w"]
 [ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="3_65eij"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="4_rm5hy"]
@@ -71,5 +71,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("3_65eij")]
 visible = false
+previous_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.6.tscn"
+next_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.8.tscn"
 
 [node name="Pause" parent="." instance=ExtResource("4_rm5hy")]

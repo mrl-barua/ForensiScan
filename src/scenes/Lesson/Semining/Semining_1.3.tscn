@@ -1,26 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqfm6wlchrty"]
+[gd_scene load_steps=9 format=3 uid="uid://oh22f2phbfy5"]
 
-[ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_1.4.gd" id="1_m3a64"]
-[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_yqhrl"]
-[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="3_was66"]
-[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="4_jjcmj"]
-[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="5_hhp4m"]
-[ext_resource type="Texture2D" uid="uid://tiogluklkili" path="res://assets/images/Lesson/Prelim/prelim_1.2.png" id="6_6cjvy"]
-[ext_resource type="Texture2D" uid="uid://bkflvgq3gbtup" path="res://assets/images/Lesson/Semining/Semining_4.png" id="7_4aamn"]
+[ext_resource type="Script" path="res://src/scripts/Lesson/Semining/Semining_1.3.gd" id="1_q6lxh"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_cvm3a"]
+[ext_resource type="PackedScene" uid="uid://c7pggom3bb7tm" path="res://src/scenes/Components/ZoomableImage.tscn" id="3_fx1w0"]
+[ext_resource type="Texture2D" uid="uid://tiogluklkili" path="res://assets/images/Lesson/Prelim/prelim_1.2.png" id="4_h7ut2"]
+[ext_resource type="Texture2D" uid="uid://bs45gkdby3vna" path="res://assets/images/Lesson/Semining/Semining_3.1.png" id="5_sv3bp"]
+[ext_resource type="Texture2D" uid="uid://j0xq1abifh73" path="res://assets/images/Lesson/Semining/Semining_3.2.png" id="6_6snnm"]
+[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="7_xkdfe"]
+[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="8_wpuph"]
 
-[node name="Semining1_4" type="Node2D"]
-script = ExtResource("1_m3a64")
+[node name="Semining1_3" type="Node2D"]
+script = ExtResource("1_q6lxh")
 
 [node name="StarField" type="Sprite2D" parent="."]
 position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
-texture = ExtResource("2_yqhrl")
+texture = ExtResource("2_cvm3a")
 metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 68.0
 offset_top = 220.0
-offset_right = 1398.0
+offset_right = 1376.0
 offset_bottom = 1077.0
 theme_override_constants/separation = 30
 
@@ -72,10 +73,10 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
-[node name="ZoomableImage" parent="." instance=ExtResource("5_hhp4m")]
+[node name="ZoomableImage" parent="." instance=ExtResource("3_fx1w0")]
 scale = Vector2(1.0036, 1.00362)
-image_texture = ExtResource("6_6cjvy")
-image_textures = Array[Texture2D]([ExtResource("7_4aamn")])
+image_texture = ExtResource("4_h7ut2")
+image_textures = Array[Texture2D]([ExtResource("5_sv3bp"), ExtResource("6_6snnm")])
 metadata/_edit_use_anchors_ = true
 
 [node name="ImageContainer" parent="ZoomableImage" index="0"]
@@ -91,9 +92,11 @@ grow_vertical = 2
 [node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
 visible = false
 
-[node name="NavigationControls" parent="." instance=ExtResource("3_was66")]
+[node name="NavigationControls" parent="." instance=ExtResource("7_xkdfe")]
 visible = false
+previous_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.2.tscn"
+next_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.4.tscn"
 
-[node name="Pause" parent="." instance=ExtResource("4_jjcmj")]
+[node name="Pause" parent="." instance=ExtResource("8_wpuph")]
 
 [editable path="ZoomableImage"]

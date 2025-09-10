@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxvgmkb8rgs0y"]
+[gd_scene load_steps=5 format=3 uid="uid://c7nucjy0b1t41"]
 
-[ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_1.10.gd" id="1_yooya"]
-[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_oa4m8"]
-[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="3_6w4w7"]
-[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="4_vriow"]
+[ext_resource type="Script" path="res://src/scripts/Lesson/Semining/Semining_1.1.gd" id="1_635he"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_7n4qt"]
+[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="3_qq7vg"]
+[ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="4_ti1bn"]
 
-[node name="Semining1_10" type="Node2D"]
-script = ExtResource("1_yooya")
+[node name="Semining1_1" type="Node2D"]
+script = ExtResource("1_635he")
 
 [node name="StarField" type="Sprite2D" parent="."]
 position = Vector2(963.999, 541.998)
 scale = Vector2(1.88281, 1.05859)
-texture = ExtResource("2_oa4m8")
+texture = ExtResource("2_7n4qt")
 metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -69,9 +69,9 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Rich Text"
 fit_content = true
 
-[node name="NavigationControls" parent="." instance=ExtResource("3_6w4w7")]
+[node name="NavigationControls" parent="." instance=ExtResource("3_qq7vg")]
 visible = false
-previous_scene_path = "res://src/scenes/Quiz/Semining/Semining_1.9.tscn"
-next_scene_path = "res://src/scenes/Quiz/Semining/Semining_1.11.tscn"
+hide_previous_button = true
+next_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.2.tscn"
 
-[node name="Pause" parent="." instance=ExtResource("4_vriow")]
+[node name="Pause" parent="." instance=ExtResource("4_ti1bn")]
