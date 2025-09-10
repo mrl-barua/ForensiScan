@@ -71,5 +71,7 @@ fit_content = true
 
 [node name="NavigationControls" parent="." instance=ExtResource("3_6w4w7")]
 visible = false
+previous_scene_path = "res://src/scenes/Quiz/Semining/Semining_1.9.tscn"
+next_scene_path = "res://src/scenes/Quiz/Semining/Semining_1.11.tscn"
 
 [node name="Pause" parent="." instance=ExtResource("4_vriow")]
