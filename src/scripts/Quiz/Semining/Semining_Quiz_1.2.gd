@@ -1,6 +1,6 @@
 extends Node2D
 
-# Midterm Quiz - Enumeration Type
+# Semining Quiz - Enumeration Type
 # Professional quiz system with scoring and validation
 
 # UI Node references
@@ -12,8 +12,6 @@ extends Node2D
 @onready var question_6: LineEdit = $Question_6
 @onready var question_7: LineEdit = $Question_7
 @onready var question_8: LineEdit = $Question_8
-@onready var question_9: LineEdit = $Question_9
-@onready var question_10: LineEdit = $Question_10
 @onready var submit_button: Button = $OptionA
 @onready var header_label: Label = $Header
 @onready var instruction_label: Label = $Instruction
@@ -35,7 +33,7 @@ var error_color: Color = Color(0.9, 0.3, 0.2, 1.0)
 var neutral_color: Color = Color(0.15, 0.15, 0.25, 0.9)
 
 func _ready():
-	print("🎯 Midterm Quiz 1.1 initialized")
+	print("🎯 Semining Quiz 1.2 initialized")
 	setup_quiz()
 	setup_ui_enhancements()
 	load_quiz_data()
@@ -46,7 +44,7 @@ func setup_quiz():
 	# Collect all question input references
 	question_inputs = [
 		question_1, question_2, question_3, question_4, question_5,
-		question_6, question_7, question_8, question_9, question_10
+		question_6, question_7, question_8
 	]
 	
 	# Validate all inputs exist
@@ -62,7 +60,7 @@ func setup_ui_enhancements():
 	"""Setup enhanced UI elements and styling"""
 	# Update header with better text
 	if header_label:
-		header_label.text = "MIDTERM EXAMINATION - ACTIVITY NO. 1"
+		header_label.text = "SEMINING EXAMINATION - ACTIVITY NO. 2"
 	
 	# Update instruction text
 	if instruction_label:
@@ -102,11 +100,11 @@ func load_quiz_data():
 		return
 	
 	var data = json.data
-	if not data.has("Midterm"):
-		print("❌ No Midterm section found in question data")
+	if not data.has("Semining"):
+		print("❌ No Semining section found in question data")
 		return
 	
-	quiz_data = data["Midterm"]
+	quiz_data = data["Semining"]
 	
 	# Extract correct answers
 	correct_answers.clear()
@@ -395,7 +393,7 @@ func show_final_results():
 	
 	# Store score data in QuizManager for persistence
 	QuizManager.store_quiz_results(
-		"Midterm_Quiz_1.1",
+		"Semining_Quiz_1.2",
 		score,
 		correct_answers.size(),
 		user_answers,

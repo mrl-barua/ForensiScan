@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_3a54j"]
 [ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_Quiz_1.2.gd" id="1_ybnht"]
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="2_of8ev"]
-[ext_resource type="Texture2D" uid="uid://bw6x05subkny4" path="res://assets/images/Quiz/Midterm/Midterm_Lesson.png" id="4_hk12m"]
+[ext_resource type="Texture2D" uid="uid://y68ixsxr3yqu" path="res://assets/images/Quiz/Semining/Semining_1.2.png" id="3_wb46w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd4n4"]
 bg_color = Color(0.15, 0.25, 0.4, 0.85)
@@ -74,7 +74,7 @@ offset_bottom = 142.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 64
-text = "MIDTERM EXAMINATION - ACTIVITY NO. 1"
+text = "SEMINING ACTIVITY NO. 2"
 horizontal_alignment = 1
 
 [node name="Instruction" type="Label" parent="."]
@@ -90,147 +90,9 @@ text = "Instructions: Answer the following questions by analyzing the fingerprin
 horizontal_alignment = 1
 
 [node name="MidtermLesson" type="Sprite2D" parent="."]
-position = Vector2(912, 485)
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("4_hk12m")
-
-[node name="ImageLabels" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 261.0
-offset_top = 259.0
-offset_right = 517.0
-offset_bottom = 316.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 518.0
-offset_top = 262.0
-offset_right = 780.0
-offset_bottom = 319.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 782.0
-offset_top = 261.0
-offset_right = 1024.0
-offset_bottom = 318.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 1025.0
-offset_top = 261.0
-offset_right = 1302.0
-offset_bottom = 318.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "4"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 1306.0
-offset_top = 262.0
-offset_right = 1564.0
-offset_bottom = 319.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "5"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label6" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 261.0
-offset_top = 487.0
-offset_right = 520.0
-offset_bottom = 544.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "6"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label7" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 522.0
-offset_top = 489.0
-offset_right = 777.0
-offset_bottom = 546.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "7"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label8" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 784.0
-offset_top = 487.0
-offset_right = 1023.0
-offset_bottom = 544.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "8"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label9" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 1030.0
-offset_top = 487.0
-offset_right = 1300.0
-offset_bottom = 544.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "9"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label10" type="Label" parent="ImageLabels"]
-layout_mode = 0
-offset_left = 1306.0
-offset_top = 490.0
-offset_right = 1561.0
-offset_bottom = 547.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
+position = Vector2(911, 532.388)
+scale = Vector2(0.936842, 0.887733)
+texture = ExtResource("3_wb46w")
 
 [node name="QuestionLabels" type="Control" parent="."]
 layout_mode = 3
@@ -242,10 +104,10 @@ grow_vertical = 2
 
 [node name="Label1" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 197.0
-offset_top = 761.0
-offset_right = 297.0
-offset_bottom = 781.0
+offset_left = 336.0
+offset_top = 767.0
+offset_right = 436.0
+offset_bottom = 787.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -253,10 +115,10 @@ text = "Image 1:"
 
 [node name="Label2" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 507.0
-offset_top = 761.0
-offset_right = 607.0
-offset_bottom = 781.0
+offset_left = 646.0
+offset_top = 767.0
+offset_right = 746.0
+offset_bottom = 787.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -264,10 +126,10 @@ text = "Image 2:"
 
 [node name="Label3" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 817.0
-offset_top = 761.0
-offset_right = 917.0
-offset_bottom = 781.0
+offset_left = 956.0
+offset_top = 767.0
+offset_right = 1056.0
+offset_bottom = 787.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -275,10 +137,10 @@ text = "Image 3:"
 
 [node name="Label4" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 1127.0
-offset_top = 761.0
-offset_right = 1227.0
-offset_bottom = 781.0
+offset_left = 1266.0
+offset_top = 767.0
+offset_right = 1366.0
+offset_bottom = 787.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -286,10 +148,10 @@ text = "Image 4:"
 
 [node name="Label5" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 1437.0
-offset_top = 761.0
-offset_right = 1537.0
-offset_bottom = 781.0
+offset_left = 337.0
+offset_top = 868.0
+offset_right = 437.0
+offset_bottom = 888.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -297,10 +159,10 @@ text = "Image 5:"
 
 [node name="Label6" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 197.0
-offset_top = 861.0
-offset_right = 297.0
-offset_bottom = 881.0
+offset_left = 646.0
+offset_top = 868.0
+offset_right = 746.0
+offset_bottom = 888.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -308,10 +170,10 @@ text = "Image 6:"
 
 [node name="Label7" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 507.0
-offset_top = 861.0
-offset_right = 607.0
-offset_bottom = 881.0
+offset_left = 956.0
+offset_top = 868.0
+offset_right = 1056.0
+offset_bottom = 888.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
@@ -319,36 +181,14 @@ text = "Image 7:"
 
 [node name="Label8" type="Label" parent="QuestionLabels"]
 layout_mode = 0
-offset_left = 817.0
-offset_top = 861.0
-offset_right = 917.0
-offset_bottom = 881.0
+offset_left = 1266.0
+offset_top = 868.0
+offset_right = 1366.0
+offset_bottom = 888.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_of8ev")
 theme_override_font_sizes/font_size = 16
 text = "Image 8:"
-
-[node name="Label9" type="Label" parent="QuestionLabels"]
-layout_mode = 0
-offset_left = 1127.0
-offset_top = 861.0
-offset_right = 1227.0
-offset_bottom = 881.0
-theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
-theme_override_fonts/font = ExtResource("2_of8ev")
-theme_override_font_sizes/font_size = 16
-text = "Image 9:"
-
-[node name="Label10" type="Label" parent="QuestionLabels"]
-layout_mode = 0
-offset_left = 1437.0
-offset_top = 861.0
-offset_right = 1547.0
-offset_bottom = 881.0
-theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
-theme_override_fonts/font = ExtResource("2_of8ev")
-theme_override_font_sizes/font_size = 16
-text = "Image 10:"
 
 [node name="OptionA" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 60)
@@ -368,10 +208,10 @@ text_overrun_behavior = 3
 
 [node name="Question_1" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 190.0
-offset_top = 793.0
-offset_right = 470.0
-offset_bottom = 843.0
+offset_left = 329.0
+offset_top = 799.0
+offset_right = 609.0
+offset_bottom = 849.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -386,10 +226,10 @@ max_length = 100
 
 [node name="Question_2" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 500.0
-offset_top = 793.0
-offset_right = 780.0
-offset_bottom = 843.0
+offset_left = 639.0
+offset_top = 799.0
+offset_right = 919.0
+offset_bottom = 849.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -404,10 +244,10 @@ max_length = 100
 
 [node name="Question_3" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 810.0
-offset_top = 793.0
-offset_right = 1090.0
-offset_bottom = 843.0
+offset_left = 949.0
+offset_top = 799.0
+offset_right = 1229.0
+offset_bottom = 849.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -422,10 +262,10 @@ max_length = 100
 
 [node name="Question_4" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 1120.0
-offset_top = 793.0
-offset_right = 1400.0
-offset_bottom = 843.0
+offset_left = 1259.0
+offset_top = 799.0
+offset_right = 1539.0
+offset_bottom = 849.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -440,10 +280,10 @@ max_length = 100
 
 [node name="Question_5" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 1430.0
-offset_top = 793.0
-offset_right = 1710.0
-offset_bottom = 843.0
+offset_left = 330.0
+offset_top = 900.0
+offset_right = 610.0
+offset_bottom = 950.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -458,10 +298,10 @@ max_length = 100
 
 [node name="Question_6" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 190.0
-offset_top = 893.0
-offset_right = 470.0
-offset_bottom = 943.0
+offset_left = 639.0
+offset_top = 900.0
+offset_right = 919.0
+offset_bottom = 950.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -476,10 +316,10 @@ max_length = 100
 
 [node name="Question_7" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 500.0
-offset_top = 893.0
-offset_right = 780.0
-offset_bottom = 943.0
+offset_left = 949.0
+offset_top = 900.0
+offset_right = 1229.0
+offset_bottom = 950.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
@@ -494,46 +334,10 @@ max_length = 100
 
 [node name="Question_8" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(280, 50)
-offset_left = 810.0
-offset_top = 893.0
-offset_right = 1090.0
-offset_bottom = 943.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
-theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
-theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
-theme_override_fonts/font = ExtResource("2_of8ev")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_l83kb")
-theme_override_styles/focus = SubResource("StyleBoxFlat_l83kb")
-placeholder_text = "Enter answer..."
-alignment = 1
-max_length = 100
-
-[node name="Question_9" type="LineEdit" parent="."]
-custom_minimum_size = Vector2(280, 50)
-offset_left = 1120.0
-offset_top = 893.0
-offset_right = 1400.0
-offset_bottom = 943.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
-theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
-theme_override_colors/selection_color = Color(0.4, 0.7, 1, 0.5)
-theme_override_fonts/font = ExtResource("2_of8ev")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_l83kb")
-theme_override_styles/focus = SubResource("StyleBoxFlat_l83kb")
-placeholder_text = "Enter answer..."
-alignment = 1
-max_length = 100
-
-[node name="Question_10" type="LineEdit" parent="."]
-custom_minimum_size = Vector2(280, 50)
-offset_left = 1430.0
-offset_top = 893.0
-offset_right = 1710.0
-offset_bottom = 943.0
+offset_left = 1259.0
+offset_top = 900.0
+offset_right = 1539.0
+offset_bottom = 950.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(0.6, 0.7, 0.8, 1)
 theme_override_colors/caret_color = Color(0.9, 0.95, 1, 1)
