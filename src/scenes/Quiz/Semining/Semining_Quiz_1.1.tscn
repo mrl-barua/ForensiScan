@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0cf10mg13280"]
+[gd_scene load_steps=7 format=3 uid="uid://c0cf10mg13280"]
 
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="1_4rq8q"]
 [ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_Quiz_1.1.gd" id="1_lbvmn"]
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="2_hqiow"]
 [ext_resource type="Texture2D" uid="uid://6llbxkk5sm3d" path="res://assets/images/Quiz/Semining/Semining_1.1.png" id="3_h7gf6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa8rd"]
+bg_color = Color(0.1, 0.15, 0.25, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.5, 0.8, 0.7)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snlv4"]
+bg_color = Color(0.2, 0.3, 0.5, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.6, 0.9, 0.8)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="SeminingQuiz1_1" type="Node2D"]
 script = ExtResource("1_lbvmn")
@@ -15,29 +39,75 @@ texture = ExtResource("1_4rq8q")
 metadata/_edit_lock_ = true
 
 [node name="Header" type="Label" parent="."]
-offset_left = 41.0
-offset_top = 54.0
-offset_right = 1862.0
-offset_bottom = 142.0
+offset_left = 50.0
+offset_top = 80.0
+offset_right = 1870.0
+offset_bottom = 180.0
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("2_hqiow")
-theme_override_font_sizes/font_size = 64
-text = "SEMINING EXAMINATION - ACTIVITY NO. 1"
+theme_override_font_sizes/font_size = 56
+text = "Semining "
 horizontal_alignment = 1
 
-[node name="Instruction" type="Label" parent="."]
+[node name="SubHeader" type="Label" parent="."]
 offset_left = 50.0
-offset_top = 152.0
-offset_right = 1871.0
-offset_bottom = 242.0
-theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
+offset_top = 190.0
+offset_right = 1870.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
 theme_override_fonts/font = ExtResource("2_hqiow")
-theme_override_font_sizes/font_size = 20
-text = "Instructions: Solve the following fingerprint classification problems using the Henry System. Complete the classification line and show your solution.
-"
+theme_override_font_sizes/font_size = 24
+text = "Activity No. 1"
 horizontal_alignment = 1
 
-[node name="Semining1_1" type="Sprite2D" parent="."]
-position = Vector2(970.75, 612.5)
-scale = Vector2(1.36674, 1.31333)
+[node name="MainPanel" type="Panel" parent="."]
+offset_left = 300.0
+offset_top = 266.0
+offset_right = 1620.0
+offset_bottom = 918.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wa8rd")
+
+[node name="CompletionMessage" type="Label" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_hqiow")
+theme_override_font_sizes/font_size = 22
+text = "Loading results..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Semining1_1" type="Sprite2D" parent="MainPanel"]
+position = Vector2(679, 490)
+scale = Vector2(0.80745, 0.566667)
 texture = ExtResource("3_h7gf6")
+
+[node name="ProgressIndicator" type="Panel" parent="."]
+offset_left = 50.0
+offset_top = 943.0
+offset_right = 1870.0
+offset_bottom = 993.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_snlv4")
+
+[node name="ProgressLabel" type="Label" parent="ProgressIndicator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("2_hqiow")
+theme_override_font_sizes/font_size = 18
+text = "📈 Redirecting to detailed results... | Midterm Part 1 Complete"
+horizontal_alignment = 1
+vertical_alignment = 1

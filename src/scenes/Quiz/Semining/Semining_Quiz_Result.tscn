@@ -1,3 +1,217 @@
-[gd_scene format=3 uid="uid://dtelnia8dad82"]
+[gd_scene load_steps=7 format=3 uid="uid://dtelnia8dad82"]
+
+[ext_resource type="Script" path="res://src/scripts/Quiz/Semining/Semining_Quiz_Result.gd" id="1_5p8t4"]
+[ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_llj6p"]
+[ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_fvd8t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xswd2"]
+bg_color = Color(0.1, 0.15, 0.25, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.5, 0.8, 0.8)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bekk7"]
+bg_color = Color(0.2, 0.7, 0.3, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.9, 0.4, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3am1"]
+bg_color = Color(0.15, 0.35, 0.65, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0.6, 1, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.1, 0.2, 0.5, 0.4)
+shadow_size = 8
 
 [node name="SeminingQuizResult" type="Node2D"]
+script = ExtResource("1_5p8t4")
+
+[node name="StarField" type="Sprite2D" parent="."]
+position = Vector2(963.999, 541.998)
+scale = Vector2(1.88281, 1.05859)
+texture = ExtResource("2_llj6p")
+metadata/_edit_lock_ = true
+
+[node name="Header" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 1870.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 48
+text = "📊 QUIZ RESULTS"
+horizontal_alignment = 1
+
+[node name="ResultsPanel" type="Panel" parent="."]
+offset_left = 200.0
+offset_top = 180.0
+offset_right = 1720.0
+offset_bottom = 700.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xswd2")
+
+[node name="QuizTitle" type="Label" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = -40.0
+offset_bottom = -450.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 28
+text = "Midterm Examination - Activity No. 1"
+horizontal_alignment = 1
+
+[node name="ScoreDisplay" type="VBoxContainer" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 100.0
+offset_right = -60.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScorePanel" type="Panel" parent="ResultsPanel/ScoreDisplay"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bekk7")
+
+[node name="ScoreInfo" type="VBoxContainer" parent="ResultsPanel/ScoreDisplay/ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ScoreValue" type="Label" parent="ResultsPanel/ScoreDisplay/ScorePanel/ScoreInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 36
+text = "85/100"
+horizontal_alignment = 1
+
+[node name="ScorePercentage" type="Label" parent="ResultsPanel/ScoreDisplay/ScorePanel/ScoreInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 24
+text = "85%"
+horizontal_alignment = 1
+
+[node name="LetterGrade" type="Label" parent="ResultsPanel/ScoreDisplay/ScorePanel/ScoreInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 28
+text = "Grade: B+"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="ResultsPanel/ScoreDisplay"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PerformanceMessage" type="Label" parent="ResultsPanel/ScoreDisplay"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 20
+text = "Very Good! Strong understanding of forensic principles demonstrated."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DetailedResults" type="VBoxContainer" parent="ResultsPanel/ScoreDisplay"]
+layout_mode = 2
+
+[node name="CorrectAnswers" type="Label" parent="ResultsPanel/ScoreDisplay/DetailedResults"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.7, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 18
+text = "✅ Correct Answers: 8/10"
+horizontal_alignment = 1
+
+[node name="IncorrectAnswers" type="Label" parent="ResultsPanel/ScoreDisplay/DetailedResults"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 18
+text = "❌ Incorrect Answers: 2/10"
+horizontal_alignment = 1
+
+[node name="ActionButtons" type="HBoxContainer" parent="."]
+offset_left = 460.0
+offset_top = 750.0
+offset_right = 1460.0
+offset_bottom = 830.0
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="ActionButtons"]
+visible = false
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_g3am1")
+text = "🔄 Retry Quiz"
+
+[node name="Spacer1" type="Control" parent="ActionButtons"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="ActionButtons"]
+visible = false
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_g3am1")
+text = "➡️ Continue"
+
+[node name="Spacer2" type="Control" parent="ActionButtons"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="ActionButtons"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvd8t")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_g3am1")
+text = "🏠 Main Menu"
