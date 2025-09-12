@@ -306,7 +306,7 @@ func get_all_results() -> Array:
 				"percentage": quiz_data.get("percentage", 0.0),
 				"grade": get_letter_grade(quiz_data.get("percentage", 0.0)),
 				"total_questions": quiz_data.get("total_questions", 0),
-				"correct_answers": quiz_data.get("score", 0),
+				"correct_answers": quiz_data.get("score", 0) / 10,  # Calculate actual correct answers
 				"timestamp": format_timestamp(quiz_data.get("timestamp", 0))
 			}
 			all_results.append(result)
