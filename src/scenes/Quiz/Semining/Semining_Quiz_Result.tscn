@@ -83,7 +83,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
 theme_override_fonts/font = ExtResource("3_fvd8t")
 theme_override_font_sizes/font_size = 28
-text = "Midterm Examination - Activity No. 1"
+text = "Semining Examination - Activity No. 2"
 horizontal_alignment = 1
 
 [node name="ScoreDisplay" type="VBoxContainer" parent="ResultsPanel"]
@@ -161,7 +161,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.9, 0.7, 1)
 theme_override_fonts/font = ExtResource("3_fvd8t")
 theme_override_font_sizes/font_size = 18
-text = "✅ Correct Answers: 8/10"
+text = "✅ Correct Answers: 8/8"
 horizontal_alignment = 1
 
 [node name="IncorrectAnswers" type="Label" parent="ResultsPanel/ScoreDisplay/DetailedResults"]
@@ -169,7 +169,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.7, 0.7, 1)
 theme_override_fonts/font = ExtResource("3_fvd8t")
 theme_override_font_sizes/font_size = 18
-text = "❌ Incorrect Answers: 2/10"
+text = "❌ Incorrect Answers: 2/8"
 horizontal_alignment = 1
 
 [node name="ActionButtons" type="HBoxContainer" parent="."]
