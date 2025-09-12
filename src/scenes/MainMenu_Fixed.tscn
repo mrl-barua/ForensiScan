@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dil8qcyfhtjau"]
+[gd_scene load_steps=12 format=3 uid="uid://dil8qcyfhtjau"]
 
 [ext_resource type="Script" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_bg"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dil8qcyfhtjau"]
+[gd_scene load_steps=14 format=3 uid="uid://cbvftcpgpa4qm"]
 
 [ext_resource type="Script" path="res://src/scripts/Services/ResumeProgressDialog.gd" id="1_1j0qv"]
 [ext_resource type="Script" path="res://src/scripts/MainMenu/MainMenu.gd" id="1_a00hu"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://v1atp56ihxgh" path="res://src/styles/official_font.tres" id="3_4j4m6"]
 [ext_resource type="StyleBox" uid="uid://c3kublerkkkwi" path="res://modern_button.tres" id="3_rkgjm"]
 [ext_resource type="PackedScene" uid="uid://baarscbqx0i40" path="res://src/scenes/Components/LicenseVerifier.tscn" id="4_cwid3"]
-[ext_resource type="PackedScene" uid="uid://bh8u3xjqm7fs2" path="res://src/scenes/Components/ResumeProgressDialog.tscn" id="5_dialog"]
 [ext_resource type="StyleBox" uid="uid://bkusvee4u6aw0" path="res://src/styles/modern_button_pressed.tres" id="4_gc3lr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header_panel"]

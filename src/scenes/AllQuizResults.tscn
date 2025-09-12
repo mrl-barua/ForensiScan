@@ -177,6 +177,45 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="VSeparator2" type="VSeparator" parent="MainContainer/ContentContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="SeminingSection" type="VBoxContainer" parent="MainContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MidtermTitle" type="Label" parent="MainContainer/ContentContainer/SeminingSection"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "📚 Semining Quizzes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MidtermPanel" type="Panel" parent="MainContainer/ContentContainer/SeminingSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2_fghij")
+
+[node name="MidtermScrollContainer" type="ScrollContainer" parent="MainContainer/ContentContainer/SeminingSection/MidtermPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MidtermResultsList" type="VBoxContainer" parent="MainContainer/ContentContainer/SeminingSection/MidtermPanel/MidtermScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="HSeparator2" type="HSeparator" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
