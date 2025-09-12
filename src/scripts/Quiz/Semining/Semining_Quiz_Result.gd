@@ -60,7 +60,10 @@ func load_quiz_data():
 	# Calculate derived values
 	correct_count = quiz_score / 10  # Each question worth 10 points
 	incorrect_count = total_questions - correct_count
-	percentage = (quiz_score / 100.0) * 100
+	
+	# Calculate percentage based on actual maximum possible score
+	var max_possible_score = total_questions * 10
+	percentage = (quiz_score / float(max_possible_score)) * 100
 	grade = get_letter_grade(percentage)
 	
 	print("📋 Final Quiz Results:")
@@ -73,7 +76,8 @@ func setup_results_display():
 	"""Setup and populate all result display elements"""
 	# Update score displays
 	if score_value:
-		score_value.text = "%d/100" % quiz_score
+		var max_score = total_questions * 10
+		score_value.text = "%d/%d" % [quiz_score, max_score]
 	
 	if score_percentage:
 		score_percentage.text = "%.0f%%" % percentage

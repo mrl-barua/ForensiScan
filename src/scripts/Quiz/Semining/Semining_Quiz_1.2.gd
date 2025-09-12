@@ -391,6 +391,15 @@ func show_final_results():
 	"""Show detailed results or navigate to next section"""
 	print("🎯 Showing final detailed results...")
 	
+	# Debug information
+	print("=== SEMINING QUIZ DEBUG INFO ===")
+	print("Final Score: ", score)
+	print("Total Questions: ", correct_answers.size())
+	print("User Answers: ", user_answers)
+	print("Correct Answers: ", correct_answers)
+	print("Quiz ID: Semining_Quiz_1.2")
+	print("================================")
+	
 	# Store score data in QuizManager for persistence
 	QuizManager.store_quiz_results(
 		"Semining_Quiz_1.2",
@@ -399,6 +408,18 @@ func show_final_results():
 		user_answers,
 		correct_answers
 	)
+	
+	# Debug: Verify storage worked
+	print("=== VERIFYING STORAGE ===")
+	var stored_result = QuizManager.get_quiz_results("Semining_Quiz_1.2")
+	print("Stored Result: ", stored_result)
+	
+	var all_results = QuizManager.get_all_results()
+	print("All Results Count: ", all_results.size())
+	for result in all_results:
+		if "Semining" in result.quiz_name:
+			print("Found Semining Result: ", result)
+	print("========================")
 	
 	# Navigate to completion screen
 	await get_tree().create_timer(1.0).timeout

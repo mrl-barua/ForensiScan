@@ -106,11 +106,15 @@ func create_test_data():
 # Enhanced persistence functions
 func store_quiz_results(quiz_id: String, final_score: int, total_questions: int, answers: Array = [], correct_answers: Array = []):
 	"""Store quiz results for later retrieval across scenes with disk persistence"""
+	# Calculate percentage based on the actual maximum possible score
+	var max_possible_score = total_questions * 10  # Each question worth 10 points
+	var percentage = (final_score / float(max_possible_score)) * 100.0
+	
 	var quiz_data = {
 		"quiz_id": quiz_id,
 		"score": final_score,
 		"total_questions": total_questions,
-		"percentage": (final_score / float(total_questions * 10)) * 100.0,
+		"percentage": percentage,
 		"user_answers": answers,
 		"correct_answers": correct_answers,
 		"timestamp": Time.get_ticks_msec(),
@@ -127,8 +131,10 @@ func store_quiz_results(quiz_id: String, final_score: int, total_questions: int,
 	save_persistent_data()
 	
 	print("📊 QuizManager: Results stored for ", quiz_id)
-	print("  Score: ", final_score, "/", total_questions * 10)
-	print("  Percentage: ", quiz_data.percentage, "%")
+	print("  Score: ", final_score, "/", max_possible_score)
+	print("  Percentage: ", percentage, "%")
+	print("  Quiz Type: ", determine_quiz_type_from_id(quiz_id))
+	print("  Formatted Name: ", format_quiz_name(quiz_id))
 	print("💾 Data saved to disk for persistence")
 	
 	return quiz_data
@@ -314,6 +320,10 @@ func format_quiz_name(quiz_id: String) -> String:
 			return "Prelim Quiz 1.1"
 		"Midterm_Quiz_1.1":
 			return "Midterm Quiz 1.1"
+		"Semining_Quiz_1.1":
+			return "Semining Quiz 1.1"
+		"Semining_Quiz_1.2":
+			return "Semining Quiz 1.2"
 		_:
 			return quiz_id.replace("_", " ")
 
@@ -323,6 +333,8 @@ func determine_quiz_type_from_id(quiz_id: String) -> String:
 		return "prelim"
 	elif "Midterm" in quiz_id or "midterm" in quiz_id:
 		return "midterm"
+	elif "Semining" in quiz_id or "semining" in quiz_id:
+		return "semining"
 	else:
 		return "unknown"
 
