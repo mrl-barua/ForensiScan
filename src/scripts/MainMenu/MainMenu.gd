@@ -388,3 +388,15 @@ func animate_exit():
 	# Slide panels away
 	transition_tween.tween_property(left_panel, "position:x", -400, 0.8).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	transition_tween.tween_property(right_panel, "position:x", 400, 0.8).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+
+
+func _on_start_semining_button_pressed():
+	"""Navigate to Semining Lesson with enhanced transition"""
+	print("Semining Lesson button clicked!")
+	smooth_transition("res://src/scenes/Lesson/Semining/Semining_1.1.tscn", "📋 Loading Semining Lesson...")
+	
+
+func _on_start_semining_exam_button_pressed():
+	"""Navigate to Semining Quiz with enhanced transition"""
+	print("Semining Quiz button clicked!")
+	smooth_transition("res://src/scenes/Quiz/Semining/Semining_Quiz_1.1.tscn", "📋 Loading Semining Quiz...")
