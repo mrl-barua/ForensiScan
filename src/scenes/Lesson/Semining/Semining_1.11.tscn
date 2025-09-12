@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjhfu7ih7xdrr"]
+[gd_scene load_steps=11 format=3 uid="uid://cjhfu7ih7xdrr"]
 
 [ext_resource type="Script" path="res://src/scripts/Lesson/Semining/Semining_1.11.gd" id="1_btrjh"]
 [ext_resource type="Texture2D" uid="uid://byio0luq7uppw" path="res://assets/images/Background/StarField.png" id="2_ch3sv"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://tiogluklkili" path="res://assets/images/Lesson/Prelim/prelim_1.2.png" id="4_fy7it"]
 [ext_resource type="Texture2D" uid="uid://2dvc6j7vcrfl" path="res://assets/images/Lesson/Semining/Semining_11.1.png" id="5_ctvo7"]
 [ext_resource type="Texture2D" uid="uid://b4jkt48j8t28b" path="res://assets/images/Lesson/Semining/Semining_11.2.png" id="6_5rxhv"]
-[ext_resource type="PackedScene" uid="uid://c8lo8combalxg" path="res://src/scenes/Components/NavigationControls.tscn" id="7_xuc5q"]
 [ext_resource type="PackedScene" uid="uid://r7v4w30c0k7l" path="res://src/scenes/Components/Pause.tscn" id="8_2mqi1"]
+[ext_resource type="StyleBox" uid="uid://bryvbtsglf1dm" path="res://src/styles/lesson_button_style.tres" id="9_5bh40"]
+[ext_resource type="StyleBox" uid="uid://kfp625f8hn42" path="res://src/styles/lesson_button_hover_style.tres" id="10_quioy"]
+[ext_resource type="StyleBox" uid="uid://bdlph2wx12w13" path="res://src/styles/lesson_button_pressed_style.tres" id="11_y1eul"]
 
 [node name="Semining1_11" type="Node2D"]
 script = ExtResource("1_btrjh")
@@ -92,10 +94,47 @@ grow_vertical = 2
 [node name="FullScreenOverlay" parent="ZoomableImage" index="1"]
 visible = false
 
-[node name="NavigationControls" parent="." instance=ExtResource("7_xuc5q")]
-visible = false
-previous_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.10.tscn"
-
 [node name="Pause" parent="." instance=ExtResource("8_2mqi1")]
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 541.0
+offset_top = 900.0
+offset_right = 1391.0
+offset_bottom = 1040.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ProceedToQuizButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_5bh40")
+theme_override_styles/hover = ExtResource("10_quioy")
+theme_override_styles/pressed = ExtResource("11_y1eul")
+text = "Proceed to Quiz"
+
+[node name="GoBackToMenuButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("9_5bh40")
+theme_override_styles/hover = ExtResource("10_quioy")
+theme_override_styles/pressed = ExtResource("11_y1eul")
+text = "Go back to menu"
+
+[connection signal="pressed" from="ButtonContainer/ProceedToQuizButton" to="." method="_on_proceed_to_quiz_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/GoBackToMenuButton" to="." method="_on_go_back_to_menu_button_pressed"]
 
 [editable path="ZoomableImage"]

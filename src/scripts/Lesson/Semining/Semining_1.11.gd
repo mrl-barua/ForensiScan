@@ -17,9 +17,10 @@ extends Node2D
 @onready var detail_five_label: RichTextLabel = $VBoxContainer/DetailFive
 @onready var detail_six_label: RichTextLabel = $VBoxContainer/DetailSix
 @onready var detail_seven_label: RichTextLabel = $VBoxContainer/DetailSeven
-var typewriter: Typewriter
 
-@onready var navigation_buttons: Control = $NavigationControls
+
+@onready var button_container: HBoxContainer = $ButtonContainer
+var typewriter: Typewriter
 
 func _ready():
 	# Track progress for this lesson
@@ -84,4 +85,12 @@ func _on_detail_six_typing_done():
 	
 func _on_detail_seven_typing_done():
 	print("Detail seven typing finished!")
-	navigation_buttons.show()
+	button_container.show()
+
+
+func _on_go_back_to_menu_button_pressed():
+	get_tree().change_scene_to_file("res://src/scenes/MainMenu.tscn")
+
+
+func _on_proceed_to_quiz_button_pressed():
+	get_tree().change_scene_to_file("res://src/scenes/Quiz/Semining/Semining_Quiz_1.1.tscn")

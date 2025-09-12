@@ -1,6 +1,6 @@
 extends Node2D
 
-# Midterm Quiz 1.2 - Results and Continuation Screen
+# Semining Quiz 1.2 - Results and Continuation Screen
 # Professional completion screen with navigation options
 
 # UI Node references
@@ -15,7 +15,7 @@ var entrance_tween: Tween
 var has_animated: bool = false
 
 func _ready():
-	print("🎉 Midterm Quiz 1.2 Results Screen initialized")
+	print("🎉 Semining Quiz 1.2 Results Screen initialized")
 	setup_simplified_content()
 	setup_entrance_animation()
 	
@@ -88,7 +88,7 @@ func animate_entrance():
 func update_progress_display(score: int = -1, total_questions: int = 10):
 	"""Update progress display with quiz results"""
 	if progress_label:
-		var progress_text = "📈 Progress: Midterm Part 1 Complete"
+		var progress_text = "📈 Progress: Semining Part 1 Complete"
 		
 		if score >= 0:
 			var percentage = (score / float(total_questions)) * 100

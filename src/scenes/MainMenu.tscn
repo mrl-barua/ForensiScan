@@ -177,8 +177,11 @@ theme_override_font_sizes/font_size = 32
 text = "📋 Main Menu"
 horizontal_alignment = 1
 
-[node name="MenuSeparator" type="HSeparator" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
+[node name="MenuSeparator" type="HSeparator" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons/MenuTitle"]
 layout_mode = 2
+offset_top = 58.0
+offset_right = 1680.0
+offset_bottom = 62.0
 theme_override_styles/separator = SubResource("StyleBoxFlat_secondary_button")
 
 [node name="LessonSection" type="VBoxContainer" parent="CanvasLayer/MainContainer/RightPanel/MenuPanel/MainButtons"]
