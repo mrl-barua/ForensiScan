@@ -93,6 +93,7 @@ visible = false
 
 [node name="NavigationControls" parent="." instance=ExtResource("6_m1w71")]
 visible = false
+manual_page_number = 4
 previous_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.3.tscn"
 next_scene_path = "res://src/scenes/Lesson/Semining/Semining_1.5.tscn"
 
